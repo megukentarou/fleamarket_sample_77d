@@ -1,5 +1,3 @@
-# README
-
 ## freamarket_sample DB設計
 
 ## usersテーブル
@@ -33,7 +31,7 @@
 |password|string|null: false|
 |profile_text|string||
 
-## Association
+### Association
 - has_many :credit_cards
 - has_one :consignor
 - has_many :items
@@ -61,7 +59,7 @@
 |name_kana|string|null: false|
 |zip_code|integer|null: false|
 
-## Association
+### Association
 - belongs_to :user
 
 
@@ -73,7 +71,7 @@
 |expiration_month|integer||
 |security_code|integer||
 
-## Association
+### Association
 - belongs_to :user
 
 
@@ -101,7 +99,7 @@
 |delivery_day|string|null: false|
 |fee|string|null: false|
 
-## Association
+### Association
 - belongs_to :user
 - belongs_to :main_category
 - has_one :brands
@@ -115,7 +113,7 @@
 |------|----|-------|
 |text|string|null: false|
 
-## Association
+### Association
 - has_many :items
 - has_many :sub_categorys
 
@@ -127,7 +125,7 @@
 |------|----|-------|
 |text|string|null: false|
 
-## Association
+### Association
 - belongs_to :main_category
 - has_many :minimum_categorys
 
@@ -139,7 +137,7 @@
 |------|----|-------|
 |text|string|null: false|
 
-## Association
+### Association
 - belongs_to :sub_category
 
 ## brandsテーブル
@@ -149,7 +147,7 @@
 |------|----|-------|
 |text|string||
 
-## Association
+### Association
 - belongs_to :item
 
 ## imagesテーブル
@@ -160,7 +158,7 @@
 |------|----|-------|
 |text|string|null: false|
 
-## Association
+### Association
 - belongs_to :item
 
 
