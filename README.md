@@ -19,12 +19,12 @@
 |Column|Type|Options|
 |------|----|-------|
 |user_name|string||
-|birthday|integer||
+|birthday|integer|null: false|
 |phone|string||
 |prefectures|string||
 |city|string||
-|adress|integer||
-|buliding|string||
+|address|integer||
+|building|string||
 |nick_name|string|null: false|
 |zip_code|integer||
 |email|string|null: false, unique:true|
@@ -51,13 +51,14 @@
 |------|----|-------|
 |prefectures|string|null: false|
 |city|string|null: false|
-|adress|integer|null: false|
-|buliding|string||
+|address|integer|null: false|
+|building|string||
 |family_name|string|null: false|
 |family_kana|string|null: false|
 |name|string|null: false|
 |name_kana|string|null: false|
 |zip_code|integer|null: false|
+|phone|string||
 
 ### Association
 - belongs_to :user
@@ -94,7 +95,6 @@
 |explanation|string|null: false|
 |price|integer|null: false|
 |consignor|integer||
-|size|string||
 |condition|string|null: false|
 |delivery_day|string|null: false|
 |fee|string|null: false|
