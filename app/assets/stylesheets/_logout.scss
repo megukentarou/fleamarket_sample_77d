@@ -1,0 +1,21 @@
+.logout {
+  background-color: white;
+  height: 200px;
+  width: 700px;
+  margin-top: 50px; 
+  padding-left: 50px;
+  &__botton {
+    background-color: #ed514e;
+    height: 50px;
+    width: 350px;
+    margin: 0 auto;
+    margin-top: 70px;
+    line-height: 50px;
+    text-align: center;
+    .link-logout{
+      color: white;
+      text-decoration: none;
+      display: block;
+    }
+  }
+}
