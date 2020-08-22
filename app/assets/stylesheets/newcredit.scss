@@ -1,0 +1,62 @@
+.creditinport{
+  background-color: white;
+  height: 700px;
+  width: 700px;
+  margin: 50px 0px 0px 50px;
+  &__title{
+    height: 70px;
+    width: 500px;
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 70px;
+    border-bottom: 2px solid #f2f2f2;
+  }
+  &__credit-card{
+    background-color: white;
+    width: 350px;
+    &__inner{
+      margin-top: 20px;
+    }
+  }
+  .label  {
+    margin: 50px 0px 0px 70px;
+  }
+  .required{
+    background-color: red;
+    color: white;
+  }
+  .input-number{
+    height: 50px;
+    width: 400px;
+    margin-left: 70px;
+    border: 3px solid #f2f2f2;
+  }
+  .card-deadline {
+    margin: 50px 0px 0px 70px;
+    &__month {
+      float: left;
+    }
+    &__year {
+      float: right;
+      padding-right: 200px;
+    }
+  }
+  .input-deadline {
+    height:50px;
+    width:160px;
+  }
+  .card-code {
+    margin-top:100px;
+  }
+  .add_card#card_token {
+    margin: 50px 0px 0px 70px;
+  }
+  .add-btn {
+    width: 400px;
+    background-color: #ea352d;
+    height:50px;
+    color:white;
+    font-weight: bold;
+  }
+}
