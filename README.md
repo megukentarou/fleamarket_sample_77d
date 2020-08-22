@@ -161,6 +161,7 @@
 ### Association
 - belongs_to :item
 
-
+## ER図（URL）
+https://drive.google.com/file/d/1cq6Yql1uTnw0qAZnIx0Pi92um7jvuVx9/view?usp=sharing
 
 * ...
