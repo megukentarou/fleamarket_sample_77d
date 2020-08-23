@@ -133,7 +133,7 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|text|string||
+|text|string|null: false|
 
 ### Association
 - has_many :item
