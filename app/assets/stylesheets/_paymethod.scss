@@ -1,0 +1,42 @@
+.paymethod {
+  background-color: white;
+  height: 500px;
+  width: 700px;
+  margin-top: 50px;
+  &__payinfo {
+    height: 100px;
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    line-height: 100px;
+    border-bottom: 1px solid #f2f2f2;
+  }
+  &__credit{
+    padding: 30px 0px 0px 150px;
+    font-weight: bold;
+  }
+  &__register {
+    padding: 30px 0px 40px 150px;
+    border-bottom: 1px solid #f2f2f2;
+  }
+  .link-register{
+    color: #0095ee;
+    text-decoration: none;
+    display: block;
+  }
+  &__confirmation{
+    height: 50px;
+    width: 400px;
+    background-color: #cccccc;
+    margin: 30px 0 0 150px;
+    &__change{
+      line-height: 50px;
+      text-align: center;
+    }
+    .link-change {
+      color: black;
+      text-decoration: none;
+      display: block;
+    }
+  }
+} 

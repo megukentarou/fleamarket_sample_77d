@@ -1,0 +1,25 @@
+.user-page
+  =render 'sidebar'
+  .user-info
+    .user-info__overview
+      .user-info__overview__icon
+      .user-info__overview__name
+        名前
+      .user-info__overview__review
+        評価 0 出品数 0
+    .user-info__notice
+      %ul.messages
+        お知らせ
+        .messagedisplay
+          %li.message
+            =link_to "ここにお知らせが表示されます。", "#",class:"link-message"
+          %li.time
+            =link_to "2020/08/18 23:00", "#",class:"link-time"
+        .list
+          .messagelist
+            =link_to "一覧を見る", "#",class:"link-messagelist"
+    .user-info__transaction
+      %ul.transaction__list
+        取引中の商品
+        %li.transaction__now
+          現在商品はありません。
