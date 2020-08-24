@@ -32,25 +32,34 @@
 - has_many :items
 - has_many :residencys
 
-### residencysテーブル(住所)
+## prefectureテーブル（都道府県）
+- 都道府県が必須
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null: false|
+
+### Association
+- has_many :residencys
+
+## residencysテーブル(住所)
  - 郵便番号が必須
- - 都道府県が必須
  - 市区町村が必須
  - 番地が必須
  - マンション名やビル名、そしてその部屋番号は任意
 
 |Column|Type|Options|
 |------|----|-------|
-|prefectures|string|null: false|
 |city|string|null: false|
 |address|integer|null: false|
 |building|string|null: false|
 |zip_code|integer|null: false|
 |user_id|integer|null: false, foreign_key: true|
+|prefecture_id(acitve_hash)|integer|null: false|
 
 ### Association
 - belongs_to :user
-- has_one :residency
+- belongs_to :prefecture
+- has_one :consignors
 
 ## consignorsテーブル(発送元)
 - 商品送付先住所情報
