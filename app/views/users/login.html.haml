@@ -1,13 +1,16 @@
-<h1>アカウントをお持ちでない方はこちら</h1>
-新規会員登録
-
-Googleでログイン
-Facebookでログイン
-= link_to "https://www.facebook.com/", class: "contents__btn" do
-Appleでログイン
-
-メールアドレス
-パスワード
-
-ログイン
-パスワードをお忘れの方
+.single_header
+  
+.single_main
+  .login_panel
+    .login_no-acount
+      %pアカウントをお持ちでない方はこちら
+      %a新規会員登録
+    .login_form-inner
+      .form_group
+        .mailaddress
+        %input.login-input-text.input-default{:name => "email", :placeholder => "メールアドレス", :type => "email", :value => ""}/
+    .btn_default
+      .btn_red
+        %aログイン
+    .omochinokata
+    パスワードをお忘れの方
