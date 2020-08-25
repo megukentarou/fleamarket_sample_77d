@@ -92,6 +92,15 @@
 ### Association
 - belongs_to :user
 
+## conditionsテーブル
+- 商品の状態についての情報が必須
+
+|Column|Type|Options|
+|------|----|-------|
+|condition|integer|null: false|
+
+### Association
+- has_many :items
 
 ## itemsテーブル
 - 画像は1枚以上必須
@@ -100,7 +109,7 @@
 - 商品の説明が必須
 - カテゴリーの情報が必須
 - ブランドについての情報は任意
-- 商品の状態についての情報が必須
+
 - 配送料の負担についての情報が必須
 - 発送元の地域についての情報が必須
 - 発送までの日数についての情報が必須
@@ -111,7 +120,6 @@
 |name|string|null: false|
 |price|integer|null: false|
 |explanation|string|null: false|
-|condition|string|null: false|
 |delivery_day|string|null: false|
 |fee|string|null: false|
 |user_id|integer|null: false, foreign_key: true|
@@ -125,6 +133,7 @@
 - belongs_to :brand
 - has_many :images
 - has_one :consignor
+- belongs_to :condition
 
 ## categorysテーブル
 - カテゴリーの情報が必須
