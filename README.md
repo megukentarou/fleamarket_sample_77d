@@ -140,7 +140,7 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|text|string|null: false|
+|name|string|null: false|
 |ancestry|string|null: false|
 
 ### Association
@@ -151,7 +151,7 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|text|string|null: false|
+|name|string|null: false|
 
 ### Association
 - has_many :item
@@ -162,7 +162,7 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|text|string|null: false|
+|url|string|null: false|
 |item_id|integer|null: false, foreign_key: true|
 
 ### Association
