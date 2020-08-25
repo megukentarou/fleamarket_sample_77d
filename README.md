@@ -86,7 +86,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |card_id|integer||
-|customer_id|integer||
+|token|string||
 |user_id|integer|null: false, foreign_key: true|
 
 ### Association
