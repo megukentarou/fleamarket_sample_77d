@@ -1,0 +1,49 @@
+.sidebar{
+  height: 1200px;
+  width: 300px;
+  padding-left: 200px;
+  padding-right: 50px;
+  &__upper {
+    padding-top: 50px;
+    ul.item-info {
+      background-color: white;
+      li{
+        height:50px;
+        line-height:50px;
+        font-size: 14px;
+        list-style: none;
+        border: 1px solid #f6f6f6;
+      }
+      li:hover {
+        background-color: #F9F9F9;
+        height:50px;
+        line-height:50px;
+        font-size: 14px;
+        border: 1px solid #f6f6f6;
+        transition: 0.2s;
+      }
+    }
+  }
+  &__lower {
+    padding-top: 50px;
+    ul.user-settings {
+      font-size: 20px;
+      li{
+        background-color: white;
+        height:50px;
+        line-height:50px;
+        font-size: 14px;
+        list-style : none;
+        border: 1px solid #f6f6f6;
+      }
+      li:hover {
+        background-color: #F9F9F9;
+        height:50px;
+        line-height:50px;
+        border: 1px solid #f6f6f6;
+        font-size: 14px;
+        transition: 0.2s;
+      }
+    }
+  }
+}

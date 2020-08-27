@@ -1,0 +1,139 @@
+.header {
+  background-color: white;
+  height: 100px;
+  width: 100%;
+  &__upper {
+    height: 70px;
+    display: flex;
+    &__logo {
+      &__blue {
+      width: 100%;
+      max-width: 150px;
+      margin-left: 180px;  
+      padding-top:10px;
+      } 
+    }
+    &__search {
+      margin-left: 20px;
+      padding-top: 15px;
+    }
+    .input-keyword {
+      width: 800px;
+      height: 35px;
+    }
+    .search-btn {
+      width:40px;
+      height:40px;
+      color:white;
+      background-color: #3ccace;
+      border: hidden;
+    }
+  }
+  &__lower {
+    display:flex;
+    &__left {
+      display:flex;
+      margin-left: 180px;  
+      &__category {
+        margin-right: 40px;
+        position: relative;
+        &:hover > .visibleTree{
+          opacity: 1;
+          visibility: visible;
+        }
+        .visibleTree{
+          background-color: white;
+          opacity: 0;
+          visibility: hidden;
+          position: absolute;
+          display: flex;
+          z-index: 2;
+            .firstMenu__parents{
+              height: 610px;
+              width: 250px;
+                &__parent{
+                &:hover > .secondMenu__children{
+                opacity: 1;
+                visibility: visible;
+              }
+                }
+              .secondMenu__children{
+                background-color: white;
+                height: 610px;
+                position: absolute;
+                top: 0px;
+                left: 100%;
+                opacity: 0;
+                visibility: hidden;
+                &__child{
+                &:hover > .thirdMenu__grandchildren{
+                  opacity: 1;
+                  visibility: visible;
+                }
+              }
+                  .thirdMenu__grandchildren{
+                    background-color: white;
+                    height:610px;
+                    position: absolute;
+                    top: 0px;
+                    left: 100%;
+                    opacity: 0;
+                    visibility: hidden;
+                  }
+              }
+            }
+        }
+      }
+    }
+    &__center {
+      display:flex;
+      margin-left:220px;
+      &__message {
+        margin-right: 40px;
+      }
+    }
+    &__right {
+      display:flex;
+      margin-left:220px;
+      &__login {
+        margin-right: 40px;
+      }
+    }
+  }
+  .link-header {
+    text-decoration: none;
+    color:black;
+    font-size:14px;
+
+  }
+  .link-header:hover {
+    color:gold;
+    transition: 0.1s;
+  }
+  .parent-link{
+    color: black;
+    text-decoration: none;
+    line-height: 40px;
+    padding-right: 30px;
+    display: block;
+    width: 240px;
+    padding: 3px 5px 3px 10px;
+    &:hover{
+      color: gold; 
+      transition: 0.1s;
+    }
+  }
+  .children-link {
+    color: black;
+    text-decoration: none;
+    line-height: 19.8px;
+    padding-right: 30px;
+    display: block;
+    width: 240px;
+    padding: 3px 5px 3px 10px;
+    &:hover{
+      color: gold; 
+      transition: 0.1s;
+    }
+  }
+}
