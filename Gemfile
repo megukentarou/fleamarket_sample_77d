@@ -73,3 +73,5 @@ end
 
 
 gem 'haml-rails'
+
+gem 'devise'
