@@ -1,3 +1,4 @@
+=render 'items/headerer'
 .user-page
   =render 'sidebar'
   .creditinport
@@ -27,3 +28,4 @@
           = f.text_field :cvc, type: 'text', class: 'input-number', placeholder: 'カード背面4桁もしくは3桁の番号', maxlength: "4"
         .add_card#card_token
           = f.submit '追加する', class: 'add-btn', id: 'token_submit' #tokenというidを使うとpayjpの実装の時便利そう。
+=render 'items/footer'
