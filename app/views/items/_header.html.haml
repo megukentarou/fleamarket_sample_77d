@@ -6,7 +6,8 @@
     .header__upper__search
       = form_with url: "#", method: :get, html: { name: "inputForm" } do |f|
         = f.text_field :search, type: 'text', class: 'input-keyword', placeholder: 'キーワードから探す'
-        = f.submit '検索', class: 'search-btn'
+        = button_tag type: 'search', class: 'search-btn' do
+          =icon('fas','search')
   .header__lower
     .header__lower__left
       .header__lower__left__category
