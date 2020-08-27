@@ -1,0 +1,43 @@
+.header
+  .header__upper
+    .header__upper__logo
+    = link_to "#", class: "link-header" do
+      = image_tag "header.png", class: "header__upper__logo__blue"
+    .header__upper__search
+      = form_with url: "#", method: :get, html: { name: "inputForm" } do |f|
+        = f.text_field :search, type: 'text', class: 'input-keyword', placeholder: 'キーワードから探す'
+        = button_tag type: 'search', class: 'search-btn' do
+          =icon('fas','search')
+  .header__lower
+    .header__lower__left
+      .header__lower__left__category
+        =link_to "カテゴリー", "#",class:"link-header" 
+        .visibleTree
+          %ul.firstMenu__parents
+            - @parent.each do |parent|
+              %li.firstMenu__parents__parent
+                = link_to "#{parent.name}", "#", class: "parent-link" 
+
+                %ul.secondMenu__children
+                  - parent.children.each do |child|
+                    %li.secondMenu__children__child
+                      = link_to "#{child.name}", "#", class: "children-link" 
+
+                      %ul.thirdMenu__grandchildren
+                        - child.children.each do |grandchildren|
+                          %li.thirdMenu__grandchildren__grandchild
+                            = link_to "#{grandchildren.name}", "#", class: "children-link" 
+
+      .header__lower__left__brand
+        =link_to "ブランド", "#",class:"link-header"
+    //centerとrightはユーザー登録機能実装後、if文でどちらかを表示する。
+    .header__lower__center
+      .header__lower__center__message
+        =link_to "お知らせリスト", "#",class:"link-header"
+      .hedder__lower__center__mypage
+        =link_to "マイページ", "#",class:"link-header"
+    .header__lower__right
+      .header__lower__right__login
+        =link_to "ログイン", "#",class:"link-header"
+      .header__lower__right__signin
+        =link_to "新規会員登録", "#",class:"link-header"

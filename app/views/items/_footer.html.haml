@@ -1,0 +1,51 @@
+.footer
+  .footer__contents
+    %li.footer__contents__catalog
+      .footer__contents__catalog__title FURIMAについて
+      %ul.footer__contents__catalog__menu
+        %li
+          = link_to "会社概要（運営会社）","#", class: "link-catalog" 
+        %li
+          = link_to  "プライバシーポリシー", "#", class: "link-catalog" 
+        %li
+          = link_to "FURIMA利用規約","#", class: "link-catalog" 
+        %li
+          = link_to "ポイントに関する特約","#", class: "link-catalog" 
+    %li.footer__contents__catalog
+      .footer__contents__catalog__title FURIMAを見る
+      %ul.footer__contents__catalog__menu
+        %li
+          = link_to "カテゴリ一一覧","#", class: "link-catalog" 
+
+                  .visibleTree
+            %ul.firstMenu__parents
+              - @parent.each do |parent|
+                %li.firstMenu__parents__parent
+                  = link_to "#{parent.name}", "#", class: "item-link" 
+
+                  %ul.secondMenu__children
+                    - parent.children.each do |child|
+                      %li.secondMenu__children__child
+                        = link_to "#{child.name}", "#", class: "item-link" 
+
+                        %ul.thirdMenu__grandchildren
+                          - child.children.each do |grandchildren|
+                            %li.thirdMenu__grandchildren__grandchild
+                              = link_to "#{grandchildren.name}", "#", class: "item-link" 
+
+        %li
+          = link_to "ブランド一覧","#", class: "link-catalog" 
+
+    %li.footer__contents__catalog
+      .footer__contents__catalog__title ヘルプ＆ガイド
+      %ul.footer__contents__catalog__menu
+        %li
+          = link_to "FURIMAガイド","#", class: "link-catalog"
+        %li
+          = link_to "FURIMAロゴ利用ガイドライン","#", class: "link-catalog" 
+        %li
+          = link_to "お知らせ","#", class: "link-catalog" 
+  .footer__logo
+    = link_to "#", class: "link-catalog" do
+      = image_tag "footer.png", alt:"フッターロゴ",class: "footer__logo__white"
+    <br> FURIMA
