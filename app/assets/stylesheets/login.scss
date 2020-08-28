@@ -2,83 +2,59 @@
   text-align: center;
   font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
 }
-.header {
+.single_header {
   color: #333;
-  height: 56px;
-  background-color: #F5F5F5;
+  height: 128px;
 }
-.login_main {
+.single_main {
   background-color: #f5f5f5;
-  &-panel {
+  .login_panel {
     max-width: 456px;
     margin: 0 auto;
     background-color: #fff;
     .login_no-acount {
       padding: 24px 32px;
       text-align: center;
+      // background-color: skyblue;
       color: #333;
       border-style: solid;
       border-width: 0;
       border-color: #333;
-      font-size: 14px;
       p {
-        height: 14px;
-      }
-      .btn_blue {
-        display: block;
-        background: #0099e8;
-        border: 1px solid #0099e8;
-        color: #fff;
-        width: 100%;
-        margin: 8px 0 auto;
-        border-radius: 4px;
-        line-height: 40px;
         font-size: 14px;
-        text-decoration: none;
-        cursor: pointer;
+      }
+      a {
+        display: block;
+        margin: 8px auto 0;
+        border-radius: 4px;
+        border: 1px solid #0099e8;
+        background: #0099e8;
+        color: #fff;
+        line-height: 40px;
+        width: 390px;    
       }
     }
   }
 }
 
-.form_group {
-  padding: 24px 32px;
-}
-
-.login_input-text {
-  padding: 10px 16px 8px;
-  height: 28px;
-  width: 358px;
-  text-align: left;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  margin-bottom: 24px;
-}
-
-.btn_red {
-  display: inline-block;
+.btn_default {
+  display: block;
   width: 100%;
   line-height: 48px;
   font-size: 14px;
-  text-decoration: none;
   border-radius: 4px;
+  border: 1px solid transparent;
+  -webkit-transition: all ease-out .3s;
+  transition: all ease-out .3s;
   cursor: pointer;
+
+}
+
+.btn_red {
   background: #ea352d;
   border: 1px solid #ea352d;
   color: #fff;
-}
-
-.forget_password {
-  display: block;
-  padding: 40px 0 0;
-  text-align: left;
-  text-decoration: none;
-  color: #0099e8;
-  font-size: 14px;
-}
-
-.footer {
-  color: #333;
-  height: 56px;
-  background-color: #F5F5F5;
+  width: 390px;
+  margin: 0 auto;
+  border-radius: 3px;
 }
