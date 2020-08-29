@@ -125,7 +125,8 @@
 |user_id|integer|null: false, foreign_key: true|
 |category_id|integer|null: false, foreign_key: true|
 |brand_id|integer||
-|consignor_id|integer|integer|null: false, foreign_key: true|
+|consignor_id|integer|null: false, foreign_key: true|
+|condition_id|integer|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :user
