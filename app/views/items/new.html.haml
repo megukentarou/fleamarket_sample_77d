@@ -1,6 +1,5 @@
--# 部分テンプレートのヘッダーが入る
-.header
-
+-# 部分テンプレートのヘッダー
+= render partial: 'furima.header'
 .items
   .items__information
     .items__imege
@@ -71,7 +70,6 @@
     .items__price
       .label 販売価格
       %span.require 必須
-    .items__exhibition
-    
--# 部分テンプレートのフッターが入る
-.footer
+    .items__exhibition 
+-# 部分テンプレートのフッター 
+= render partial: 'furima.footer'
