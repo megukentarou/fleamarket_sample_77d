@@ -16,26 +16,6 @@
       %ul.footer__contents__catalog__menu
         %li
           = link_to "カテゴリ一一覧","#", class: "link-catalog" 
-
-                  .visibleTree
-            %ul.firstMenu__parents
-              - @parent.each do |parent|
-                %li.firstMenu__parents__parent
-                  = link_to "#{parent.name}", "#", class: "item-link" 
-
-                  %ul.secondMenu__children
-                    - parent.children.each do |child|
-                      %li.secondMenu__children__child
-                        = link_to "#{child.name}", "#", class: "item-link" 
-
-                        %ul.thirdMenu__grandchildren
-                          - child.children.each do |grandchildren|
-                            %li.thirdMenu__grandchildren__grandchild
-                              = link_to "#{grandchildren.name}", "#", class: "item-link" 
-
-        %li
-          = link_to "ブランド一覧","#", class: "link-catalog" 
-
     %li.footer__contents__catalog
       .footer__contents__catalog__title ヘルプ＆ガイド
       %ul.footer__contents__catalog__menu
