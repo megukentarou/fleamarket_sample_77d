@@ -1,0 +1,77 @@
+-# 部分テンプレートのヘッダーが入る
+.header
+
+.items
+  .items__information
+    .items__imege
+      .label 出品画像
+      %span.require 必須
+      .items__image__comment
+        最大10枚までアップロードできます
+    .items__name
+      .label 商品名
+      %span.require 必須
+      .items__name__input
+      %input{maxlength: "40", name: "pass", size: "6", type: "text", placeholder: "40文字まで"}/
+    .items__explnation
+      .label 商品の説明
+      %span.require 必須
+      %br
+      %textarea{cols: "1000", name: "kanso", rows: "7", placeholder: "商品の説明(必須1,000文字以内)\n(色、素材、重さ、定価、注意点など）"}
+
+  .items__edit 
+    .items__edit__title 商品の詳細
+    .items__category
+      .label カテゴリー
+      %span.require 必須
+      %br
+      -# categorysテーブルのidを呼びだす実装が必要
+      %label{:for => "language"} 
+      %select#language{:name => "language"}
+        %option{value: "selected", value: "0"} 選択して下さい
+        %option{value: "1"} カテゴリーを選べる
+    .items__brand
+      %br
+      .label ブランド
+      %span.any 任意
+      %input{maxlength: "40", name: "pass", size: "6", type: "text", placeholder: "仮) シャネル"}/
+    .items__condition
+      %br
+      .label 商品の状態
+      %span.require 必須
+      %br
+      %select#language{:name => "language"}
+        %option{value: "selected", value: "0"} 選択して下さい
+        %option{value: "1"} カテゴリーを選べる
+
+  .deliverys
+    .items__fee
+      .items__fee__title 配送について
+      .label 配送料の負担
+      %span.require 必須
+      %br
+      %select#language{:name => "language"}
+        %option{value: "selected", value: "0"} 選択して下さい
+        %option{value: "1"} カテゴリーを選べる
+    .items__consignor
+      .label 発送元の地域
+      %span.require 必須
+      %br
+      %select#language{:name => "language"}
+        %option{value: "selected", value: "0"} 選択して下さい
+        %option{value: "1"} カテゴリーを選べる
+    .items__delivery_day
+      .label 発送までの日数
+      %span.require 必須
+      %br
+      %select#language{:name => "language"}
+        %option{value: "selected", value: "0"} 選択して下さい
+        %option{value: "1"} カテゴリーを選べる
+  .price
+    .items__price
+      .label 販売価格
+      %span.require 必須
+    .items__exhibition
+    
+-# 部分テンプレートのフッターが入る
+.footer

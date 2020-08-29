@@ -1,0 +1,147 @@
+* {
+  text-align: left;
+  font-family: Arial, '游ゴシック体', 'Source Sans Pro', Helvetica , 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+}
+
+.header {
+  color: #333;
+  height: 56px;
+  background-color: #F5F5F5;
+  padding: 0 370px;
+  max-width: 791px;
+}
+.items {
+  max-width: 700px;
+  // margin: 0 370px;
+  background-color: #fff;
+}
+
+.items__information {
+  padding: 40px;
+  width: 100%;
+}
+
+.items__image {
+  &__comment {
+    font-size: 14px;
+    margin-top: 16px;
+  }
+}
+
+.items__name {
+  
+}
+
+.items__explnation {
+  textarea {
+    width: 100%;
+    padding: 13px 16px;
+    margin-top: 16px;
+    outline: none;
+    resize: vertical;
+    vertical-align: middle;
+    border-radius: 4px;
+    border: 1px solid #333;
+    opacity: .7;
+  }
+}
+
+.items__edit {
+  padding: 40px;
+  &__title {
+    margin-bottom: 20px;
+    color: #888;
+    font-size: 14px;
+    font-weight: bold;
+  }
+  .items__category {
+
+  }
+  .items__brand {
+    
+  }
+  .items__condition {
+    
+  }
+}
+
+.deliverys {
+  padding: 40px;
+  .items__fee {
+    &__title {
+      margin-bottom: 20px;
+      color: #888;
+      font-size: 14px;
+      font-weight: bold;
+    }
+  }
+  .items__consignor {
+    
+  }
+  .items__delivery_day {
+    
+  }
+
+}
+
+.label {
+  font-weight: 600;
+  display: inline-block;
+  margin: 12px 0 0;
+  font-size: 14px;
+  line-height: 1.4em;
+  color: #333;
+}
+
+// インプットタグ
+input {
+  display: block;
+  padding: 0 16px;
+  line-height: 44px;
+  width: 100%;
+  margin-top: 12px;
+  border-radius: 4px;
+  border: 1px solid #333;
+  opacity: .7;
+}
+
+// セレクトタグ
+select {
+  margin-top: 16px;
+  width: 100%;
+  padding: 0 56px 0 16px;
+  height: 46px;
+  border: 1px solid #333;
+  opacity: .7;
+  border-radius: 4px;
+}
+
+// 必須ボタン
+.require {
+  margin: 0 0 0 8px;
+  padding: 1px 4px;
+  border-radius: 2px;
+  color: #fff;
+  background-color: #3ccace;
+  font-size: 12px;
+  font-weight: bolder;
+}
+
+// 任意ボタン
+.any {
+  margin: 0 0 0 8px;
+  padding: 1px 4px;
+  border-radius: 2px;
+  color: #fff;
+  background-color: #bfbfbf;
+  font-size: 12px;
+  font-weight: bolder;
+}
+
+.footer {
+  color: #333;
+  height: 56px;
+  max-width: 791px;
+  background-color: #F5F5F5;
+  padding: 0 370px;
+}
