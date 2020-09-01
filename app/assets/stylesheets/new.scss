@@ -1,114 +1,233 @@
-* {
-  text-align: left;
-  font-family: Arial, '游ゴシック体', 'Source Sans Pro', Helvetica , 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+body {
+  background-color: #f5f5f5;
 }
 
-.header {
-  color: #333;
-  height: 56px;
-  background-color: #F5F5F5;
-  padding: 0 370px;
-  max-width: 791px;
-}
 .items {
+  margin: 0 auto;
   max-width: 700px;
-  // margin: 0 370px;
   background-color: #fff;
-}
-
-.items__information {
-  padding: 40px;
-  width: 100%;
-}
-
-.items__image {
-  &__comment {
-    font-size: 14px;
-    margin-top: 16px;
-  }
-}
-
-.items__name {
+  text-align: left;
   
-}
-
-.items__explnation {
-  textarea {
-    width: 100%;
-    padding: 13px 16px;
-    margin-top: 16px;
-    outline: none;
-    resize: vertical;
-    vertical-align: middle;
-    border-radius: 4px;
-    border: 1px solid #333;
-    opacity: .7;
+  .items__information {
+    padding: 40px;
+    text-align: left;
+    border-bottom: 1px solid rgba($color: #888, $alpha: .2);
+    .items__image {
+      text-align: left;
+      &__comment {
+        text-align: left;
+        font-size: 14px;
+        margin-top: 16px;
+      }
+    }  
+    .items__image__upload {
+      margin-top: 16px;
+      align-content: center;
+      -webkit-box-align: center;
+      align-items: center;
+      background-color: rgb(245, 245, 245);
+      cursor: pointer;
+      display: flex;
+      height: 150px;
+      width: 620px;
+      flex-wrap: wrap;
+      -webkit-box-pack: center;
+      justify-content: center;
+      position: relative;
+      border-width: 1px;
+      border-style: dashed;
+      border-color: rgb(204, 204, 204);
+      border-image: initial;
+      transition: all 0.5s ease-out 0s;
+      .camera_icon__comment {
+        font-size: 12px;
+        font-weight: normal;
+      }
+    }
+    .items__name {
+      text-align: left;
+    }
+    .items__explnation {
+      text-align: left;
+      width: 100%;
+      textarea {
+        width: 590px;
+        padding: 13px 16px;
+        margin-top: 16px;
+        border-radius: 4px;
+        border: 1px solid #333;
+        opacity: .7;
+        text-align: left;
+      }
+    }
   }
-}
-
-.items__edit {
-  padding: 40px;
-  &__title {
-    margin-bottom: 20px;
-    color: #888;
-    font-size: 14px;
-    font-weight: bold;
-  }
-  .items__category {
-
-  }
-  .items__brand {
-    
-  }
-  .items__condition {
-    
-  }
-}
-
-.deliverys {
-  padding: 40px;
-  .items__fee {
+  
+  .items__edit {
+    text-align: left;
+    padding: 40px;
+    border-bottom: 1px solid rgba($color: #888, $alpha: .2);
     &__title {
+      text-align: left;
       margin-bottom: 20px;
       color: #888;
       font-size: 14px;
       font-weight: bold;
     }
+    .items__category {
+      text-align: left;
+    }
+    .items__brand {
+      text-align: left;
+    }
+    .items__condition {
+      text-align: left;
+    }
   }
-  .items__consignor {
-    
+  
+  .deliverys {
+    border-bottom: 1px solid rgba($color: #888, $alpha: .2);
+    text-align: left;
+    padding: 40px;
+    .items__fee {
+      text-align: left;
+      border-bottom: rgba($color: #888, $alpha: .1);
+      &__title {
+        margin-bottom: 20px;
+        color: #888;
+        font-size: 14px;
+        font-weight: bold;
+        text-align: left;
+      }
+    }
+    .items__consignor {
+      text-align: left;
+    }
+    .items__delivery_day {
+      text-align: left;
+    } 
   }
-  .items__delivery_day {
-    
+  .price {
+    text-align: left;
+    padding: 40px;
+    color: #888;
+    font-size: 14px;
+    font-weight: bold;
+    .items__price {
+      line-height: 50px;
+      margin: 20px 0;
+      text-align: left;
+      color: #888;
+      font-size: 14px;
+      font-weight: bold;
+      position: relative;
+      .en {
+        position: absolute;
+        top: 3px;
+        right: 170px;
+        color: black;
+        font-size: 14px;
+        font-weight: normal;
+      }
+      &__form {
+        position: absolute;
+        right: 0;
+        top: 0;
+        margin: 0;
+        width: 130px;
+        height: 48px;
+        border: 1px solid rgba($color: #333, $alpha: 0.7)
+        border-radius 4px;
+        text-align: right;
+      }
+    }
+    .items__fee {
+      text-align: left;
+      font-size: 14px;
+      font-weight: normal;
+      color: #333;
+      line-height: 50px;
+      &__notation {
+        float: right;
+      }
+    }
+    .items__profit {
+      text-align: left;
+      font-size: 14px;
+      font-weight: normal;
+      color: #333;
+      line-height: 50px;
+      &__notation {
+        float: right;
+      }
+    }
   }
-
+  .exhibition {
+    margin: 0 170px;
+    &__btn {
+      display: block;
+      line-height: 48px;      
+      font-size: 16px;
+      font-weight: bold;
+      align-items: center;
+      &__red {
+        border-radius: 4px;
+        margin-bottom: 24px;
+        background-color: #ea352d;
+        color: #fff;
+        cursor: pointer;
+      }
+      &__gray {
+        border-radius: 4px;
+        margin-bottom: 24px;
+        background-color: #ccc;
+        color: #222;
+        cursor: pointer;
+      }
+    }
+    .back {
+      margin-bottom: 20px;
+      a {
+        display: inline;
+        text-decoration: none;
+        color: #0095ee;
+        font-size: 14px;
+      }
+    }
+  }
+  .attention {
+    padding: 0 40px 40px 40px;
+    font-size: 12px;
+  }
 }
-
+  
+// テキストラベル 
 .label {
-  font-weight: 600;
   display: inline-block;
+  font-weight: 600;
+  text-align: left;
   margin: 12px 0 0;
   font-size: 14px;
   line-height: 1.4em;
   color: #333;
 }
-
+  
 // インプットタグ
 input {
   display: block;
   padding: 0 16px;
   line-height: 44px;
-  width: 100%;
+  width: 590px;
   margin-top: 12px;
   border-radius: 4px;
   border: 1px solid #333;
   opacity: .7;
+  text-align: left;
 }
 
 // セレクトタグ
 select {
   margin-top: 16px;
-  width: 100%;
+  width: 624px;
   padding: 0 56px 0 16px;
   height: 46px;
   border: 1px solid #333;
@@ -136,12 +255,4 @@ select {
   background-color: #bfbfbf;
   font-size: 12px;
   font-weight: bolder;
-}
-
-.footer {
-  color: #333;
-  height: 56px;
-  max-width: 791px;
-  background-color: #F5F5F5;
-  padding: 0 370px;
 }

@@ -2,16 +2,21 @@
 = render partial: 'devise/registrations/furima.header'
 .items
   .items__information
-    .items__imege
+    .items__image
       .label 出品画像
       %span.require 必須
       .items__image__comment
         最大10枚までアップロードできます
+    .items__image__upload
+      %i.fas.fa-camera
+        .camera_icon__comment
+          %br
+          ドラッグアンドドロップ</br>またはクリックしてファイルをアップロード
+      
     .items__name
       .label 商品名
       %span.require 必須
-      .items__name__input
-      %input{maxlength: "40", name: "pass", size: "6", type: "text", placeholder: "40文字まで"}/
+      %input{maxlength: "40",class: ".items__name__input", name: "name", size: "6", type: "text", placeholder: "40文字まで"}/
     .items__explnation
       .label 商品の説明
       %span.require 必須
@@ -23,12 +28,11 @@
     .items__category
       .label カテゴリー
       %span.require 必須
-      %br
+      .select-wrap
+      %i.icon-arrow-button
       -# categorysテーブルのidを呼びだす実装が必要
-      %label{:for => "language"} 
-      %select#language{:name => "language"}
-        %option{value: "selected", value: "0"} 選択して下さい
-        %option{value: "1"} カテゴリーを選べる
+      = form_with(model: @item, local: true) do |f|
+        = f.collection_select :category_id, Category.all, :id, :name, prompt: "選択して下さい", class: 'select'
     .items__brand
       %br
       .label ブランド
@@ -39,37 +43,62 @@
       .label 商品の状態
       %span.require 必須
       %br
-      %select#language{:name => "language"}
-        %option{value: "selected", value: "0"} 選択して下さい
-        %option{value: "1"} カテゴリーを選べる
-
+      .select-wrap
+      %i.icon-arrow-button
+      -# active_hashで作ったconditionモデルの値を表示させる
+      = form_with(model: @item, local: true) do |f|
+        = f.collection_select :condition_id, Condition.all, :id, :condition, prompt: "選択して下さい", class: 'select'
+        
   .deliverys
     .items__fee
       .items__fee__title 配送について
       .label 配送料の負担
       %span.require 必須
-      %br
-      %select#language{:name => "language"}
-        %option{value: "selected", value: "0"} 選択して下さい
-        %option{value: "1"} カテゴリーを選べる
+      .select-wrap
+      %i.icon-arow-button
+      = form_with(model: @item, local: true) do |f|
+        = f.select :fee, {'選択して下さい': "null", "送料込み(出品者負担)": "送料込み(出品者負担)", "着払い(購入者負担)": "着払い(購入者負担)"}
     .items__consignor
       .label 発送元の地域
-      %span.require 必須
-      %br
-      %select#language{:name => "language"}
-        %option{value: "selected", value: "0"} 選択して下さい
-        %option{value: "1"} カテゴリーを選べる
+      %span.require 必須          
+      .select-wrap
+      %i.icon-arrow-button
+      -# active_hashのprefectureモデルの値を表示させる
+      -# DB確認したらprefecture_idカラムが無いので、アソシエーションの追加が必要だと思われる
+      = form_with(model: @item, local: true) do |f|
+        = f.collection_select :prefecture_id, Prefecture.all, :id, :name, prompt: "選択して下さい", class: 'select'
     .items__delivery_day
       .label 発送までの日数
       %span.require 必須
-      %br
-      %select#language{:name => "language"}
-        %option{value: "selected", value: "0"} 選択して下さい
-        %option{value: "1"} カテゴリーが出てくる
+      .select-wrap
+      %i.icon-arow-button
+      = form_with(model: @item, local: true) do |f|
+        = f.select :delivery_day, {'選択して下さい': "null", "1~2日で発送": "1~2日で発送", "2~3日で発送": "2~3日で発送", "4~7日で発送": "4~7日で発送"}
   .price
+    価格 (¥300~9,999,999)
     .items__price
       .label 販売価格
       %span.require 必須
-    .items__exhibition 
+      %span.en¥
+      = form_with(model: @item, local: true) do |f|
+        %input{maxlength: "7", name: "pass", size: "6", type: "text", placeholder: "0", class: "items__price__form"}/
+    .items__fee
+      販売手数料
+      .items__fee__notation ー
+    .items__profit
+      販売利益
+      .items__profit__notation ー
+  .exhibition
+    .exhibition__btn
+      .exhibition__btn__red 出品する
+      .exhibition__btn__gray 下書きに保存
+    .back 
+      =link_to "もどる", "#"
+  .attention
+    %p 禁止されている行為及び出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。また、出品を持ちまして加盟店規約に同意したことになります。
+
+      
 -# 部分テンプレートのフッター 
 = render partial: 'devise/registrations/furima.footer'
+
+

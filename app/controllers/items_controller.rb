@@ -4,5 +4,8 @@ class ItemsController < ApplicationController
   end
 
   def new
+    @item = Item.new
+    @conditions = Condition.all
+    @prefectures = Prefecture.all
   end
 end
