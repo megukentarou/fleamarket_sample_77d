@@ -40,6 +40,7 @@
 
 ### Association
 - has_many :residencys
+- has_many :items
 
 ## residencysテーブル(住所)
  - 郵便番号が必須
@@ -109,9 +110,8 @@
 - 商品の説明が必須
 - カテゴリーの情報が必須
 - ブランドについての情報は任意
-
 - 配送料の負担についての情報が必須
-- 発送元の地域についての情報が必須
+- 発送元の地域についての情報が必須(都道府県の事を指す)
 - 発送までの日数についての情報が必須
 - 価格についての情報が必須
 
@@ -125,7 +125,9 @@
 |user_id|integer|null: false, foreign_key: true|
 |category_id|integer|null: false, foreign_key: true|
 |brand_id|integer||
-|consignor_id|integer|integer|null: false, foreign_key: true|
+|consignor_id|integer|null: false, foreign_key: true|
+|condition_id|integer|null: false, foreign_key: true|
+|prefecture_id|integer|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :user
@@ -134,6 +136,7 @@
 - has_many :images
 - has_one :consignor
 - belongs_to :condition
+- belongs_to :prefecture
 
 ## categorysテーブル
 - カテゴリーの情報が必須
