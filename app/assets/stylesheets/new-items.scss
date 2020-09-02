@@ -1,3 +1,36 @@
+@mixin border-base-line {
+  border-bottom: 1px solid rgba($color: #888, $alpha: .2);
+}
+
+@mixin submit-style($bgColor:#ea352d, $color:#fff) {
+  display: block;
+  line-height: 48px;      
+  font-size: 16px;
+  font-weight: bold;
+  align-items: center;
+  border-radius: 4px;
+  margin-bottom: 24px;
+  cursor: pointer;
+  background-color:$bgColor;
+  color:$color;
+}
+
+@mixin title-style {
+  text-align: left;
+  margin-bottom: 20px;
+  color: #888;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+@mixin item-fee-profit {
+  text-align: left;
+  font-size: 14px;
+  font-weight: normal;
+  color: #333;
+  line-height: 50px;
+}
+
 body {
   background-color: #f5f5f5;
 }
@@ -11,7 +44,7 @@ body {
   .items__information {
     padding: 40px;
     text-align: left;
-    border-bottom: 1px solid rgba($color: #888, $alpha: .2);
+    @include border-base-line;
     .items__image {
       text-align: left;
       &__comment {
@@ -65,13 +98,9 @@ body {
   .items__edit {
     text-align: left;
     padding: 40px;
-    border-bottom: 1px solid rgba($color: #888, $alpha: .2);
+    @include border-base-line;
     &__title {
-      text-align: left;
-      margin-bottom: 20px;
-      color: #888;
-      font-size: 14px;
-      font-weight: bold;
+      @include title-style;
     }
     .items__category {
       text-align: left;
@@ -85,18 +114,13 @@ body {
   }
   
   .deliverys {
-    border-bottom: 1px solid rgba($color: #888, $alpha: .2);
     text-align: left;
     padding: 40px;
+    @include border-base-line;
     .items__fee {
       text-align: left;
-      border-bottom: rgba($color: #888, $alpha: .1);
       &__title {
-        margin-bottom: 20px;
-        color: #888;
-        font-size: 14px;
-        font-weight: bold;
-        text-align: left;
+        @include title-style;
       }
     }
     .items__consignor {
@@ -107,18 +131,13 @@ body {
     } 
   }
   .price {
-    text-align: left;
+    @include title-style;
+    margin: 0;
     padding: 40px;
-    color: #888;
-    font-size: 14px;
-    font-weight: bold;
     .items__price {
+      @include title-style;
       line-height: 50px;
       margin: 20px 0;
-      text-align: left;
-      color: #888;
-      font-size: 14px;
-      font-weight: bold;
       position: relative;
       .en {
         position: absolute;
@@ -141,21 +160,13 @@ body {
       }
     }
     .items__fee {
-      text-align: left;
-      font-size: 14px;
-      font-weight: normal;
-      color: #333;
-      line-height: 50px;
+      @include item-fee-profit;
       &__notation {
         float: right;
       }
     }
     .items__profit {
-      text-align: left;
-      font-size: 14px;
-      font-weight: normal;
-      color: #333;
-      line-height: 50px;
+      @include item-fee-profit;
       &__notation {
         float: right;
       }
@@ -163,26 +174,11 @@ body {
   }
   .exhibition {
     margin: 0 170px;
-    &__btn {
-      display: block;
-      line-height: 48px;      
-      font-size: 16px;
-      font-weight: bold;
-      align-items: center;
-      &__red {
-        border-radius: 4px;
-        margin-bottom: 24px;
-        background-color: #ea352d;
-        color: #fff;
-        cursor: pointer;
-      }
-      &__gray {
-        border-radius: 4px;
-        margin-bottom: 24px;
-        background-color: #ccc;
-        color: #222;
-        cursor: pointer;
-      }
+    &__btn__red {
+      @include submit-style();
+    }
+    &__btn__gray {
+      @include submit-style(#ccc,#222);
     }
     .back {
       margin-bottom: 20px;
