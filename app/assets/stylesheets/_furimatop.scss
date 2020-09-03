@@ -1,0 +1,41 @@
+.furimatop {
+  height: 560px;
+  background-image: image-url("index1.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top center;
+  position: relative;
+  padding-bottom:60px;
+  display: flex;
+  align-items: center;
+  &__sentence {
+    height: 340px;
+    &__upper {
+      text-align: left;
+      font-size: 60px;
+      padding-left:60px;
+      padding-top:100px;
+      color:white;
+      text-shadow: 0 0 5px rgba(0,0,0,0.4);
+      line-height: 1.2;
+    }
+    &__center {
+      font-size: 18px;
+      color:white;
+      text-shadow: 0 0 5px rgba(0,0,0,0.4);
+      line-height: 1.8;
+      text-align: left;
+      padding-left:60px;
+      padding-top:20px;
+    }
+    &__lower {
+      padding-top:20px;
+      padding-left:60px;
+      text-align: left;
+    }
+  }
+  .appbtn {
+    height:60px;
+    width:180px;
+  }
+}
