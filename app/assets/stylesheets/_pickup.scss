@@ -1,0 +1,51 @@
+.pickup {
+  width: 100%;
+  padding: 80px 0 60px;
+  background-color: #f8f8f8;
+  &__content {
+    font-size:28px;
+    text-align: center;
+    font-weight:bold;
+    &__new {
+      font-size: 24px;
+    }
+    &__list {
+      display:flex;
+      padding:20px 150px 0px;
+      color:black;
+      &__product {
+        background-color: white;
+        &__body {
+          font-weight: normal;
+          &__name {
+            overflow: hidden;
+            line-height: 1.5;
+            font-size: 16px;
+            text-align:left;
+          }
+          &__money {
+            font-size: 16px;
+            text-align:left;
+          }
+          &__tax {
+            font-size: 10px;
+            text-align:left;
+          }
+        }
+      }
+    }
+  }
+}
+
+.category-link {
+  text-decoration: none;
+  color:#3CCACE;
+}
+
+a {
+  text-decoration: none;
+}
+
+.pickup__content__list__product:hover {
+  opacity: 0.5;
+}

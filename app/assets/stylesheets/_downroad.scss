@@ -1,0 +1,31 @@
+.downroad{
+  height: 360px;
+  background-image: image-url("index9.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: relative;
+  display: flex;
+  align-items: center;
+  &__sentence {
+    padding-left: 470px;
+    color:white;
+    text-shadow: 0 0 5px rgba(0,0,0,0.4);
+    font-weight: bold;
+    &__upper {
+      font-size: 24px;
+    }
+    &__center {
+      font-size: 35px;
+    }
+  }
+}
+
+.appbtn {
+  height:60px;
+  width:180px;
+}
+
+.appbtn:hover {
+  opacity: 0.5;
+}
