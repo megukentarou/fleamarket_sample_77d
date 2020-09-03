@@ -1,0 +1,32 @@
+-# 部分テンプレートのヘッダー
+= render partial: 'devise/registrations/furima.header'
+.container
+  .buy__wrapper
+    .buy__wrapper__title 
+      %h2 購入内容の確認
+    .buy__wrapper__information
+      .buy__wrapper__information__image
+      = image_tag "dentaku.png", size: "80x80", alt: "test"
+      .buy__wrapper__information__edit
+        .item__name
+          %p 使い込まれた電卓
+        .edit__price
+          %span.price 送料込み(税込)
+          %span.price2 ¥1,000
+    .buy__wrapper__price
+      %p 支払い総額
+      %span ¥1,000
+    .buy__wrapper__payment
+      .buy__manner  支払い方法
+      .register
+      %a+ 登録して下さい
+    .buy__wrapper__shipping
+      .buy__manner 配送先
+      .register
+      %a+ 登録して下さい
+    .buy__wrapper__purchase
+      %p 配送先と支払い方法の入力を完了して下さい
+      .purchase__btn__gray 購入する
+
+-# 部分テンプレートのフッター 
+= render partial: 'devise/registrations/furima.footer'

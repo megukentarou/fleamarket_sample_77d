@@ -1,0 +1,133 @@
+@mixin border-base-line {
+  border-bottom: 1px solid rgba($color: #888, $alpha: .1);
+}
+
+@mixin submit-style($bgColor:#ccc, $color:#888) {
+  display: block;
+  line-height: 48px;      
+  font-size: 16px;
+  font-weight: bold;
+  align-items: center;
+  border-radius: 4px;
+  margin-bottom: 24px;
+  cursor: pointer;
+  background-color:$bgColor;
+  color:$color;
+}
+
+@mixin wrapper-style {
+  margin: 0 auto;
+  max-width: 375px;
+  padding: 24px 16px;
+  background-color: #fff;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 700px;
+  background-color: #fff;
+  text-align: left;
+  .buy__wrapper__title {
+    @include wrapper-style;
+    @include border-base-line;
+    h2 {
+      color: #333;
+      font-size: 17px;
+      font-weight: bold;
+    }
+  }
+  .buy__wrapper__information {
+    @include wrapper-style;
+    @include border-base-line;
+    display: flex;
+    &__image {
+      
+    }
+    &__edit { 
+      line-height: 1.4rem;
+      margin-left: 14px;
+      width: 100%;
+      font-size: 14px;
+      .item__name {
+        margin-bottom: 14px;
+        p {
+          text-align: left;
+        }
+      }
+      .edit__price {
+        display: inline-block;
+        height: 15px;
+        width: 100%;
+        text-align: right;
+        .price {
+          font-size: 12px;
+        }
+        .price2 {
+          font-size: 15px;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+  .buy__wrapper__price {
+    @include wrapper-style;
+    @include border-base-line;
+    display: flex;
+    justify-content: space-between;
+    p {
+      color: #333;
+      font-size: 18px;
+      font-weight: bold;
+    }
+    span {
+      color: #333;
+      font-size: 24px;
+      font-weight: bold;
+    }
+  }
+  .buy__wrapper__payment {
+    @include wrapper-style;
+    @include border-base-line;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: left;
+    .buy__manner {
+      text-align: left;
+      margin-bottom: 14px;
+    }
+    a {
+      font-size: 14px;
+      color: #0095ee;
+      font-weight: normal;
+    }
+  }
+  .buy__wrapper__shipping {
+    @include wrapper-style;
+    @include border-base-line;
+    text-align: left;
+    font-size: 14px;
+    font-weight: bold;
+    .buy__manner {
+      text-align: left;
+      margin-bottom: 14px;
+    }
+    a {
+      color: #0095ee;
+      font-weight: normal;
+    }
+  }
+  .buy__wrapper__purchase {
+    @include wrapper-style;
+    text-align: left;
+    p {
+      color: red;
+      margin-bottom: 24px;
+      font-size: 14px;
+      text-align: left;
+    }
+    .purchase__btn__gray {
+      @include submit-style;
+    } 
+  }
+      
+}
