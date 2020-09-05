@@ -30,7 +30,8 @@ ActiveRecord::Schema.define(version: 2020_08_29_083145) do
     t.integer "category_id", null: false
     t.integer "brand_id"
     t.integer "consignor_id"
-    t.integer "condition_id"
+    t.integer "condition_id", null: false
+    t.integer "prefecture_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

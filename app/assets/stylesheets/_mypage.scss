@@ -27,7 +27,7 @@
     }
   }
   &__notice {
-    border-top: 3px solid red;
+    border-top: 3px solid #3ccace;
     ul.messages {
       background-color: white;
       text-align: center;
@@ -96,7 +96,7 @@
   &__transaction {
     background-color: white;
     margin-top: 50px;
-    border-top: 3px solid red;
+    border-top: 3px solid #3ccace;
     ul.transaction__list {
       background-color: white;
       font-size: 24px;

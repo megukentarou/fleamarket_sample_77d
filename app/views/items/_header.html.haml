@@ -1,7 +1,7 @@
 .header
   .header__upper
     .header__upper__logo
-    = link_to "#", class: "link-header" do
+    = link_to root_path, class: "link-header" do
       = image_tag "header.png", class: "header__upper__logo__blue"
     .header__upper__search
       = form_with url: "#", method: :get, html: { name: "inputForm" } do |f|
@@ -30,6 +30,9 @@
         =link_to "ブランド", "#",class:"link-header"
     .header__lower__right
       .header__lower__right__login
-        =link_to "お知らせリスト", "#",class:"link-header"
+        =link_to "ログイン", new_user_session_path,class:"link-header"
       .header__lower__right__signin
-        =link_to "マイページ", "#",class:"link-header"
+        =link_to "新規会員登録", new_user_registration_path,class:"link-header"
+        -# この下は仮置きです。
+      .header__lower__right__mypage 
+        =link_to "マイページ", users_path,class:"link-header"
