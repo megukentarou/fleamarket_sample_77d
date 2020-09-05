@@ -8,4 +8,7 @@ class ItemsController < ApplicationController
     @conditions = Condition.all
     @prefectures = Prefecture.all
   end
+
+  def show
+  end
 end
