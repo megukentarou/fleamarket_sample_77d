@@ -32,8 +32,7 @@
       = form_with(model: @item, local: true) do |f|
         -# = f.collection_select :category_id, Category.all, :id, :name, prompt: "選択して下さい", class: 'select'
         = f.select :category, @parent, {}, {class: 'select parent', id: 'parent'}
-        /↓セレクトタグの矢印を出来ればもっとカッコよくしたい用
-        -# %i.fas.fa-chevron-down
+       
     .items__brand
       %br
       .label ブランド
