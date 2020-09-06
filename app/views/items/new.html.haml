@@ -28,11 +28,12 @@
     .items__category
       .label カテゴリー
       %span.require 必須
-      .select-wrap
-      %i.icon-arrow-button
-      -# categorysテーブルのidを呼びだす実装が必要
+      -# categorysテーブルのidを呼びだす実装が必  
       = form_with(model: @item, local: true) do |f|
-        = f.collection_select :category_id, Category.all, :id, :name, prompt: "選択して下さい", class: 'select'
+        -# = f.collection_select :category_id, Category.all, :id, :name, prompt: "選択して下さい", class: 'select'
+        = f.select :category, @parent, {}, {class: 'select parent', id: 'parent'}
+        /↓セレクトタグの矢印を出来ればもっとカッコよくしたい用
+        -# %i.fas.fa-chevron-down
     .items__brand
       %br
       .label ブランド
@@ -43,19 +44,15 @@
       .label 商品の状態
       %span.require 必須
       %br
-      .select-wrap
-      %i.icon-arrow-button
       -# active_hashで作ったconditionモデルの値を表示させる
       = form_with(model: @item, local: true) do |f|
-        = f.collection_select :condition_id, Condition.all, :id, :condition, prompt: "選択して下さい", class: 'select'
+        = f.collection_select :condition_id, Condition.all, :id, :condition, prompt: "選択して下さい", class: 'select condition'
         
   .deliverys
     .items__fee
       .items__fee__title 配送について
       .label 配送料の負担
       %span.require 必須
-      .select-wrap
-      %i.icon-arow-button
       = form_with(model: @item, local: true) do |f|
         = f.select :fee, {'選択して下さい': "null", "送料込み(出品者負担)": "送料込み(出品者負担)", "着払い(購入者負担)": "着払い(購入者負担)"}
     .items__consignor
@@ -66,7 +63,7 @@
       -# active_hashのprefectureモデルの値を表示させる
       -# DB確認したらprefecture_idカラムが無いので、アソシエーションの追加が必要だと思われる
       = form_with(model: @item, local: true) do |f|
-        = f.collection_select :prefecture_id, Prefecture.all, :id, :name, prompt: "選択して下さい", class: 'select'
+        = f.collection_select :prefecture_id, Prefecture.all, :id, :name, prompt: "選択して下さい", class: 'select prefecture'
     .items__delivery_day
       .label 発送までの日数
       %span.require 必須
