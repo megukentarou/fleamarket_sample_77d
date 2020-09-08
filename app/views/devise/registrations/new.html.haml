@@ -42,11 +42,7 @@
         != sprintf(f.date_select(:birth_day,start_year: Time.now.year, end_year: 1900, use_month_numbers: true, prompt: "--", date_separator: "%s"), "年", "月") + "日"
         %p.info-text
       .furima-main__actions
-<<<<<<< Updated upstream
         = f.submit "完了", class: "form-btn", url: "destinations_path"
-=======
-        = f.submit "完了", class: "form-btn" #url: "user_create_path"
->>>>>>> Stashed changes
 
 = render partial: 'furima.footer'
 
