@@ -28,11 +28,11 @@
     .items__category
       .label カテゴリー
       %span.require 必須
-      -# categorysテーブルのidを呼びだす実装が必  
-      = form_with(model: @item, local: true) do |f|
-        -# = f.collection_select :category_id, Category.all, :id, :name, prompt: "選択して下さい", class: 'select'
-        = f.select :category, @parent, {}, {class: 'select parent', id: 'parent'}
-       
+      .listing-select-wrapper
+        .listing-select-wrapper__box
+          -# categorysテーブルのデータを呼び出して動的にセレクトタグを追加させる
+          = form_with(model: @item, local: true, id: "category") do |f|
+            = f.select :category, @parent_category, {}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'}
     .items__brand
       %br
       .label ブランド
@@ -46,7 +46,7 @@
       -# active_hashで作ったconditionモデルの値を表示させる
       = form_with(model: @item, local: true) do |f|
         = f.collection_select :condition_id, Condition.all, :id, :condition, prompt: "選択して下さい", class: 'select condition'
-        
+     
   .deliverys
     .items__fee
       .items__fee__title 配送について
