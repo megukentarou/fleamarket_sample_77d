@@ -1,5 +1,6 @@
 -# 部分テンプレートのヘッダー
 = render partial: 'devise/registrations/furima.header'
+-# 商品画像をアップロードする実装
 .items
   .items__information
     .items__image
@@ -12,7 +13,7 @@
         .camera_icon__comment
           %br
           ドラッグアンドドロップ</br>またはクリックしてファイルをアップロード
-      
+      -# 商品名や説明を入れる
     .items__name
       .label 商品名
       %span.require 必須
@@ -22,17 +23,17 @@
       %span.require 必須
       %br
       %textarea{cols: "1000", name: "kanso", rows: "7", placeholder: "商品の説明(必須1,000文字以内)\n(色、素材、重さ、定価、注意点など）"}
-
+    -# 商品の詳細を入れる
   .items__edit 
     .items__edit__title 商品の詳細
     .items__category
       .label カテゴリー
       %span.require 必須
-      .listing-select-wrapper
-        .listing-select-wrapper__box
-          -# categorysテーブルのデータを呼び出して動的にセレクトタグを追加させる
+      .items-select-wrapper
+        .items-select-wrapper__box
+          -# categorysテーブルのデータを呼び出して動的にセレクトタグを追加させる（親→子→孫）
           = form_with(model: @item, local: true, id: "category") do |f|
-            = f.select :category, @parent_category, {}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'}
+            = f.select :category, @parent_category, {}, {class: 'items-select-wrapper__box--select', id: 'parent_category'}
     .items__brand
       %br
       .label ブランド
@@ -46,7 +47,7 @@
       -# active_hashで作ったconditionモデルの値を表示させる
       = form_with(model: @item, local: true) do |f|
         = f.collection_select :condition_id, Condition.all, :id, :condition, prompt: "選択して下さい", class: 'select condition'
-     
+  -# 配送に関係する内容 
   .deliverys
     .items__fee
       .items__fee__title 配送について
@@ -70,6 +71,7 @@
       %i.icon-arow-button
       = form_with(model: @item, local: true) do |f|
         = f.select :delivery_day, {'選択して下さい': "null", "1~2日で発送": "1~2日で発送", "2~3日で発送": "2~3日で発送", "4~7日で発送": "4~7日で発送"}
+  -# 価格に関する入力
   .price
     価格 (¥300~9,999,999)
     .items__price
@@ -84,6 +86,7 @@
     .items__profit
       販売利益
       .items__profit__notation ー
+  -# 出品ボタン
   .exhibition
     .exhibition__btn
       .exhibition__btn__red 出品する

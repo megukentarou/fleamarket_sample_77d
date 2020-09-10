@@ -7,9 +7,9 @@ $(function(){
   // 子カテゴリーの表示作成
   function appendChildrenBox(insertHTML){
     let childSelectHtml = '';
-    childSelectHtml = `<div class='listing-select-wrapper' id='children_wrapper'>
-                        <div class='listing-select-wrapper__box'>
-                          <select class="listing-select-wrapper__box--select" id="children_category" name="category_id">
+    childSelectHtml = `<div class='items-select-wrapper' id='children_wrapper'>
+                        <div class='items-select-wrapper__box'>
+                          <select class="items-select-wrapper__box--select" id="children_category" name="category_id">
                             <option value="選択して下さい" data-category="---">選択して下さい</option>
                             ${insertHTML}
                           </select>
@@ -19,9 +19,9 @@ $(function(){
   }
   // 孫カテゴリーの表示作成
   function appendGrandchildrenBox(insertHTML){
-    let grandchildSelectHtml = `<div class='listing-select-wrapper' id='grandchildren_wrapper'>
-                                  <div class='listing-select-wrapper__box'>
-                                    <select class='listing-select-wrapper__box--select' id='grandchildren_category' name='category_id'>
+    let grandchildSelectHtml = `<div class='items-select-wrapper' id='grandchildren_wrapper'>
+                                  <div class='items-select-wrapper__box'>
+                                    <select class='items-select-wrapper__box--select' id='grandchildren_category' name='category_id'>
                                       <option value='選択して下さい' data-category="---">選択して下さい</option>
                                       ${insertHTML}
                                     </select>
@@ -29,7 +29,7 @@ $(function(){
                                 </div>`;
     $('.items__category').append(grandchildSelectHtml);
   }
-  // 親カテゴリー選択後のイベント
+  // 親カテゴリー選択後のイベント（子カテゴリーのセレクトタグを出す為のAjax通信）
   $('#parent_category').on('change', function(){
     let parentCategory = document.getElementById('parent_category').value; //選択された親カテゴリーの名前を取得
     if (parentCategory != "選択して下さい"){ //親カテゴリーが初期値の"選択して下さい"でないことを確認

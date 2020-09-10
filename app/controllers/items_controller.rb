@@ -8,6 +8,7 @@ class ItemsController < ApplicationController
     @conditions = Condition.all
     @prefectures = Prefecture.all
     @parent_category = ["選択して下さい"]
+    # 親カテゴリーのデータを取り出して名前の要素を配列に追加していく
     Category.where(ancestry: nil).each do |parent|
       @parent_category << parent.name
     end
