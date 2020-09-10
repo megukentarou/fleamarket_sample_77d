@@ -7,11 +7,10 @@ class ItemsController < ApplicationController
     @item = Item.new
     @conditions = Condition.all
     @prefectures = Prefecture.all
-    @parent_category = ["選択して下さい"]
     # 親カテゴリーのデータを取り出して名前の要素を配列に追加していく
-    Category.where(ancestry: nil).each do |parent|
-      @parent_category << parent.name
-    end
+    # pluckメソッドで指定したカラムのレコードの配列を取得する
+    # unshiftメソッドで配列の先頭に要素を挿入（カテゴリー選択の初期値"選択して下さい"を挿入)
+    @parent_category =Category.where(ancestry: nil).pluck(:name).unshift("選択して下さい")
   end
 
   # 親カテゴリーが選択された後の子カテゴリーのアクション
