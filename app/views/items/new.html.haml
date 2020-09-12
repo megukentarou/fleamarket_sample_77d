@@ -79,13 +79,18 @@
       %span.require 必須
       %span.en¥
       = form_with(model: @item, local: true) do |f|
-        %input{maxlength: "7", name: "pass", size: "6", type: "text", placeholder: "0", class: "items__price__form"}/
+        .items__price__input
+          %input{maxlength: "7", name: "number", size: "6", type: "tel", placeholder: "0", id: "items__price__input__form", class: "items__price__form"}/
     .items__fee
-      販売手数料
-      .items__fee__notation ー
+      .items__fee__left
+        %p 販売手数料
+      .items__fee__right
+        %P#item__fee --
     .items__profit
-      販売利益
-      .items__profit__notation ー
+      .items__profit__left
+        %P 販売利益
+      .items__profit__right
+        %p#item__profit --
   -# 出品ボタン
   .exhibition
     .exhibition__btn

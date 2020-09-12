@@ -24,7 +24,8 @@
 }
 
 @mixin item-fee-profit {
-  text-align: left;
+  display: flex;
+  justify-content: space-between;;
   font-size: 14px;
   font-weight: normal;
   color: #333;
@@ -161,14 +162,22 @@ body {
     }
     .items__fee {
       @include item-fee-profit;
-      &__notation {
-        float: right;
+      &__left{
+        text-align: left;
+      }
+      &__right {
+        text-align: right;
+        font-size: 14px;
       }
     }
     .items__profit {
       @include item-fee-profit;
-      &__notation {
-        float: right;
+      &__left{
+        text-align: left;
+      }
+      &__right {
+        text-align: right;
+        font-size: 14px;
       }
     }
   }
