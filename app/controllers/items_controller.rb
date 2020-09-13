@@ -5,6 +5,7 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
+    @item.images.build
     @conditions = Condition.all
     @prefectures = Prefecture.all
     # 親カテゴリーのデータを取り出して名前の要素を配列に追加していく
@@ -25,6 +26,21 @@ class ItemsController < ApplicationController
     @grandchildren_category = Category.find(params[:child_id]).children
   end
 
+  def create
+    @item = Item.new(item_params)
+    if @item.save
+      redirect_to root_path
+    else
+      render :new
+    end
+  end
+
   def show
+  end
+
+  private
+
+  def item_params
+    params.require(:item).permit(images_attributes: [:name, :id])
   end
 end

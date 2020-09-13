@@ -9,4 +9,5 @@ Rails.application.routes.draw do
     end
   end
   resources :users, only: [:new, :show, :index, :edit]
+  resources :images
 end
