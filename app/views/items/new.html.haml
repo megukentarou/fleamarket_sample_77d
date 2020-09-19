@@ -2,20 +2,24 @@
 = render partial: 'devise/registrations/furima.header'
 -# 商品画像をアップロードする実装
 .items
-  = form_with(model: @item, local: true) do |f|
+  = form_with model: @item, class: "form", id: "item-form" do |f|
     .items__information
       .items__image
         .label 出品画像
         %span.require 必須
-        .items__image__comment
-          最大10枚までアップロードできます
-      = f.fields_for :images do |image|
-        .items__image__upload
-          = f.label :image, class: "items__image__upload", for: "item_images_attributes_0_name" do
-            .items__image__upload__comment
-              %i.fas.fa-camera 
-              %p ドラッグアンドドロップ<br>またはクリックしてファイルをアップロード
-              = image.file_field :name, value:"", class: "file_field"
+        .items__image__comment 最大10枚までアップロードできます
+        = f.fields_for :images do |image|
+          .items__image__upload
+            // 写真のプレビューとインプットボタンのul
+            %ul#previews
+              %li.input
+                // 画像を取り込むインプットボタン
+                %label.upload-label
+                  .items__image__upload__comment
+                    %i.fas.fa-camera 
+                    %p ドラッグアンドドロップ<br>またはクリックしてファイルをアップロード
+                    .input-area
+                      = image.file_field :name, class: "hidden image_upload"
 
     -# 商品名や説明を入れる
     .items__information
@@ -27,7 +31,7 @@
         .label 商品の説明
         %span.require 必須
         %br
-        %textarea{cols: "1000", name: "kanso", rows: "7", placeholder: "商品の説明(必須1,000文字以内)\n(色、素材、重さ、定価、注意点など）"}
+        %textarea{cols: "1000", name: "explanation", rows: "7", placeholder: "商品の説明(必須1,000文字以内)\n(色、素材、重さ、定価、注意点など）"}
     -# 商品の詳細を入れる
     .items__edit 
       .items__edit__title 商品の詳細
@@ -43,7 +47,9 @@
         %br
         .label ブランド
         %span.any 任意
-        %input{maxlength: "40", name: "pass", size: "6", type: "text", placeholder: "仮) シャネル"}/
+        -# 登録内容は任意でbrandテーブルに保存される
+        = form_with(model: @brand, local: true) do |f|
+          %input{maxlength: "40", name: "name", size: "6", type: "text", placeholder: "仮) シャネル"}/
       .items__condition
         %br
         .label 商品の状態
@@ -64,7 +70,6 @@
       .label 発送元の地域
       %span.require 必須          
       .select-wrap
-      %i.icon-arrow-button
       -# active_hashのprefectureモデルの値を表示させる
       -# DB確認したらprefecture_idカラムが無いので、アソシエーションの追加が必要だと思われる
       = form_with(model: @item, local: true) do |f|
@@ -73,7 +78,6 @@
       .label 発送までの日数
       %span.require 必須
       .select-wrap
-      %i.icon-arow-button
       = form_with(model: @item, local: true) do |f|
         = f.select :delivery_day, {'選択して下さい': "null", "1~2日で発送": "1~2日で発送", "2~3日で発送": "2~3日で発送", "4~7日で発送": "4~7日で発送"}
   -# 価格に関する入力
@@ -83,9 +87,8 @@
       .label 販売価格
       %span.require 必須
       %span.en¥
-      = form_with(model: @item, local: true) do |f|
-        .items__price__input
-          %input{maxlength: "7", name: "number", size: "6", type: "tel", placeholder: "0", id: "items__price__input__form", class: "items__price__form"}/
+      .items__price__input
+        %input{maxlength: "7", name: "price", size: "6", placeholder: "0", id: "items__price__input__form", class: "items__price__form"}/
     .items__fee
       .items__fee__left
         %p 販売手数料
@@ -109,5 +112,3 @@
       
 -# 部分テンプレートのフッター 
 = render partial: 'devise/registrations/furima.footer'
-
-

@@ -54,27 +54,53 @@ body {
         margin: 16px 0;
       }
     }  
+    // 画像投稿部分
     .items__image__upload {
-      // height: 150px;
-      // width: 620px;
       background-color: rgb(245, 245, 245);
-      cursor: pointer;
-      &__comment {
-        display: inline-block;
+      #previews {
+        display: flex;
+        flex-wrap: wrap;
+        .input {
+          flex-grow: 1;
+        }
+      }
+      .items__image__upload__comment {
+        cursor: pointer;
         align-items: center;
         border: 1px dashed rgb(204, 204, 204);
         height: 150px;
-        width: 620px;
+        width: 100%;
         p {
           font-size: 12px;
           font-weight: normal;
           border: none;
         }
-        .file_field {
+        .image_upload {
           display: none;
         }
+      }       
+    }
+    // 追加されたプレビュー画像用
+    .image-preview__wrapper{
+      width: 120px;
+      height: 150px;
+      .preview {
+        width: 114px;
+        height: 120px;
+        margin-right: 0 2px;
+      }
+      .image-preview_btn {
+        display: flex;
+        justify-content: space-evenly;
+        color: #0099e8;
       }
     }
+
+    // 追加されたinputフィールド
+    .image-preview {
+      display: flex;
+    }
+
     .items__name {
       text-align: left;
     }
@@ -92,6 +118,7 @@ body {
       }
     }
   }
+  
   
   .items__edit {
     text-align: left;
@@ -258,3 +285,4 @@ select {
   font-size: 12px;
   font-weight: bolder;
 }
+
