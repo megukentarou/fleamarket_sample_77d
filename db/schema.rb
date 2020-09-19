@@ -57,11 +57,16 @@ ActiveRecord::Schema.define(version: 2020_09_07_114227) do
 
   create_table "residencies", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "prefecture_id"
-    t.string "city"
-    t.integer "address"
+    t.string "family_name", null: false
+    t.string "first_name", null: false
+    t.string "family_name_reading", null: false
+    t.string "first_name_reading", null: false
+    t.string "city", null: false
+    t.integer "address", null: false
+    t.integer "zip_code", null: false
     t.string "building"
-    t.integer "zip_code"
-    t.integer "user_id"
+    t.integer "phone"
+    t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
