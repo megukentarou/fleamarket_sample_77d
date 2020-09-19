@@ -29,7 +29,7 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     if @item.save
-      redirect_to root_path
+      redirect_to root_path, notice: "商品を出品しました"
     else
       render :new
     end
@@ -49,7 +49,7 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(images_attributes: [:name, :id])
+    params.require(:item).permit(:name, images_attributes: [:name, :id, :_destroy])
   end
 
   def set_item

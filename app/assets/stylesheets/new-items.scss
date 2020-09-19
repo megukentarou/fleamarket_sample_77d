@@ -117,6 +117,20 @@ body {
         text-align: left;
       }
     }
+    .image-preview_btn_delete{
+      cursor: pointer;
+    }
+    .image-preview_btn_delete:hover {
+      transition: 0.5s;
+      opacity: 0.6;
+    }
+    .image-preview_btn_edit{
+      cursor: pointer;
+    }
+    .image-preview_btn_edit:hover {
+      transition: 0.5s;
+      opacity: 0.6;
+    }
   }
   
   

@@ -34,6 +34,7 @@
 
 ## prefectureテーブル（都道府県）
 - 都道府県が必須
+
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
