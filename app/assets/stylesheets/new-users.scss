@@ -1,4 +1,3 @@
-
 .furima-contents {
   display: block;
   background-color: #F5F5F5;
@@ -31,11 +30,19 @@
             padding: 2px 4px;
             border-radius: 2px;
             color: #fff;
-            background-color: red;
+            background-color: #3ccace;
+            font-size: 12px;
+          }
+          .nonrequire {
+            margin: 0 0 0 8px;
+            padding: 2px 4px;
+            border-radius: 2px;
+            color: #fff;
+            background-color: #ccc;
             font-size: 12px;
           }
           .optional {
-            background-color: grey;
+            background-color: #ccc;
           }
           .form-input {
             height: 40px;
@@ -123,8 +130,3 @@
           }
         }
     }
-
-
-  
-
-

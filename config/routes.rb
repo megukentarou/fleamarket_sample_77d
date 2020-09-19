@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: {
+    registrations: 'users/registrations',
+  } 
   root 'items#index'
   resources :items, only: [:index, :new, :show] do
   #Ajaxで動くアクションのルートの作成
@@ -8,5 +10,5 @@ Rails.application.routes.draw do
       get 'get_grandchildren_category', defaults: { format: 'json' }
     end
   end
-  resources :users, only: [:new, :show, :index, :edit]
+  resources :users
 end
