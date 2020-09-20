@@ -1,8 +1,7 @@
-newaddress.html.haml
 .furima-contents
   .furima-main
     %h2.furima-main__title 住所登録
-    = form_for("#") do |f|
+    = form_for @residency do |f|
       .furima-main__form
         %label お名前（全角）
         %span.require 必須
@@ -34,16 +33,8 @@ newaddress.html.haml
         %span.require 必須
         = f.text_field :address, autofocus: true, placeholder: "例) 1-1-1", class: "form-input"
       .furima-main__form
-        = f.label :city, "市区町村"
-        %span.require 必須
-        = f.text_field :city, autofocus: true, placeholder: "例) 大阪市中央区", class: "form-input"
-      .furima-main__form
         = f.label :building, "建物名"
         %span.require 必須
-        = f.text_field :building, autofocus: true, placeholder: "例) 柳ビル", class: "form-input"
-      .furima-main__form
-        = f.label :building, "建物名"
-        %span.nonrequire 任意
         = f.text_field :building, autofocus: true, placeholder: "例) 柳ビル", class: "form-input"
       .furima-main__form
         = f.label :phone, "電話番号"

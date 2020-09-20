@@ -3,13 +3,10 @@ class User < ApplicationRecord
         # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
         devise :database_authenticatable, :registerable,
                 :recoverable, :rememberable, :validatable
-        has_one :consignor
         has_many :items
-        has_many :residencys
+        has_one :residency, dependent: :delete
 
-
-
-#以下はフリマのバリデーションコード
+        #以下はフリマのバリデーションコード
         validates :nickname, :password_confirmation, :birth_day, :family_name, :first_name, :family_name_reading, :first_name_reading, presence: true
         validates :email, uniqueness: {case_sensitive: true},
                 format: {with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i}
