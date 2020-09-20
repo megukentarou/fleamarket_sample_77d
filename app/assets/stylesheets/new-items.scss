@@ -56,6 +56,7 @@ body {
     }  
     // 画像投稿部分
     .items__image__upload {
+      height: 150px;
       background-color: rgb(245, 245, 245);
       #previews {
         display: flex;
