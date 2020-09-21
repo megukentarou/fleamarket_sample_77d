@@ -32,6 +32,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
     @user.build_residency(@residency.attributes)
     @user.save
+    sign_in(:user, @user)
     redirect_to root_path
   end
 
