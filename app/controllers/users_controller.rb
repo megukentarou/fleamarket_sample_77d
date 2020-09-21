@@ -1,17 +1,21 @@
 class UsersController < ApplicationController
+  before_action :set_category
+
   def index
-    @parent = Category.where(ancestry: nil)
   end
 
   def edit
-    @parent = Category.where(ancestry: nil)
   end
 
   def paymethod
-    @parent = Category.where(ancestry: nil)
   end
   
   def newcredit
+  end
+
+ private
+ 
+  def set_category
     @parent = Category.where(ancestry: nil)
   end
 end
