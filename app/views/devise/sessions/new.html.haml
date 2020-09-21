@@ -4,12 +4,15 @@
   .login__main__panel
     .login__no__acount
       %pアカウントをお持ちでない方はこちら     
-      =link_to "新規会員登録", "#", class:"btn_blue"
+      =link_to "新規会員登録", new_user_registration_path, class:"btn_blue"
     .login_form-inner
       .form_group
-        .mailaddress
-        %input.login_input-text.input_default{:name => "email", :placeholder => "メールアドレス", :type => "email", :value => ""}
-        =link_to "ログイン", "#", class:"btn_red"          
+        = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+          %li.input-address
+            = f.email_field :email, autofocus: true, autocomplete: "email",placeholder:"メールアドレス", class:"input-form"
+          %li.input-password
+            = f.password_field :password,autocomplete: "current-password", placeholder:"パスワード", class:"input-form"
+          = f.submit "ログイン", class: "btn_red"
         =link_to "パスワードをお忘れの方", "#", class:"forget_password"
 -# 部分テンプレートのフッター 
 = render partial: 'devise/registrations/furima.footer'

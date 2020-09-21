@@ -1,5 +1,5 @@
 .paymethod {
-  background-color: white;
+  background-color: #f2f2f2;
   height: 500px;
   width: 700px;
   margin-top: 50px;
@@ -9,15 +9,15 @@
     font-size: 30px;
     font-weight: bold;
     line-height: 100px;
-    border-bottom: 1px solid #f2f2f2;
+    border-bottom: 1px solid white;
   }
   &__credit{
-    padding: 30px 0px 0px 150px;
+    padding-top:30px;
     font-weight: bold;
   }
   &__register {
-    padding: 30px 0px 40px 150px;
-    border-bottom: 1px solid #f2f2f2;
+    padding:30px 0px;
+    border-bottom: 1px solid white;
   }
   .link-register{
     color: #0095ee;

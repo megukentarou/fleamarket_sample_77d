@@ -2,10 +2,16 @@ class UsersController < ApplicationController
   def index
     @parent = Category.where(ancestry: nil)
   end
-  
-  def new
+
+  def edit
+    @parent = Category.where(ancestry: nil)
   end
 
-  def show
+  def paymethod
+    @parent = Category.where(ancestry: nil)
+  end
+  
+  def newcredit
+    @parent = Category.where(ancestry: nil)
   end
 end

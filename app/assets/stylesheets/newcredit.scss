@@ -14,17 +14,22 @@
   }
   &__credit-card{
     background-color: white;
-    width: 350px;
     &__inner{
       margin-top: 20px;
+      padding-right:50px;
     }
   }
   .label  {
-    margin: 50px 0px 0px 70px;
+    font-weight: normal;
+    font-size:18px;
   }
   .required{
-    background-color: red;
-    color: white;
+      margin: 0 0 0 8px;
+      padding: 2px 4px;
+      border-radius: 2px;
+      color: #fff;
+      background-color: #3ccace;
+      font-size: 12px;
   }
   .input-number{
     height: 50px;
@@ -33,9 +38,10 @@
     border: 3px solid #f2f2f2;
   }
   .card-deadline {
-    margin: 50px 0px 0px 70px;
+    margin: 50px 0px 0px 0px;
     &__month {
       float: left;
+      padding-left:80px;
     }
     &__year {
       float: right;
@@ -53,10 +59,10 @@
     margin: 50px 0px 0px 70px;
   }
   .add-btn {
-    width: 400px;
-    background-color: #ea352d;
+    width: 450px;
+    background-color: #3ccace;
     height:50px;
-    color:white;
+    color:black;
     font-weight: bold;
   }
 }
