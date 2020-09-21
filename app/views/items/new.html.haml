@@ -9,13 +9,27 @@
         %span.require 必須
         .items__image__comment
           最大10枚までアップロードできます
-      = f.fields_for :images do |image|
-        .items__image__upload
-          = f.label :image, class: "items__image__upload", for: "item_images_attributes_0_name" do
+        #image-box
+          #previews
+          - if @item.persisted?
+            - @item.images.each_with_index do |image, i|
+              = image_tag image.src.url, data: { index: i }, width: "120", height: '150'            
+          = f.fields_for :images do |image|
+            .js-file_group{"data-index" => image.index}
+              = image.file_field :src, class: "js-file"
+            -# .items__image__upload
+                // 編集機能の表示
+            - if @item.persisted?
+              .js-file_group{"data-index" => @item.images.count}
+                = file_field_tag :src, name: "item[images_attributes][#{@item.images.count}][src]", class: 'js-file'
+                .js-remove 削除
             .items__image__upload__comment
               %i.fas.fa-camera 
               %p ドラッグアンドドロップ<br>またはクリックしてファイルをアップロード
-              = image.file_field :name, value:"", class: "file_field"
+              -# %span.js-remove 削除
+
+
+              -# = f.label :image, class: "items__image__upload", for: "item_images_attributes_0_name" do
 
     -# 商品名や説明を入れる
     .items__information

@@ -53,28 +53,42 @@ body {
         font-size: 14px;
         margin: 16px 0;
       }
-    }  
-    .items__image__upload {
-      // height: 150px;
-      // width: 620px;
+    } 
+    
+    // 画像投稿
+    #image-box {
+      height: 150px;
       background-color: rgb(245, 245, 245);
       cursor: pointer;
-      &__comment {
-        display: inline-block;
-        align-items: center;
-        border: 1px dashed rgb(204, 204, 204);
-        height: 150px;
-        width: 620px;
-        p {
-          font-size: 12px;
-          font-weight: normal;
-          border: none;
-        }
-        .file_field {
-          display: none;
+      display: flex;
+      flex-wrap: wrap;
+      #previews{
+        display: flex;
+      }
+      .items__image__upload{
+        display: flex;
+        flex-grow: 1;
+        .js-file_group {
+          display: flex;
+          .js-file {
+            // display: none;
+          }
+          .items__image__upload__comment {
+            display: inline-block;
+            align-items: center;
+            border: 1px dashed rgb(204, 204, 204);
+            height: 150px;
+            p {
+              font-size: 12px;
+              font-weight: normal;
+              border: none;
+            }
+          }
         }
       }
     }
+
+
     .items__name {
       text-align: left;
     }
