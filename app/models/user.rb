@@ -7,7 +7,7 @@ class User < ApplicationRecord
         has_one :residency, dependent: :delete
 
         #以下はフリマのバリデーションコード
-        validates :nickname, :password_confirmation, :birth_day, :family_name, :first_name, :family_name_reading, :first_name_reading, presence: true
+        validates :nickname, :password, :password_confirmation, :birth_day, :family_name, :first_name, :family_name_reading, :first_name_reading, presence: true
         validates :email, uniqueness: {case_sensitive: true},
                 format: {with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i}
         validates :password, length: {minimum: 7}
