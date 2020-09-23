@@ -1,17 +1,17 @@
 $(document).on('turbolinks:load', ()=> {
   // 画像用のinputを生成する関数
   const buildFileField = (index)=> {
-    const html = `<div data-index="${index}" class="js-file_group">
+    const html = `<div class="js-file_group" data-index="${index}">
                     <input class="js-file" type="file"
-                    name="product[images_attributes][${index}][src]"
-                    id="product_images_attributes_${index}_src">
+                    name="item[images_attributes][${index}][src]"
+                    id="item_images_attributes_${index}_src">
                   </div>`;
     return html;
   }
   // プレビュー用のimgタグを生成する関数
   const buildImg = (index, url)=> {
     const html = `<div class="image-edit">
-    <img data-index="${index}" src="${url}" width="120px" height="150px"><div class="js-remove">削除</div><a '編集', edit_product_path(product)>編集
+    <img data-index="${index}" src="${url}"><div class="js-remove">削除</div><a '編集', edit_item_path(item)>編集
     </div>`;
   return html;
   }
@@ -33,12 +33,14 @@ $(document).on('turbolinks:load', ()=> {
     if (img = $(`img[data-index="${targetIndex}"]`)[0]) {
       img.setAttribute('src', blobUrl);
     } else {  // 新規画像追加の処理
-      $('#previews').append(buildImg(targetIndex, blobUrl));
+      $('.image-label').before(buildImg(targetIndex, blobUrl));
       // fileIndexの先頭の数字を使ってinputを作る
-      $('#image-box').append(buildFileField(fileIndex[0]));
+      $('.items__image__upload__comment').append(buildFileField(fileIndex[0]));
+      $(".image-label").attr("for", `item_images_attributes_${fileIndex[0]}_src`)
       fileIndex.shift();
       // 末尾の数に1足した数を追加する
       fileIndex.push(fileIndex[fileIndex.length - 1] + 1);
+
     }
   });
 
@@ -46,14 +48,14 @@ $(document).on('turbolinks:load', ()=> {
     const targetIndex = $(this).prev().data('index')
     // 該当indexを振られているチェックボックスを取得する
     const hiddenCheck = $(`input[data-index="${targetIndex}"].hidden-destroy`);
-    console.log("チェックボックス取得");
+    console.log(targetIndex);
     // もしチェックボックスが存在すればチェックを入れる
     if (hiddenCheck) hiddenCheck.prop('checked', true);
     $(this).parent().remove();
-
-    $(`#item_images_attributes_${targetIndex}_src`).remove();
+    console.log(this);
+    $(`#item_images_attributes_${targetIndex}_src`).parent().remove();
     
     // 画像入力欄が0個にならないようにしておく
-    if ($('.js-file').length == 0) $('.items__image__upload').append(buildFileField(fileIndex[0]));
+    if ($('.js-file_group').Count == 0) $('.items__image__upload').append(buildFileField(fileIndex[0]));
   });
 });

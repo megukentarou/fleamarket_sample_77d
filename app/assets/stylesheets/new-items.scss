@@ -62,34 +62,34 @@ body {
       display: flex;
       #previews{
         display: flex;
+        width: 100%;
         .image-edit {
-          width: 120px;
-          height: 150px;
           display: flow-root;
           color: #0095ee;
+          margin: 0 3px;
+          img {
+            width: 120px;
+            height: 150px;
+          }
         }
-
+        .image-label {
+          width: 100%;
+          .js-file_group {
+            display: none;
+          }
+        }
       }
       .items__image__upload__comment {
-        // display: inline-block;
         flex-grow: 1;
-        cursor: pointer;
         align-items: center;
         border: 1px dashed rgb(204, 204, 204);
         height: 150px;
         width: 100%;
+        cursor: pointer;
         p {
           font-size: 12px;
           font-weight: normal;
           border: none;
-        }
-        .js-file {
-          width: auto;
-          // display: none;
-          .js-file_group {
-            flex-grow: 1;
-            display: flex;
-          }
         }
       }
     }
