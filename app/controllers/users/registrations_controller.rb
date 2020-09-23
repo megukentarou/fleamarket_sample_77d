@@ -10,7 +10,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create
     @user = User.new(sign_up_params)
     unless @user.valid?
-      flash.now[:alert] = @user.errors.full_messages
+      @user.errors.full_messages
+      flash.now[:alert] = "誤りや記入漏れがあります。下記を参照に修正してください。"
       render :new and return
     end
 
@@ -27,13 +28,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user = User.new(session["devise.regist_data"]["user"])
     @residency = Residency.new(residency_params)
     unless @residency.valid?
-      flash.now[:alert] = @residency.errors.full_messages
+      @residency.errors.full_messages
+      flash.now[:alert] = "誤りや記入漏れがあります。下記を参照に修正してください。"
       render :new_residency and return
     end
     @user.build_residency(@residency.attributes)
     @user.save
     sign_in(:user, @user)
-    redirect_to root_path
+    redirect_to root_path, notice: '登録ができました'
   end
 
   protected

@@ -7,7 +7,9 @@ class User < ApplicationRecord
         has_one :residency, dependent: :delete
 
         #以下はフリマのバリデーションコード
-        validates :nickname, :password, :password_confirmation, :birth_day, :family_name, :first_name, :family_name_reading, :first_name_reading, presence: true
+        with_options presence: true do
+        validates :nickname
+        validates :birth_day
         validates :email, uniqueness: {case_sensitive: true},
                 format: {with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i}
         validates :password, length: {minimum: 7}
@@ -19,5 +21,5 @@ class User < ApplicationRecord
                 format: { with: /\A([ァ-ン]|ー)+\z/, message: 'を全角カタカナで入力してください' }
         validates :first_name_reading,
                 format: { with: /\A([ァ-ン]|ー)+\z/, message: 'を全角カタカナで入力してください' }
-
+        end
 end

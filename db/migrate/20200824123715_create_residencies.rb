@@ -8,7 +8,7 @@ class CreateResidencies < ActiveRecord::Migration[5.2]
       t.string :first_name_reading, null: false
       t.string :city,                null: false
       t.integer :address,            null: false
-      t.integer :zip_code,           null: false
+      t.string :zip_code,           null: false
       t.string :building
       t.string :phone
       t.integer :user_id,            null: false,foreign_key: true
