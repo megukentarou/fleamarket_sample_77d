@@ -1,0 +1,57 @@
+ja:
+  activerecord:
+    attributes:
+      user:
+        nickname: ニックネーム
+        created_at: 作成日
+        email: メールアドレス
+        encrypted_password: 暗号化パスワード
+        password: パスワード
+        password_confirmation: パスワード再入力
+        family_name: お名前（苗字）
+        first_name: お名前（名前）
+        family_name_reading: 苗字フリガナ
+        first_name_reading: 名前フリガナ
+        birth_day: 生年月日
+        updated_at: 更新日
+      residency:
+        family_name: お名前（苗字）
+        first_name: お名前（名前）
+        family_name_reading: 苗字フリガナ
+        first_name_reading: 名前フリガナ
+        zip_code: 郵便番号
+        city: 市区町村名
+        address: 番地
+        prefecture_id: 都道府県
+
+    models:
+      user: ユーザー
+      residency: 商品送付先住所
+  devise:
+    confirmations:
+      confirmed: メールアドレスが確認できました。
+      new:
+        resend_confirmation_instructions: アカウント確認メール再送
+      send_instructions: アカウントの有効化について数分以内にメールでご連絡します。
+      send_paranoid_instructions: メールアドレスが登録済みの場合、本人確認用のメールが数分以内に送信されます。
+    failure:
+      already_authenticated: すでにログインしています。
+      inactive: アカウントが有効化されていません。メールに記載された手順にしたがって、アカウントを有効化してください。
+      invalid: "%{authentication_keys}またはパスワードが違います。"
+      not_found_in_database: "%{authentication_keys}またはパスワードが違います。"
+      timeout: セッションがタイムアウトしました。もう一度ログインしてください。
+      unauthenticated: アカウント登録もしくはログインしてください。
+      unconfirmed: メールアドレスの本人確認が必要です。
+    sessions:
+      already_signed_out: 既にログアウト済みです。
+      new:
+        sign_in: ログイン
+      signed_in: ログインしました。
+      signed_out: ログアウトしました。
+  errors:
+    messages:
+      already_confirmed: は既に登録済みです。ログインしてください。
+      not_found: は見つかりませんでした。
+      not_saved:
+        one: エラーが発生したため保存されませんでした。もう一度やり直すようよろしくお願いします。
+        other: "下記の入力および訂正をお願いします。"
