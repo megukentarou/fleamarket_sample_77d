@@ -82,6 +82,8 @@ body {
       }
       .items__image__upload__comment {
         flex-grow: 1;
+        display: flex;
+        justify-content: center;
         align-items: center;
         border: 1px dashed rgb(204, 204, 204);
         height: 150px;

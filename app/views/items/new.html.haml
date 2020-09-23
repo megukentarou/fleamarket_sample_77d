@@ -19,7 +19,7 @@
               %label.image-label
                 .items__image__upload__comment
                   %i.fas.fa-camera 
-                  %p ドラッグアンドドロップ<br>またはクリックしてファイルをアップロード
+                    %p ドラッグアンドドロップ<br>またはクリックしてファイルをアップロード
                   .js-file_group{data: {index: image.index}}
                     = image.file_field :src, class: "js-file"
                     -# .items__image__upload
