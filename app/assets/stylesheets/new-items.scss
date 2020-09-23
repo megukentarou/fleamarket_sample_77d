@@ -59,33 +59,43 @@ body {
     #image-box {
       height: 150px;
       background-color: rgb(245, 245, 245);
-      cursor: pointer;
       display: flex;
-      flex-wrap: wrap;
       #previews{
         display: flex;
+        .image-edit {
+          width: 120px;
+          height: 150px;
+          display: flow-root;
+          color: #0095ee;
+        }
+
       }
-      .items__image__upload{
-        display: flex;
+      .items__image__upload__comment {
+        // display: inline-block;
         flex-grow: 1;
-        .js-file_group {
-          display: flex;
-          .js-file {
-            // display: none;
-          }
-          .items__image__upload__comment {
-            display: inline-block;
-            align-items: center;
-            border: 1px dashed rgb(204, 204, 204);
-            height: 150px;
-            p {
-              font-size: 12px;
-              font-weight: normal;
-              border: none;
-            }
+        cursor: pointer;
+        align-items: center;
+        border: 1px dashed rgb(204, 204, 204);
+        height: 150px;
+        width: 100%;
+        p {
+          font-size: 12px;
+          font-weight: normal;
+          border: none;
+        }
+        .js-file {
+          width: auto;
+          // display: none;
+          .js-file_group {
+            flex-grow: 1;
+            display: flex;
           }
         }
       }
+    }
+    // 削除機能のチェックボックスを隠しておく為のコード
+    .hidden-destroy {
+      // display: none;
     }
 
 

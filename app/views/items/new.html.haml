@@ -11,22 +11,25 @@
           最大10枚までアップロードできます
         #image-box
           #previews
-          - if @item.persisted?
-            - @item.images.each_with_index do |image, i|
-              = image_tag image.src.url, data: { index: i }, width: "120", height: '150'            
-          = f.fields_for :images do |image|
-            .js-file_group{"data-index" => image.index}
-              = image.file_field :src, class: "js-file"
-            -# .items__image__upload
-                // 編集機能の表示
             - if @item.persisted?
-              .js-file_group{"data-index" => @item.images.count}
+              - @item.images.each_with_index do |image, i|
+                = image_tag image.src.url, data: { index: i }, width: "120", height: '150'            
+          .items__image__upload__comment
+            %i.fas.fa-camera 
+            %p ドラッグアンドドロップ<br>またはクリックしてファイルをアップロード
+            -# %span.js-remove 削除
+          = f.fields_for :images do |image|
+            .js-file_group{data: {index: image.index}}
+              = image.file_field :src, class: "js-file"
+              -# .items__image__upload
+                  // 編集機能の表示
+            - if @item.persisted?
+              .js-file_group{data: {index: @item.images.count}}
                 = file_field_tag :src, name: "item[images_attributes][#{@item.images.count}][src]", class: 'js-file'
+                - if image.persisted?
+                  = image.check_box :_destroy, class: 'hidden-destroy', data: {index: image.index}
                 .js-remove 削除
-            .items__image__upload__comment
-              %i.fas.fa-camera 
-              %p ドラッグアンドドロップ<br>またはクリックしてファイルをアップロード
-              -# %span.js-remove 削除
+
 
 
               -# = f.label :image, class: "items__image__upload", for: "item_images_attributes_0_name" do

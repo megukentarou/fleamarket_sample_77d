@@ -10,11 +10,9 @@ $(document).on('turbolinks:load', ()=> {
   }
   // プレビュー用のimgタグを生成する関数
   const buildImg = (index, url)=> {
-    const html = `<img data-index="${index}" src="${url}" width="120px" height="150px">
-                    <div class="image-edit>
-                      <div class="js-remove">削除</div>
-                      <a '編集', edit_product_path(product) >編集
-                    </div>`;
+    const html = `<div class="image-edit">
+    <img data-index="${index}" src="${url}" width="120px" height="150px"><div class="js-remove">削除</div><a '編集', edit_product_path(product)>編集
+    </div>`;
   return html;
   }
 
@@ -36,7 +34,6 @@ $(document).on('turbolinks:load', ()=> {
       img.setAttribute('src', blobUrl);
     } else {  // 新規画像追加の処理
       $('#previews').append(buildImg(targetIndex, blobUrl));
-      console.log("プレビュー表示")
       // fileIndexの先頭の数字を使ってinputを作る
       $('#image-box').append(buildFileField(fileIndex[0]));
       fileIndex.shift();
@@ -45,25 +42,17 @@ $(document).on('turbolinks:load', ()=> {
     }
   });
 
-  // $('#image-box').on('change', '.js-file', function(e) {
-  //   console.log("画像投稿イベント発火")
-  //   // fileIndexの先頭の数字を使ってinputを作る
-  //   $('#image-box').append(buildFileField(fileIndex[0]));
-  //   fileIndex.shift();
-  //   // 末尾の数に1足した数を追加する
-  //   fileIndex.push(fileIndex[fileIndex.length - 1] + 1)
-  //   console.log("新しい投稿フォーム生成")
-  // });
-
   $('#previews').on('click', '.js-remove', function() {
-    const targetIndex = $(this).parent().data('index')
+    const targetIndex = $(this).prev().data('index')
     // 該当indexを振られているチェックボックスを取得する
     const hiddenCheck = $(`input[data-index="${targetIndex}"].hidden-destroy`);
+    console.log("チェックボックス取得");
     // もしチェックボックスが存在すればチェックを入れる
     if (hiddenCheck) hiddenCheck.prop('checked', true);
-
     $(this).parent().remove();
-    console.log("画像の削除イベント発火")
+
+    $(`#item_images_attributes_${targetIndex}_src`).remove();
+    
     // 画像入力欄が0個にならないようにしておく
     if ($('.js-file').length == 0) $('.items__image__upload').append(buildFileField(fileIndex[0]));
   });
