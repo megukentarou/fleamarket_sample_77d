@@ -10,9 +10,13 @@ $(document).on('turbolinks:load', ()=> {
   }
   // プレビュー用のimgタグを生成する関数
   const buildImg = (index, url)=> {
-    const html = `<div class="image-edit">
-    <img data-index="${index}" src="${url}"><div class="js-remove">削除</div><a '編集', edit_item_path(item)>編集
-    </div>`;
+    const html = `<div class="image-container">
+                    <img data-index="${index}" src="${url}">
+                    <div class="image-edit">
+                      <div class="js-remove">削除</div>
+                      <a '編集', edit_item_path(item)>編集
+                    </div>
+                  </div>`;
   return html;
   }
 
@@ -45,13 +49,13 @@ $(document).on('turbolinks:load', ()=> {
   });
 
   $('#previews').on('click', '.js-remove', function() {
-    const targetIndex = $(this).prev().data('index')
+    const targetIndex = $(this).parent().prev().data('index')
     // 該当indexを振られているチェックボックスを取得する
     const hiddenCheck = $(`input[data-index="${targetIndex}"].hidden-destroy`);
     console.log(targetIndex);
     // もしチェックボックスが存在すればチェックを入れる
     if (hiddenCheck) hiddenCheck.prop('checked', true);
-    $(this).parent().remove();
+    $(this).parent().parent().remove();
     console.log(this);
     $(`#item_images_attributes_${targetIndex}_src`).parent().remove();
     

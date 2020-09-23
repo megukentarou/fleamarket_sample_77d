@@ -63,20 +63,21 @@ body {
       #previews{
         display: flex;
         width: 100%;
-        .image-edit {
-          display: flow-root;
+        .image-container {
+          display: grid;
           color: #0095ee;
           margin: 0 3px;
           img {
             width: 120px;
             height: 150px;
           }
+          .image-edit {
+            display: flex;
+            justify-content: space-around;
+          }
         }
         .image-label {
           width: 100%;
-          .js-file_group {
-            display: none;
-          }
         }
       }
       .items__image__upload__comment {
@@ -90,6 +91,9 @@ body {
           font-size: 12px;
           font-weight: normal;
           border: none;
+        }
+        .js-file_group {
+          display: none;
         }
       }
     }
