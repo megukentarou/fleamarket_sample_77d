@@ -1,9 +1,9 @@
 $(function(){
   // カテゴリーセレクトボックスのオプションを作成
-  function appendOption(category){
-    let html = `<option value="${category.name}" data-category="${category.id}">${category.name}</option>`;
-    return html;
-  }
+  // function appendOption(category){
+  //   let html = `<option value="${category.name}" data-category="${category.id}">${category.name}</option>`;
+  //   return html;
+  // }
   // 子カテゴリーの表示作成
   function appendChildrenBox(insertHTML){
     let childSelectHtml = '';
