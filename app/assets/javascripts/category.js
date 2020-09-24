@@ -6,7 +6,7 @@ $(function(){
   // }
   // 子カテゴリーの表示作成
   function appendChildrenBox(insertHTML){
-    let childSelectHtml = '';
+    var childSelectHtml = '';
     childSelectHtml = `<div class='items-select-wrapper' id='children_wrapper'>
                         <div class='items-select-wrapper__box'>
                           <select class="items-select-wrapper__box--select" id="children_category" name="category_id">
