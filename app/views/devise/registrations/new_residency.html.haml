@@ -6,7 +6,7 @@
     = form_for @residency do |f|
       = render "devise/shared/error_messages", resource: @residency
       .furima-main__form
-        = f.label :name "お名前（全角）"
+        %label お名前（全角）
         %span.require 必須
         .furima-main__form__name
           = f.text_field :family_name, autofocus: true, placeholder: "例）山田", class: "form-input__half"

@@ -17,7 +17,6 @@
         = f.label :password, "パスワード"
         %span.require 必須
         = f.password_field :password, autocomplete: "new-password", placeholder: "7文字以上の半角英数字", class: "form-input"
-        %p.note-text ※英字と数字の両方を含めて設定してください
       .furima-main__form
         = f.label :password_confirmation, "パスワード再入力"
         %span.require 必須
@@ -25,7 +24,7 @@
         %h3.text-single 本人確認
         %p.text-single__body 
       .furima-main__form
-        = f.label :name "お名前（全角）"
+        %label お名前（全角）
         %span.require 必須
         .furima-main__form__name
           = f.text_field :family_name, autofocus: true, placeholder: "例）山田", class: "form-input__half"
