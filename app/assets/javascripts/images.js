@@ -44,7 +44,13 @@ $(document).on('turbolinks:load', ()=> {
       fileIndex.shift();
       // 末尾の数に1足した数を追加する
       fileIndex.push(fileIndex[fileIndex.length - 1] + 1);
-
+    }
+    var preview_count = $('.image-container').length
+    console.log(preview_count);
+    
+    // ビューが5枚になるとinputフィールドが消える
+    if(preview_count == 5) {
+      $('.image-label').css({'display': 'none'});
     }
   });
 
@@ -61,5 +67,9 @@ $(document).on('turbolinks:load', ()=> {
     
     // 画像入力欄が0個にならないようにしておく
     if ($('.js-file_group').Count == 0) $('.items__image__upload').append(buildFileField(fileIndex[0]));
+    // inputフィールドを再度出現させる
+    $('.image-label').css({'display': 'flex'});
   });
 });
+
+

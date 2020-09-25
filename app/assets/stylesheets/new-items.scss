@@ -62,14 +62,17 @@ body {
       display: flex;
       #previews{
         display: flex;
+        // flex-wrap: wrap;
         width: 100%;
         .image-container {
           display: grid;
           color: #0095ee;
           margin: 0 3px;
+          width: 115px;
+          height: 150px;
           img {
-            width: 120px;
-            height: 150px;
+            width: 115px;
+            height: 125px;
           }
           .image-edit {
             display: flex;
@@ -101,7 +104,7 @@ body {
     }
     // 削除機能のチェックボックスを隠しておく為のコード
     .hidden-destroy {
-      // display: none;
+      display: none;
     }
 
 
