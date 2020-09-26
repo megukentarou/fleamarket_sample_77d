@@ -14,7 +14,7 @@ $(document).on('turbolinks:load', ()=> {
                     <img data-index="${index}" src="${url}">
                     <div class="image-edit">
                       <div class="js-remove">削除</div>
-                      <a '編集', edit_item_path(item)>編集
+                      <label class="js-edit">編集<div class="js-file_group" data-index="${index}"><input class="js-file" type="file" name="item[images_attributes][${index}][src]"id="item_images_attributes_${index}_src"></div></label>                      
                     </div>
                   </div>`;
   return html;
@@ -54,6 +54,7 @@ $(document).on('turbolinks:load', ()=> {
     }
   });
 
+  // 画像の削除イベント
   $('#previews').on('click', '.js-remove', function() {
     const targetIndex = $(this).parent().prev().data('index')
     // 該当indexを振られているチェックボックスを取得する
@@ -70,6 +71,14 @@ $(document).on('turbolinks:load', ()=> {
     // inputフィールドを再度出現させる
     $('.image-label').css({'display': 'flex'});
   });
+
+  // 削除の編集（差し替え）イベント
+  $('#previews').on('click', '.js-edit', function() {
+    const targetIndex = $(this).parent().prev().data('index')
+    // 該当indexを振られているチェックボックスを取得する
+    $(`input[data-index="${targetIndex}"].hidden-destroy`);
+    console.log(targetIndex);
+  })
 });
 
 

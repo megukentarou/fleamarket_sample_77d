@@ -15,6 +15,7 @@
               - @item.images.each_with_index do |image, i|
                 = image_tag image.src.url, data: { index: i }, width: "120", height: '150'            
                 %span.js-remove 削除
+                %span.js-edit 編集
             = f.fields_for :images do |image|
               %label.image-label
                 .items__image__upload__comment
@@ -30,10 +31,7 @@
                     - if image.persisted?
                       = image.check_box :_destroy, class: 'hidden-destroy', data: {index: image.index}
                     .js-remove 削除
-
-
-
-              -# = f.label :image, class: "items__image__upload", for: "item_images_attributes_0_name" do
+                    .js-edit 編集
 
     -# 商品名や説明を入れる
     .items__information

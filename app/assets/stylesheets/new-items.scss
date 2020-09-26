@@ -62,7 +62,6 @@ body {
       display: flex;
       #previews{
         display: flex;
-        // flex-wrap: wrap;
         width: 100%;
         .image-container {
           display: grid;
@@ -77,6 +76,9 @@ body {
           .image-edit {
             display: flex;
             justify-content: space-around;
+            .js-file_group {
+              display: none;
+            }
           }
         }
         .image-label {
