@@ -2,14 +2,14 @@
   width: 700px;
   padding-top: 50px;
   &__overview {
-    background-image: url("mypage.jpg");
+    background-image: image-url("mypage.jpg");
     height: 200px;
     width: 700px;
     background-size: 700px 200px;
     &__icon {
       height: 80px;
       width: 80px;
-      background-image: url("mypage2.png");
+      background-image: image-url("mypage2.png");
       background-size: 80px 80px;
       position: absolute;
       margin: 30px 0px 0px 310px;

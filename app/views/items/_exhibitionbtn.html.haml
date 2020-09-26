@@ -1,6 +1,7 @@
-=link_to new_item_path do
-  .exhibitionbtn
-    .exhibitionbtn__in-box
-      .exhibitionbtn__in-box__text
-        出品する
-        = image_tag "icon_camera.png", size: "54x54", class: "exhibition__in-box__img"
+- if user_signed_in?
+  =link_to new_item_path do
+    .exhibitionbtn
+      .exhibitionbtn__in-box
+        .exhibitionbtn__in-box__text
+          出品する
+          = image_tag "icon_camera.png", size: "54x54", class: "exhibition__in-box__img"

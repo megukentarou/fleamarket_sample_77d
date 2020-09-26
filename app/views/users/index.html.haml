@@ -5,7 +5,7 @@
     .user-info__overview
       .user-info__overview__icon
       .user-info__overview__name
-        名前
+        = current_user.nickname
       .user-info__overview__review
         評価 0 出品数 0
     .user-info__notice
@@ -23,5 +23,5 @@
       %ul.transaction__list
         取引中の商品
         %li.transaction__now
-          現在商品はありません。
+        現在商品はありません。
 =render 'items/footer'

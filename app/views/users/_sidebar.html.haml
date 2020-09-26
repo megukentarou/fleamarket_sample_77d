@@ -2,7 +2,7 @@
   .sidebar__upper
     %ul.item-info
       %li
-        =link_to "マイページ", "#" , class:"link-text"
+        =link_to "マイページ", users_path(current_user) , class:"link-text"
       %li
         =link_to "お知らせ", "#" , class:"link-text"
       %li
@@ -29,10 +29,10 @@
       %li
         =link_to "発送元・お届け住所変更", "#" ,class: "link-text"
       %li
-        =link_to "支払い方法", "#" ,class: "link-text"
+        =link_to "支払い方法", paymethod_user_url(current_user) ,class: "link-text"
       %li
         =link_to "メール/パスワード変更", "#" ,class: "link-text"
       %li
         =link_to "本人情報", "#" ,class: "link-text"
       %li
-        =link_to "ログアウト", "#",class: "link-text"
+        =link_to "ログアウト", edit_user_path(current_user),class: "link-text"

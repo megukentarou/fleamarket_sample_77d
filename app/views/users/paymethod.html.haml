@@ -7,7 +7,7 @@
     .paymethod__credit
       クレジットカード
     .paymethod__register
-      =link_to "新規カードを登録する" , "#" ,class: "link-register"
+      =link_to "新規カードを登録する" ,newcredit_user_url(current_user) ,class: "link-register"
     .paymethod__confirmation
       .paymethod__confirmation__change
         =link_to "登録情報の確認および変更" , "#" ,class: "link-change"
