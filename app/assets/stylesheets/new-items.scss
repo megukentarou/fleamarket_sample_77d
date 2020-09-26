@@ -180,16 +180,19 @@ body {
         font-size: 14px;
         font-weight: normal;
       }
-      &__form {
-        position: absolute;
-        right: 0;
-        top: 0;
-        margin: 0;
-        width: 130px;
-        height: 48px;
-        border: 1px solid rgba($color: #333, $alpha: 0.7)
-        border-radius 4px;
-        text-align: right;
+      .items__price__input {
+
+        .items__price__form {
+          position: absolute;
+          right: 0;
+          top: 0;
+          margin: 0;
+          width: 130px;
+          height: 48px;
+          border: 1px solid rgba($color: #333, $alpha: 0.7)
+          border-radius 4px;
+          text-align: right;
+        }
       }
     }
     .items__fee {

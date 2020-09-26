@@ -14,7 +14,7 @@ $(document).on('turbolinks:load', ()=> {
                     <img data-index="${index}" src="${url}">
                     <div class="image-edit">
                       <div class="js-remove">削除</div>
-                      <label class="js-edit">編集<div class="js-file_group" data-index="${index}"><input class="js-file" type="file" name="item[images_attributes][${index}][src]"id="item_images_attributes_${index}_src"></div></label>                      
+                      <div class="js-edit" data-index="${index}">編集</div>                      
                     </div>
                   </div>`;
   return html;
@@ -53,6 +53,12 @@ $(document).on('turbolinks:load', ()=> {
       $('.image-label').css({'display': 'none'});
     }
   });
+  // 削除の編集（差し替え）イベント
+  $('#previews').on('click', '.js-edit', function() {
+    const editIndex = $(this).data('index');
+    console.log(editIndex);
+    $(`#item_images_attributes_${editIndex}_src`).click();
+  });
 
   // 画像の削除イベント
   $('#previews').on('click', '.js-remove', function() {
@@ -69,16 +75,19 @@ $(document).on('turbolinks:load', ()=> {
     // 画像入力欄が0個にならないようにしておく
     if ($('.js-file_group').Count == 0) $('.items__image__upload').append(buildFileField(fileIndex[0]));
     // inputフィールドを再度出現させる
-    $('.image-label').css({'display': 'flex'});
+    $('.image-label').css({'display': 'flex'}); 
   });
 
-  // 削除の編集（差し替え）イベント
-  $('#previews').on('click', '.js-edit', function() {
-    const targetIndex = $(this).parent().prev().data('index')
-    // 該当indexを振られているチェックボックスを取得する
-    $(`input[data-index="${targetIndex}"].hidden-destroy`);
-    console.log(targetIndex);
-  })
+  // エラーハンドリングの実装
+  
+  // 商品名が空白の場合にエラーメッセージ出現
+  $('#item_name').on('blur', function() {
+    var itemname = $('#item_name').Value;
+    console.log(itemname);
+    if($('#item_name').Value == "") {
+      console.log("商品名を入力してください")
+    }
+  });
 });
 
 
