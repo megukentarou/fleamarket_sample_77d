@@ -22,7 +22,7 @@
 |family_name_reading|string|null: false|
 |first_name|string|null: false|
 |first_name_reading|string|null: false|
-|birthday|integer|null: false|
+|birthday|date|null: false|
 |nick_name|string|null: false|
 |email|string|null: false, unique:true|
 |password|string|null: false|
@@ -82,22 +82,12 @@
 ## credit_cardsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|card_id|integer||
-|token|string||
+|card_id|integer|null: false|
+|token|string|null: false|
 |user_id|integer|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :user
-
-## conditionsテーブル
-- 商品の状態についての情報が必須
-
-|Column|Type|Options|
-|------|----|-------|
-|condition|integer|null: false|
-
-### Association
-- has_many :items
 
 ## itemsテーブル
 - 画像は1枚以上必須
@@ -169,25 +159,16 @@
 ### Association
 - belongs_to :item
 
-## exhibit(出品中)テーブル
-- 外部キーとして出品中を管理する
-
-|Column|Type|Options|
-|------|----|-------|
-|item_id|integer|null: false, foreign_key: true|
-
-### Association
-- has_many :items
-
 ## soldout(売却済み)テーブル
 - 外部キーとして売却済みを管理する
 
 |Column|Type|Options|
 |------|----|-------|
+|user_id|integer|null: false, foreign_key: true|
 |item_id|integer|null: false, foreign_key: true|
 
 ### Association
-- has_many :items
+- belongs_to :item
 
 ## ER図（URL）
 https://drive.google.com/file/d/1cq6Yql1uTnw0qAZnIx0Pi92um7jvuVx9/view?usp=sharing
