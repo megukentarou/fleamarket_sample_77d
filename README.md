@@ -18,29 +18,21 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|name|string|null: false|
-|birthday|integer|null: false|
-|phone|string||
+|family_name|string|null: false|
+|family_name_reading|string|null: false|
+|first_name|string|null: false|
+|first_name_reading|string|null: false|
+|birthday|date|null: false|
 |nick_name|string|null: false|
 |email|string|null: false, unique:true|
 |password|string|null: false|
-|profile_text|string||
 
 ### Association
 - has_many :credit_cards
 - has_one :consignor
 - has_many :items
-- has_many :residencys
-
-## prefectureテーブル（都道府県）
-- 都道府県が必須
-|Column|Type|Options|
-|------|----|-------|
-|name|string|null: false|
-
-### Association
-- has_many :residencys
-- has_many :items
+- has_one :residency
+- has_many :soldouts
 
 ## residencysテーブル(住所)
  - 郵便番号が必須
@@ -50,17 +42,22 @@
 
 |Column|Type|Options|
 |------|----|-------|
+|family_name|string|null: false|
+|family_name_reading|string|null: false|
+|first_name|string|null: false|
+|first_name_reading|string|null: false|
 |city|string|null: false|
-|address|integer|null: false|
-|building|string|null: false|
-|zip_code|integer|null: false|
+|address|string|null: false|
+|building|string|
+|zip_code|string|null: false|
+|phone|string|
 |user_id|integer|null: false, foreign_key: true|
 |prefecture_id(acitve_hash)|integer|null: false|
 
 ### Association
 - belongs_to :user
-- belongs_to :prefecture
-- has_one :consignors
+- has_one :consignor
+- belongs_to_active_hash :prefecture
 
 ## consignorsテーブル(発送元)
 - 商品送付先住所情報
@@ -81,27 +78,18 @@
 ### Association
 - belongs_to :user
 - belongs_to :residency
+- belongs_to_active_hash :prefecture
 
 
 ## credit_cardsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|card_id|integer||
-|token|string||
+|card_id|integer|null: false|
+|token|string|null: false|
 |user_id|integer|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :user
-
-## conditionsテーブル
-- 商品の状態についての情報が必須
-
-|Column|Type|Options|
-|------|----|-------|
-|condition|integer|null: false|
-
-### Association
-- has_many :items
 
 ## itemsテーブル
 - 画像は1枚以上必須
@@ -126,8 +114,8 @@
 |category_id|integer|null: false, foreign_key: true|
 |brand_id|integer||
 |consignor_id|integer|null: false, foreign_key: true|
-|condition_id|integer|null: false, foreign_key: true|
-|prefecture_id|integer|null: false, foreign_key: true|
+|condition_id|integer|
+|prefecture_id|integer|
 
 ### Association
 - belongs_to :user
@@ -135,8 +123,9 @@
 - belongs_to :brand
 - has_many :images
 - has_one :consignor
-- belongs_to :condition
-- belongs_to :prefecture
+- belongs_to_active_hash :condition
+- belongs_to_active_hash :prefecture
+- has_one :soldout
 
 ## categorysテーブル
 - カテゴリーの情報が必須
@@ -157,7 +146,7 @@
 |name|string|null: false|
 
 ### Association
-- has_many :item
+- has_many :items
 
 ## imagesテーブル
 - 画像は1枚以上必須
@@ -170,6 +159,18 @@
 
 ### Association
 - belongs_to :item
+
+## soldout(売却済み)テーブル
+- 外部キーとして売却済みを管理する
+
+|Column|Type|Options|
+|------|----|-------|
+|user_id|integer|null: false, foreign_key: true|
+|item_id|integer|null: false, foreign_key: true|
+
+### Association
+- belongs_to :item
+- belongs_to :user
 
 ## ER図（URL）
 https://drive.google.com/file/d/1cq6Yql1uTnw0qAZnIx0Pi92um7jvuVx9/view?usp=sharing
