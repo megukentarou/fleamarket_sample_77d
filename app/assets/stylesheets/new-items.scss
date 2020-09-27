@@ -24,7 +24,8 @@
 }
 
 @mixin item-fee-profit {
-  text-align: left;
+  display: flex;
+  justify-content: space-between;;
   font-size: 14px;
   font-weight: normal;
   color: #333;
@@ -50,33 +51,65 @@ body {
       &__comment {
         text-align: left;
         font-size: 14px;
-        margin-top: 16px;
+        margin: 16px 0;
       }
-    }  
-    .items__image__upload {
-      margin-top: 16px;
-      align-content: center;
-      -webkit-box-align: center;
-      align-items: center;
-      background-color: rgb(245, 245, 245);
-      cursor: pointer;
-      display: flex;
+    } 
+    
+    // 画像投稿
+    #image-box {
       height: 150px;
-      width: 620px;
-      flex-wrap: wrap;
-      -webkit-box-pack: center;
-      justify-content: center;
-      position: relative;
-      border-width: 1px;
-      border-style: dashed;
-      border-color: rgb(204, 204, 204);
-      border-image: initial;
-      transition: all 0.5s ease-out 0s;
-      .camera_icon__comment {
-        font-size: 12px;
-        font-weight: normal;
+      background-color: rgb(245, 245, 245);
+      display: flex;
+      #previews{
+        display: flex;
+        width: 100%;
+        .image-container {
+          display: grid;
+          color: #0095ee;
+          margin: 0 3px;
+          width: 115px;
+          height: 150px;
+          img {
+            width: 115px;
+            height: 125px;
+          }
+          .image-edit {
+            display: flex;
+            justify-content: space-around;
+            .js-file_group {
+              display: none;
+            }
+          }
+        }
+        .image-label {
+          width: 100%;
+        }
+      }
+      .items__image__upload__comment {
+        flex-grow: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 1px dashed rgb(204, 204, 204);
+        height: 150px;
+        width: 100%;
+        cursor: pointer;
+        p {
+          font-size: 12px;
+          font-weight: normal;
+          border: none;
+        }
+        .js-file_group {
+          display: none;
+        }
       }
     }
+    // 削除機能のチェックボックスを隠しておく為のコード
+    .hidden-destroy {
+      display: none;
+    }
+
+
     .items__name {
       text-align: left;
     }
@@ -147,28 +180,39 @@ body {
         font-size: 14px;
         font-weight: normal;
       }
-      &__form {
-        position: absolute;
-        right: 0;
-        top: 0;
-        margin: 0;
-        width: 130px;
-        height: 48px;
-        border: 1px solid rgba($color: #333, $alpha: 0.7)
-        border-radius 4px;
-        text-align: right;
+      .items__price__input {
+
+        .items__price__form {
+          position: absolute;
+          right: 0;
+          top: 0;
+          margin: 0;
+          width: 130px;
+          height: 48px;
+          border: 1px solid rgba($color: #333, $alpha: 0.7)
+          border-radius 4px;
+          text-align: right;
+        }
       }
     }
     .items__fee {
       @include item-fee-profit;
-      &__notation {
-        float: right;
+      &__left{
+        text-align: left;
+      }
+      &__right {
+        text-align: right;
+        font-size: 14px;
       }
     }
     .items__profit {
       @include item-fee-profit;
-      &__notation {
-        float: right;
+      &__left{
+        text-align: left;
+      }
+      &__right {
+        text-align: right;
+        font-size: 14px;
       }
     }
   }
