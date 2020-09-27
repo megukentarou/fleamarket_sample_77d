@@ -3,11 +3,12 @@
 }
 
 @mixin submit-style($bgColor:#ea352d, $color:#fff) {
+  width: 100%;
   display: block;
   line-height: 48px;      
   font-size: 16px;
   font-weight: bold;
-  align-items: center;
+  text-align: center;
   border-radius: 4px;
   margin-bottom: 24px;
   cursor: pointer;
@@ -220,9 +221,6 @@ body {
     margin: 0 170px;
     &__btn__red {
       @include submit-style();
-    }
-    &__btn__gray {
-      @include submit-style(#ccc,#222);
     }
     .back {
       margin-bottom: 20px;
