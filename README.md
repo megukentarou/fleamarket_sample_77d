@@ -31,13 +31,7 @@
 - has_many :credit_cards
 - has_one :consignor
 - has_many :items
-- has_one :residencys
-
-## prefectureテーブル（都道府県）
-- 都道府県が必須
-|Column|Type|Options|
-|------|----|-------|
-|name|string|null: false|
+- has_one :residency
 
 ## residencysテーブル(住所)
  - 郵便番号が必須
@@ -180,7 +174,6 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|url|string|null: false|
 |item_id|integer|null: false, foreign_key: true|
 
 ### Association
@@ -191,7 +184,6 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|url|string|null: false|
 |item_id|integer|null: false, foreign_key: true|
 
 ### Association
