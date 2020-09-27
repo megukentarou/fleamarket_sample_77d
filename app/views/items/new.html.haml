@@ -13,7 +13,7 @@
           #previews
             - if @item.persisted?
               - @item.images.each_with_index do |image, i|
-                = image_tag image.src.url, data: { index: i }, width: "120", height: '150'            
+                = image_tag image.src.url, data: { index: i }
                 %span.js-remove 削除
                 %span.js-edit 編集
             = f.fields_for :images do |image|
@@ -58,7 +58,8 @@
         .label ブランド
         %span.any 任意
         -# brandテーブルとの紐付けが必要
-        = f.text_field :explanation,{maxlength: "40", name: "pass", size: "6", type: "text", placeholder: "仮) シャネル"}
+        = form_with(model: @brand, local: true) do |b|
+          = b.text_field :name,{maxlength: "40", name: "pass", size: "6", type: "text", placeholder: "仮) シャネル"}
       .items__condition
         %br
         .label 商品の状態
@@ -94,9 +95,8 @@
         .label 販売価格
         %span.require 必須
         %span.en¥
-        = form_with(model: @item, local: true) do |f|
-          .items__price__input
-            = f.text_field :price, {maxlength: "7", name: "number", size: "6", type: "tel", placeholder: "0", id: "items__price__input__form", class: "items__price__form"}
+        .items__price__input
+          = f.text_field :price, {maxlength: "7", name: "number", size: "6", type: "tel", placeholder: "0", id: "items__price__input__form", class: "items__price__form"}
       .items__fee
         .items__fee__left
           %p 販売手数料
@@ -109,15 +109,12 @@
           %p#item__profit --
     -# 出品ボタン
     .exhibition
-      .exhibition__btn
-        .exhibition__btn__red 出品する
-        .exhibition__btn__gray 下書きに保存
+      = f.submit "出品する", class: "exhibition__btn__red "
       .back 
         =link_to "もどる", "#"
     .attention
       %p 禁止されている行為及び出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。また、出品を持ちまして加盟店規約に同意したことになります。
-
-      
+  
 -# 部分テンプレートのフッター 
 = render partial: 'devise/registrations/furima.footer'
 
