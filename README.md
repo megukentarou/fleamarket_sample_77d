@@ -56,7 +56,6 @@
 
 ### Association
 - belongs_to :user
-- belongs_to :prefecture
 - has_one :consignor
 - belongs_to_active_hash :prefecture
 
@@ -115,8 +114,8 @@
 |category_id|integer|null: false, foreign_key: true|
 |brand_id|integer||
 |consignor_id|integer|null: false, foreign_key: true|
-|condition_id|integer|null: false, foreign_key: true|
-|prefecture_id|integer|null: false, foreign_key: true|
+|condition_id|integer|
+|prefecture_id|integer|
 
 ### Association
 - belongs_to :user
