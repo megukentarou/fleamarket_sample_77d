@@ -9,6 +9,7 @@ class Item < ApplicationRecord
   has_one :consignor
   belongs_to :condition
   belongs_to :prefecture
+  has_one :soldout
 
   mount_uploader :image, ImageUploader
 end
