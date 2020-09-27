@@ -32,6 +32,7 @@
 - has_one :consignor
 - has_many :items
 - has_one :residency
+- has_many :soldouts
 
 ## residencysテーブル(住所)
  - 郵便番号が必須
@@ -46,7 +47,7 @@
 |first_name|string|null: false|
 |first_name_reading|string|null: false|
 |city|string|null: false|
-|address|integer|null: false|
+|address|string|null: false|
 |building|string|
 |zip_code|string|null: false|
 |phone|string|
@@ -57,6 +58,7 @@
 - belongs_to :user
 - belongs_to :prefecture
 - has_one :consignor
+- belongs_to_active_hash :prefecture
 
 ## consignorsテーブル(発送元)
 - 商品送付先住所情報
@@ -77,6 +79,7 @@
 ### Association
 - belongs_to :user
 - belongs_to :residency
+- belongs_to_active_hash :prefecture
 
 
 ## credit_cardsテーブル
@@ -121,10 +124,9 @@
 - belongs_to :brand
 - has_many :images
 - has_one :consignor
-- belongs_to :condition
-- belongs_to :prefecture
-- belongs_to :exhibit
-- belongs_to :soldout
+- belongs_to_active_hash :condition
+- belongs_to_active_hash :prefecture
+- has_one :soldout
 
 ## categorysテーブル
 - カテゴリーの情報が必須
@@ -169,6 +171,7 @@
 
 ### Association
 - belongs_to :item
+- belongs_to :user
 
 ## ER図（URL）
 https://drive.google.com/file/d/1cq6Yql1uTnw0qAZnIx0Pi92um7jvuVx9/view?usp=sharing
