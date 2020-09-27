@@ -18,29 +18,26 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|name|string|null: false|
+|family_name|string|null: false|
+|family_name_reading|string|null: false|
+|first_name|string|null: false|
+|first_name_reading|string|null: false|
 |birthday|integer|null: false|
-|phone|string||
 |nick_name|string|null: false|
 |email|string|null: false, unique:true|
 |password|string|null: false|
-|profile_text|string||
 
 ### Association
 - has_many :credit_cards
 - has_one :consignor
 - has_many :items
-- has_many :residencys
+- has_one :residencys
 
 ## prefectureテーブル（都道府県）
 - 都道府県が必須
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
-
-### Association
-- has_many :residencys
-- has_many :items
 
 ## residencysテーブル(住所)
  - 郵便番号が必須
@@ -50,10 +47,15 @@
 
 |Column|Type|Options|
 |------|----|-------|
+|family_name|string|null: false|
+|family_name_reading|string|null: false|
+|first_name|string|null: false|
+|first_name_reading|string|null: false|
 |city|string|null: false|
 |address|integer|null: false|
-|building|string|null: false|
-|zip_code|integer|null: false|
+|building|string|
+|zip_code|string|null: false|
+|phone|string|
 |user_id|integer|null: false, foreign_key: true|
 |prefecture_id(acitve_hash)|integer|null: false|
 
@@ -137,6 +139,8 @@
 - has_one :consignor
 - belongs_to :condition
 - belongs_to :prefecture
+- belongs_to :exhibit
+- belongs_to :soldout
 
 ## categorysテーブル
 - カテゴリーの情報が必須
@@ -170,6 +174,28 @@
 
 ### Association
 - belongs_to :item
+
+## exhibit(出品中)テーブル
+- 外部キーとして出品中を管理する
+
+|Column|Type|Options|
+|------|----|-------|
+|url|string|null: false|
+|item_id|integer|null: false, foreign_key: true|
+
+### Association
+- has_many :item
+
+## soldout(売却済み)テーブル
+- 外部キーとして売却済みを管理する
+
+|Column|Type|Options|
+|------|----|-------|
+|url|string|null: false|
+|item_id|integer|null: false, foreign_key: true|
+
+### Association
+- has_many :item
 
 ## ER図（URL）
 https://drive.google.com/file/d/1cq6Yql1uTnw0qAZnIx0Pi92um7jvuVx9/view?usp=sharing
