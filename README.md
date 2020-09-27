@@ -56,7 +56,7 @@
 ### Association
 - belongs_to :user
 - belongs_to :prefecture
-- has_one :consignors
+- has_one :consignor
 
 ## consignorsテーブル(発送元)
 - 商品送付先住所情報
@@ -155,7 +155,7 @@
 |name|string|null: false|
 
 ### Association
-- has_many :item
+- has_many :items
 
 ## imagesテーブル
 - 画像は1枚以上必須
@@ -177,7 +177,7 @@
 |item_id|integer|null: false, foreign_key: true|
 
 ### Association
-- has_many :item
+- has_many :items
 
 ## soldout(売却済み)テーブル
 - 外部キーとして売却済みを管理する
@@ -187,7 +187,7 @@
 |item_id|integer|null: false, foreign_key: true|
 
 ### Association
-- has_many :item
+- has_many :items
 
 ## ER図（URL）
 https://drive.google.com/file/d/1cq6Yql1uTnw0qAZnIx0Pi92um7jvuVx9/view?usp=sharing
