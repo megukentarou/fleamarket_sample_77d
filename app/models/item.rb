@@ -10,7 +10,7 @@ class Item < ApplicationRecord
   has_many :images, dependent: :destroy
   accepts_nested_attributes_for :images
   has_one :consignor
-
+  has_one :soldout
   mount_uploader :image, ImageUploader
 
   #以下はフリマのバリデーションコード
