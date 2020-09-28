@@ -73,7 +73,7 @@
         .items__fee__title 配送について
         .label 配送料の負担
         %span.require 必須
-        = f.select :fee, {'選択して下さい': "null", "送料込み(出品者負担)": "送料込み(出品者負担)", "着払い(購入者負担)": "着払い(購入者負担)"}
+        = f.collection_select :fee_id, Fee.all, :id, :name, prompt: "選択して下さい", class: 'select fee'
       .items__consignor
         .label 発送元の地域
         %span.require 必須          
@@ -87,7 +87,7 @@
         %span.require 必須
         .select-wrap
         %i.icon-arow-button
-        = f.select :delivery_day, {'選択して下さい': "null", "1~2日で発送": "1~2日で発送", "2~3日で発送": "2~3日で発送", "4~7日で発送": "4~7日で発送"}
+        = f.collection_select :delivery_day_id, DeliveryDay.all, :id, :name, prompt: "選択して下さい", class: 'select delivery_day'
     -# 価格に関する入力
     .price
       価格 (¥300~9,999,999)

@@ -8,6 +8,8 @@ class ItemsController < ApplicationController
     @item.images.build
     @conditions = Condition.all
     @prefectures = Prefecture.all
+    @delivery_days = DeliveryDay.all
+    @fees = Fee.all
     # 親カテゴリーのデータを取り出して名前の要素を配列に追加していく
     # pluckメソッドで指定したカラムのレコードの配列を取得する
     # unshiftメソッドで配列の先頭に要素を挿入（カテゴリー選択の初期値"選択して下さい"を挿入)
