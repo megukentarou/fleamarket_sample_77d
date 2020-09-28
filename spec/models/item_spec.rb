@@ -24,13 +24,13 @@ describe Item do
     it "発送までの日数(delivery_day)の選択ないと登録できない" do
       item = build(:item, delivery_day: nil)
       item.valid?
-      expect(item.errors[:delivery_day]).to include("を入力してください")
+      expect(item.errors[:delivery_day]).to include()
     end
 
     it "配送料の負担(fee)の選択ないと登録できない" do
-      item = build(:item, fee: nil)
+      item = build(:item, fee_id: nil)
       item.valid?
-      expect(item.errors[:fee]).to include("を入力してください")
+      expect(item.errors[:fee_id]).to include()
     end
 
     it "発送元(prefecture_id)の選択ないと登録できない" do
@@ -42,7 +42,7 @@ describe Item do
     it "カテゴリー(category_id)の選択ないと登録できない" do
       item = build(:item, category_id: nil)
       item.valid?
-      expect(item.errors[:category_id]).to include("を入力してください")
+      expect(item.errors[:category_id]).to include()
     end
 
     it "商品の状態(condition_id)の選択ないと登録できない" do
@@ -50,8 +50,6 @@ describe Item do
       item.valid?
       expect(item.errors[:condition_id]).to include("を入力してください")
     end
-
-
 
   end
 end

@@ -12,22 +12,6 @@
 
 ActiveRecord::Schema.define(version: 2020_09_27_065357) do
 
-  create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "prefecture_id"
-    t.string "family_name", null: false
-    t.string "first_name", null: false
-    t.string "family_name_reading", null: false
-    t.string "first_name_reading", null: false
-    t.string "city", null: false
-    t.integer "address", null: false
-    t.integer "zip_code", null: false
-    t.string "building"
-    t.integer "phone"
-    t.integer "user_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "brands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
@@ -54,14 +38,6 @@ ActiveRecord::Schema.define(version: 2020_09_27_065357) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "credit_cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.string "cutomer_id", null: false
-    t.string "card_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "url", null: false
     t.integer "item_id", null: false
@@ -73,14 +49,14 @@ ActiveRecord::Schema.define(version: 2020_09_27_065357) do
     t.string "name", null: false
     t.integer "price", null: false
     t.string "explanation", null: false
-    t.string "delivery_day", null: false
-    t.string "fee", null: false
+    t.integer "delivery_day_id", null: false
+    t.integer "fee_id", null: false
     t.integer "user_id", null: false
     t.integer "category_id", null: false
     t.integer "brand_id"
-    t.integer "consignor_id"
     t.integer "condition_id", null: false
-    t.integer "prefecture_id"
+    t.integer "prefecture_id", null: false
+    t.integer "residency_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
