@@ -3,8 +3,8 @@ $(document).on('turbolinks:load', ()=> {
   const buildFileField = (index)=> {
     const html = `<div class="js-file_group" data-index="${index}">
                     <input class="js-file" type="file"
-                    name="item[images_attributes][${index}][src]"
-                    id="item_images_attributes_${index}_src">
+                    name="item[images_attributes][${index}][url]"
+                    id="item_images_attributes_${index}_url">
                   </div>`;
     return html;
   }
@@ -40,7 +40,7 @@ $(document).on('turbolinks:load', ()=> {
       $('.image-label').before(buildImg(targetIndex, blobUrl));
       // fileIndexの先頭の数字を使ってinputを作る
       $('.items__image__upload__comment').append(buildFileField(fileIndex[0]));
-      $(".image-label").attr("for", `item_images_attributes_${fileIndex[0]}_src`)
+      $(".image-label").attr("for", `item_images_attributes_${fileIndex[0]}_url`)
       fileIndex.shift();
       // 末尾の数に1足した数を追加する
       fileIndex.push(fileIndex[fileIndex.length - 1] + 1);
@@ -57,7 +57,7 @@ $(document).on('turbolinks:load', ()=> {
   $('#previews').on('click', '.js-edit', function() {
     const editIndex = $(this).data('index');
     console.log(editIndex);
-    $(`#item_images_attributes_${editIndex}_src`).click();
+    $(`#item_images_attributes_${editIndex}_url`).click();
   });
 
   // 画像の削除イベント
@@ -70,7 +70,7 @@ $(document).on('turbolinks:load', ()=> {
     if (hiddenCheck) hiddenCheck.prop('checked', true);
     $(this).parent().parent().remove();
     console.log(this);
-    $(`#item_images_attributes_${targetIndex}_src`).parent().remove();
+    $(`#item_images_attributes_${targetIndex}_url`).parent().remove();
     
     // 画像入力欄が0個にならないようにしておく
     if ($('.js-file_group').Count == 0) $('.items__image__upload').append(buildFileField(fileIndex[0]));

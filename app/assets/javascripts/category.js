@@ -1,7 +1,7 @@
 $(function(){
   // カテゴリーセレクトボックスのオプションを作成
   function appendOption(category){
-    let html = `<option value="${category.name}" data-category="${category.id}">${category.name}</option>`;
+    let html = `<option value="${category.id}" data-category="${category.id}">${category.name}</option>`;
     return html;
   }
   // 子カテゴリーの表示作成
@@ -21,8 +21,8 @@ $(function(){
   function appendGrandchildrenBox(insertHTML){
     let grandchildSelectHtml = `<div class='items-select-wrapper' id='grandchildren_wrapper'>
                                   <div class='items-select-wrapper__box'>
-                                    <select class='items-select-wrapper__box--select' id='grandchildren_category' name='category_id'>
-                                      <option value='選択して下さい' data-category="---">選択して下さい</option>
+                                    <select class='items-select-wrapper__box--select' id='category_id'>
+                                      <option data-category="---">選択して下さい</option>
                                       ${insertHTML}
                                     </select>
                                   </div>

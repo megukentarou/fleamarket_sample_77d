@@ -6,10 +6,7 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
     @item.images.build
-    @conditions = Condition.all
-    @prefectures = Prefecture.all
-    @delivery_days = DeliveryDay.all
-    @fees = Fee.all
+
     # 親カテゴリーのデータを取り出して名前の要素を配列に追加していく
     # pluckメソッドで指定したカラムのレコードの配列を取得する
     # unshiftメソッドで配列の先頭に要素を挿入（カテゴリー選択の初期値"選択して下さい"を挿入)
@@ -30,9 +27,12 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-    if @item.save
+    if @item.save!
       redirect_to root_path
     else
+      @item = Item.new
+      @item.images.build
+      @parent_category =Category.where(ancestry: nil).pluck(:name).unshift("選択して下さい")
       render :new
     end
   end
@@ -41,6 +41,7 @@ class ItemsController < ApplicationController
     if @item.update(item_params)
       redirect_to root_path
     else
+
       render :edit
     end
   end
@@ -54,7 +55,7 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(images_attributes: [:name])
+    params.require(:item).permit(:name, :price, :explanation, :category_id, :condition_id, :fee_id, :prefecture_id, :delivery_day_id, :brand, images_attributes: [:url, :id]).merge(user_id: current_user.id)
   end
 
   def set_item
