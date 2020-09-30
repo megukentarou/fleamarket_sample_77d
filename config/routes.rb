@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     get  'residencies', to: 'users/registrations#new_residency'
     post 'residencies', to: 'users/registrations#create_residency'
   end
-  resources :items, only: [:index, :new, :show] do
+  resources :items do
   #Ajaxで動くアクションのルートの作成
     collection do
       get 'get_children_category', defaults: { format: 'json' }

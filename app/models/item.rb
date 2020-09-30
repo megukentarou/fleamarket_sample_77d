@@ -5,12 +5,9 @@ class Item < ApplicationRecord
   belongs_to_active_hash :fee
   belongs_to_active_hash :prefecture
   belongs_to :user
-  belongs_to :category
-  belongs_to :brand
   has_many :images, dependent: :destroy
   accepts_nested_attributes_for :images
   has_one :soldout
-  mount_uploader :image, ImageUploader
 
   #以下はフリマのバリデーションコード
   with_options presence: true do
@@ -19,7 +16,6 @@ class Item < ApplicationRecord
     validates :explanation,        length: {maximum: 1000}
     validates :delivery_day_id 
     validates :fee_id
-    validates :category_id 
     validates :condition_id 
     validates :prefecture_id
   end

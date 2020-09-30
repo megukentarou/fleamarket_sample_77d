@@ -10,13 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_27_065357) do
-
-  create_table "brands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
+ActiveRecord::Schema.define(version: 2020_09_27_061950) do
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -24,18 +18,6 @@ ActiveRecord::Schema.define(version: 2020_09_27_065357) do
     t.datetime "updated_at", null: false
     t.string "ancestry"
     t.index ["ancestry"], name: "index_categories_on_ancestry"
-  end
-
-  create_table "consignors", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "family_name", null: false
-    t.string "family_kana", null: false
-    t.string "name", null: false
-    t.string "name_kana", null: false
-    t.string "phone"
-    t.integer "user_id", null: false
-    t.integer "residency_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -51,12 +33,11 @@ ActiveRecord::Schema.define(version: 2020_09_27_065357) do
     t.string "explanation", null: false
     t.integer "delivery_day_id", null: false
     t.integer "fee_id", null: false
-    t.integer "user_id", null: false
-    t.integer "category_id", null: false
-    t.integer "brand_id"
+    t.string "brand"
     t.integer "condition_id", null: false
     t.integer "prefecture_id", null: false
-    t.integer "residency_id", null: false
+    t.integer "category_id", null: false
+    t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
