@@ -118,6 +118,7 @@
 
 ### Association
 - has_many :items
+- has_ancestry
 
 
 ## imagesテーブル
