@@ -18,23 +18,27 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|family_name|string|null: false|
-|family_name_reading|string|null: false|
-|first_name|string|null: false|
-|first_name_reading|string|null: false|
-|birthday|date|null: false|
-|nick_name|string|null: false|
+|nickname|string|null: false|
 |email|string|null: false, unique:true|
-|password|string|null: false|
+|encrypted_password|string|null: false|
+|family_name|string|null: false|
+|first_name|string|null: false|
+|family_name_reading|string|null: false|
+|first_name_reading|string|null: false|
+|birth_day|date|null: false|
 
 ### Association
-- has_many :credit_cards
-- has_one :consignor
-- has_many :items
-- has_one :residency
-- has_many :soldouts
+- belongs_to_active_hash :condition
+- belongs_to_active_hash :delivery_day
+- belongs_to_active_hash :fee
+- belongs_to_active_hash :prefecture
+- belongs_to :user
+- has_many :images, dependent: :destroy
+- accepts_nested_attributes_for :images
+- has_one :soldout
 
-## residencysテーブル(住所)
+
+## residenciesテーブル(住所)
  - 郵便番号が必須
  - 市区町村が必須
  - 番地が必須
@@ -42,43 +46,21 @@
 
 |Column|Type|Options|
 |------|----|-------|
+|prefecture_id(acitve_hash)|integer|null: false|
 |family_name|string|null: false|
-|family_name_reading|string|null: false|
 |first_name|string|null: false|
+|family_name_reading|string|null: false|
 |first_name_reading|string|null: false|
 |city|string|null: false|
 |address|string|null: false|
-|building|string|
 |zip_code|string|null: false|
+|building|string|
 |phone|string|
 |user_id|integer|null: false, foreign_key: true|
-|prefecture_id(acitve_hash)|integer|null: false|
 
 ### Association
-- belongs_to :user
-- has_one :consignor
 - belongs_to_active_hash :prefecture
-
-## consignorsテーブル(発送元)
-- 商品送付先住所情報
- - 送付先氏名が、名字と名前でそれぞれ必須
- - 送付先氏名のふりがなが、名字と名前でそれぞれ必須 
- - お届け先の電話番号は任意
-
-|Column|Type|Options|
-|------|----|-------|
-|family_name|string|null: false|
-|family_kana|string|null: false|
-|name|string|null: false|
-|name_kana|string|null: false|
-|phone|string||
-|user_id|integer|null: false, foreign_key: true|
-|residency_id|integer|null: false, foreign_key: true|
-
-### Association
-- belongs_to :user
-- belongs_to :residency
-- belongs_to_active_hash :prefecture
+- belongs_to :user, optional: true
 
 
 ## credit_cardsテーブル
@@ -108,26 +90,25 @@
 |name|string|null: false|
 |price|integer|null: false|
 |explanation|string|null: false|
-|delivery_day|string|null: false|
-|fee|string|null: false|
-|user_id|integer|null: false, foreign_key: true|
+|delivery_day_id|integer|null: false|
+|fee_id|integer|null: false|
+|brand|string||
+|condition_id|integer|null: false|
+|prefecture_id|integer|null: false|
 |category_id|integer|null: false, foreign_key: true|
-|brand_id|integer||
-|consignor_id|integer|null: false, foreign_key: true|
-|condition_id|integer|
-|prefecture_id|integer|
+|user_id|integer|null: false, foreign_key: true|
 
 ### Association
-- belongs_to :user
-- belongs_to :category
-- belongs_to :brand
-- has_many :images
-- has_one :consignor
 - belongs_to_active_hash :condition
+- belongs_to_active_hash :delivery_day
+- belongs_to_active_hash :fee
 - belongs_to_active_hash :prefecture
+- belongs_to :user
+- has_many :images, dependent: :destroy
+- accepts_nested_attributes_for :images
 - has_one :soldout
 
-## categorysテーブル
+## categoriesテーブル
 - カテゴリーの情報が必須
 
 |Column|Type|Options|
@@ -137,16 +118,8 @@
 
 ### Association
 - has_many :items
+- has_ancestry
 
-## brandsテーブル
-- ブランドについての情報は任意
-
-|Column|Type|Options|
-|------|----|-------|
-|name|string|null: false|
-
-### Association
-- has_many :items
 
 ## imagesテーブル
 - 画像は1枚以上必須
