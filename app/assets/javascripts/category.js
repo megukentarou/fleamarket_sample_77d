@@ -32,7 +32,6 @@ $(document).on('turbolinks:load', function() {
   // 親カテゴリー選択後のイベント（子カテゴリーのセレクトタグを出す為のAjax通信）
   $('#parent_category').on('change', function(){
     let parentCategory = document.getElementById('parent_category').value; //選択された親カテゴリーの名前を取得
-    console.log(parentCategory);
     if (parentCategory != ""){ //親カテゴリーが初期値の"選択して下さい"でないことを確認
       $.ajax({
         url: '/items/get_children_category',
