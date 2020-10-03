@@ -4,6 +4,8 @@
 .items
   = form_with(model: @item, local: true) do |f|
     .items__information
+      %h1 商品情報の入力
+      = render 'items/shared/error_messages', model: f.object
       .items__image
         .label 出品画像
         %span.require 必須
@@ -38,7 +40,7 @@
       .items__name
         .label 商品名
         %span.require 必須
-        = f.text_field :name, {maxlength: "40",class: ".items__input",  size: "6", type: "text", value: " ", placeholder: "40文字まで"}
+        = f.text_field :name, {maxlength: "40",class: ".items__input",  size: "6", type: "text", placeholder: "40文字まで"}
       .items__explnation
         .label 商品の説明
         %span.require 必須
@@ -52,7 +54,7 @@
         %span.require 必須
         .items-select-wrapper
           .items-select-wrapper__box
-            = f.select :category_id, @parent_category, {}, {class: 'items-select-wrapper__box--select', id: 'parent_category'}
+            = f.select :category_id, @parent_category, {prompt: "選択して下さい"}, {class: 'items-select-wrapper__box--select', id: 'parent_category'}
       .items__brand
         %br
         .label ブランド
@@ -64,14 +66,14 @@
         %span.require 必須
         %br
         -# active_hashで作ったconditionモデルの値を表示させる
-        = f.collection_select :condition_id, Condition.all, :id, :condition, class: 'select condition'
+        = f.collection_select :condition_id, Condition.all, :id, :condition, prompt: "選択して下さい", class: 'select condition'
     -# 配送に関係する内容 
     .deliverys
       .items__fee
         .items__fee__title 配送について
         .label 配送料の負担
         %span.require 必須
-        = f.collection_select :fee_id, Fee.all, :id, :name, class: 'select fee'
+        = f.collection_select :fee_id, Fee.all, :id, :name, prompt: "選択して下さい", class: 'select fee'
       .items__consignor
         .label 発送元の地域
         %span.require 必須          
@@ -85,7 +87,7 @@
         %span.require 必須
         .select-wrap
         %i.icon-arow-button
-        = f.collection_select :delivery_day_id, DeliveryDay.all, :id, :name,  class: 'select delivery_day'
+        = f.collection_select :delivery_day_id, DeliveryDay.all, :id, :name, prompt: "選択して下さい",  class: 'select delivery_day'
     -# 価格に関する入力
     .price
       価格 (¥300~9,999,999)
