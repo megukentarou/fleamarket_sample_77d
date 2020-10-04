@@ -47,6 +47,11 @@ body {
     padding: 40px;
     text-align: left;
     @include border-base-line;
+    h1 {
+      font-size: 28px;
+      font-weight: bold;
+      color: #333;
+    }
     .items__image {
       text-align: left;
       &__comment {

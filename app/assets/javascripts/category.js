@@ -1,4 +1,4 @@
-$(function(){
+$(document).on('turbolinks:load', function() {
   // カテゴリーセレクトボックスのオプションを作成
   function appendOption(category){
     let html = `<option value="${category.id}" data-category="${category.id}">${category.name}</option>`;
@@ -32,9 +32,9 @@ $(function(){
   // 親カテゴリー選択後のイベント（子カテゴリーのセレクトタグを出す為のAjax通信）
   $('#parent_category').on('change', function(){
     let parentCategory = document.getElementById('parent_category').value; //選択された親カテゴリーの名前を取得
-    if (parentCategory != "選択して下さい"){ //親カテゴリーが初期値の"選択して下さい"でないことを確認
+    if (parentCategory != ""){ //親カテゴリーが初期値の"選択して下さい"でないことを確認
       $.ajax({
-        url: 'get_children_category',
+        url: '/items/get_children_category',
         type: 'GET',
         data: { parent_name: parentCategory },
         dataType: 'json'
@@ -61,7 +61,7 @@ $(function(){
     let childId = $('#children_category option:selected').data('category'); //選択された子カテゴリーのid取得
     if (childId != "---"){//子カテゴリーが初期値で無い事を確認
       $.ajax({
-        url: 'get_grandchildren_category',
+        url: '/items/get_grandchildren_category',
         type: 'GET',
         data: { child_id: childId},
         dataType: 'json'
