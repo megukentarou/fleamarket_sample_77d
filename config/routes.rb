@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     end
   end
 
+
   resources :users do
     member do
       get 'paymethod'
@@ -22,5 +23,5 @@ Rails.application.routes.draw do
     end
   end
   resources :images
-
+  resources :users, only: [:show]
 end

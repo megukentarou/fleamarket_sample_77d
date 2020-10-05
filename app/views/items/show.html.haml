@@ -5,7 +5,7 @@
     .topcontent
       .itembox
         %h2.itembox__name
-          坂本ですが
+          = @item.name
         .itembox__body
           %ul
             %li
@@ -17,26 +17,30 @@
             =image_tag "product2.jpeg", size:"50x50", class: "product-img"
 
         .itembox__price
-          20億
+          = @item.price.to_s
           .itembox__price-detail
             （税込み）送料込み
           .item-detail
-            ぞーうさんぞーうさん
+            = @item.explnation
         .table
           %table
             %tbody
             %tr
               %th 出品者
-              %td 本人
+              %td 
             %tr
               %th カテゴリー
-              %td samurai
+              %td 
+                = @parent_category =Category.where(ancestry: nil).pluck(:name)
               %br
+                = @children_category = Category.find_by(name: "#{params[:parent_name]}", ancestry: nil).children
               %br
+                = @grandchildren_category = Category.find(params[:child_id]).children
 
             %tr
               %th ブランド
-              %td sakamoto
+              %td 
+              
             %tr
               %th 商品の状態
               %td sai&co
