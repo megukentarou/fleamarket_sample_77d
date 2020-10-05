@@ -1,112 +1,117 @@
-.user-info {
-  width: 700px;
-  padding-top: 50px;
-  &__overview {
-    background-image: image-url("mypage.jpg");
-    height: 200px;
+.user-page {
+  height: 100%;
+  .user-info {
     width: 700px;
-    background-size: 700px 200px;
-    &__icon {
-      height: 80px;
-      width: 80px;
-      background-image: image-url("mypage2.png");
-      background-size: 80px 80px;
-      position: absolute;
-      margin: 30px 0px 0px 310px;
-    }
-    &__name {
-      padding-top: 110px;
-      text-align: center;
-      font-size: 16px;
-      font-weight: bold;
-    }
-    &__review {
-      text-align: center;
-      font-size: 16px;
-      font-weight: bold;
-    }
-  }
-  &__notice {
-    border-top: 3px solid #3ccace;
-    ul.messages {
-      background-color: white;
-      text-align: center;
-      font-size: 24px;
-      .messagedisplay {
-        li.message {
-          height: 50px;
-          font-size: 14px;
-          text-align: left;
-          list-style: none;
-          border-top: 1px solid #f2f2f2;
-        }
-        .link-message {
-          text-decoration: none;
-          color: black;
-          display: block;
-          padding: 30px 0px 0px 40px;
-        }
-        li.time {
-          height: 50px;
-          text-align: left;
-          font-size: 14px;
-          list-style: none;
-          border-bottom: 1px solid #f2f2f2;
-        }
-        .link-time {
-          color: gray;
-          text-decoration: none;
-          display: block;
-          padding: 25px 0px 0px 40px;
-        }
-      }
-      .messagedisplay:hover {
-        background-color: #f9f9f9;
-        height: 102px;
-        list-style: none;
-        transition: 0.2s;
-      }
-      .list {
+    padding-top: 50px;
+    &__overview {
+      background-image: image-url("mypage.jpg");
+      height: 200px;
+      width: 700px;
+      background-size: 700px 200px;
+      &__icon {
         height: 80px;
-        font-size: 14px;
-        padding-top: 20px;
-        .messagelist {
-          background-color: #f2f2f2;
-          height: 60px;
-          width: 600px;
-          line-height: 60px;
-          margin: 0 auto;
+        width: 80px;
+        background-image: image-url("mypage2.png");
+        background-size: 80px 80px;
+        position: absolute;
+        margin: 30px 0px 0px 310px;
+      }
+      &__name {
+        padding-top: 110px;
+        text-align: center;
+        font-size: 16px;
+        font-weight: bold;
+      }
+      &__review {
+        text-align: center;
+        font-size: 16px;
+        font-weight: bold;
+      }
+    }
+    &__notice {
+      border-top: 3px solid #3ccace;
+      ul.messages {
+        background-color: white;
+        text-align: center;
+        font-size: 24px;
+        .messagedisplay {
+          li.message {
+            height: 50px;
+            font-size: 14px;
+            text-align: left;
+            list-style: none;
+            border-top: 1px solid #f2f2f2;
+          }
+          .link-message {
+            text-decoration: none;
+            color: black;
+            display: block;
+            padding: 30px 0px 0px 40px;
+          }
+          li.time {
+            height: 50px;
+            text-align: left;
+            font-size: 14px;
+            list-style: none;
+            border-bottom: 1px solid #f2f2f2;
+          }
+          .link-time {
+            color: gray;
+            text-decoration: none;
+            display: block;
+            padding: 25px 0px 0px 40px;
+          }
         }
-        .messagelist:hover {
-          background-color: #fcfcfc;
-          height: 60px;
-          width: 600px;
-          line-height: 60px;
-          margin: 0 auto;
+        .messagedisplay:hover {
+          background-color: #f9f9f9;
+          height: 102px;
+          list-style: none;
           transition: 0.2s;
         }
-        .link-messagelist {
-          color: black;
-          text-decoration: none;
-          display: block;
+        .list {
+          height: 80px;
+          font-size: 14px;
+          padding-top: 20px;
+          .messagelist {
+            background-color: #f2f2f2;
+            height: 60px;
+            width: 600px;
+            line-height: 60px;
+            margin: 0 auto;
+          }
+          .messagelist:hover {
+            background-color: #fcfcfc;
+            height: 60px;
+            width: 600px;
+            line-height: 60px;
+            margin: 0 auto;
+            transition: 0.2s;
+          }
+          .link-messagelist {
+            color: black;
+            text-decoration: none;
+            display: block;
+          }
         }
       }
     }
-  }
-  &__transaction {
-    background-color: white;
-    margin-top: 50px;
-    border-top: 3px solid #3ccace;
-    ul.transaction__list {
+    &__transaction {
       background-color: white;
+      margin-top: 50px;
+      border-top: 3px solid #3ccace;
       font-size: 24px;
-      text-align: center;
-      li.transaction__now {
-        height: 50px;
-        padding-top: 20px;
-        font-size: 20px;
-        list-style: none;
-        border-top: 1px solid #f2f2f2;
+      ul.transaction__list {
+        display: flex;
+        background-color: white;
+        line-height: 30px;
+        justify-content: left;
+        flex-wrap: wrap;
+        li.transaction__now {
+          margin: 0 3px;
+          font-size: 15px;
+          list-style: none;
+          border: 2px solid #f2f2f2;
+        }
       }
     }
   }
