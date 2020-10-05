@@ -5,6 +5,7 @@ class User < ApplicationRecord
                 :recoverable, :rememberable, :validatable
         has_many :items
         has_one :residency, dependent: :delete
+        has_one :card, dependent: :delete
 
         #以下はフリマのバリデーションコード
         with_options presence: true do
