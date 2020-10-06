@@ -2,7 +2,6 @@ class UsersController < ApplicationController
   before_action :set_category
 
   def index
-    # @items = Item.find(params[:id], current_user.id)
     @items = Item.includes(:images).order('created_at DESC')
   end
 

@@ -1,4 +1,6 @@
 class ItemsController < ApplicationController
+  before_action :set_item, only: [:edit, :show]
+
   def index
     @parent = Category.where(ancestry: nil)
   end
@@ -32,14 +34,14 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
+    # @item = Item.find(params[:id])
   end
   
   def edit
-    @item = Item.find(params[:id])
+    # @item = Item.find(params[:id])
   end
 
-  def update!
+  def update
     item = Item.find(params[:id])
     if item.update(item_params)
       # フラッシュメッセージで更新成功を表示
