@@ -25,9 +25,7 @@
       %ul.transaction__list 
         - current_user.items.each do |item|
           %li.transaction__now
-            -# = item.images.first
             = image_tag item.images.first.url.url, size: '120×120'
-            -# %img{src: item.images.first, height:"120", width: "120"}
             %p 商品名
             = item.name
             %p 販売価格(税込み)

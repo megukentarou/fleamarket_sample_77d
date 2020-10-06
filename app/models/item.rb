@@ -14,7 +14,7 @@ class Item < ApplicationRecord
     validates :name,
       length: {maximum: 40}
     validates :price,
-      inclusion: {in: 1..9999999}
+      numericality: {greater_than_or_equal_to: 1, less_than_or_equal_to: 9999999}
     validates :explanation,
       length: {maximum: 1000} 
     validates :delivery_day_id 
