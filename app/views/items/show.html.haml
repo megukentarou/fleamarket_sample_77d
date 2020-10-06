@@ -5,57 +5,73 @@
     .topcontent
       .itembox
         %h2.itembox__name
-          坂本ですが
+          = @item.name
         .itembox__body
           %ul
             %li
-              =image_tag "product1.jpeg", size:"290x290", class: "product-img"
-          .itembox__body_sub
-            =image_tag "product1.jpeg", size:"50x50", class: "product-img"
-            =image_tag "product2.jpeg", size:"50x50", class: "product-img"
-            =image_tag "product1.jpeg", size:"50x50", class: "product-img"
-            =image_tag "product2.jpeg", size:"50x50", class: "product-img"
-
+              -# 商品情報に紐付けされている画像データを取得している
+              - @item.images.each_with_index do |image, i|
+                -# 最初の1枚目を表示させる記述に変える
+                = image_tag image.url.url, data: { index: i }, size:"290x290", class: "product-img"
+                .itembox__body_sub
+                  -# 横並びに小さいサイズの画像を表示させる
+                  
         .itembox__price
-          20億
+          = @item.price
+          円
           .itembox__price-detail
             （税込み）送料込み
           .item-detail
-            ぞーうさんぞーうさん
+            = @item.explanation
         .table
           %table
             %tbody
             %tr
-              %th 
-              %td 本人
+              %th 出品者
+              %td 
+                -# idを名前表示にする
+                = @item.user_id{:name}
             %tr
               %th カテゴリー
-              %td samurai
+              %td 
+                -# idを名前表示にする
+                = @item.category_id{:name}
               %br
               %br
 
             %tr
               %th ブランド
-              %td sakamoto
+              %td 
+                = @item.brand
             %tr
               %th 商品の状態
-              %td sai&co
+              %td 
+                -# idの値を表示する
+                = @item.condition_id
             %tr
               %th 配送料の負担
-              %td ？？？？
+              %td
+                -# idの値を表示する
+                = @item.fee_id
             %tr
               %th 発送元の地域
-              %td 沖縄
+              %td 
+                -# idを都道府県表示する
+                = @item.prefecture_id
             %tr
               %th 発送日の目安
-              %td 100年以内
+              %td
+                -# idの値を表示する
+                = @item.delivery_day_id
 
         .optionalArea
           %ul
             %li.optionalBtnlikeBtn
+              -# 出品者以外なら表示させる
               %span.purchaseBtn__text
                 = icon('fas', 'cart-arrow-down fa-2x')
                 購入する
+              -# 出品者なら編集リンクと削除リンクを表示させる
           %ul.optional
             %li.optionalBtn
             = link_to '' do
