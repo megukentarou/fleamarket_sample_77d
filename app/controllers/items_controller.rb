@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:edit, :show]
+  before_action :set_item, only: [:edit, :show, :update]
 
   def index
     @parent = Category.where(ancestry: nil)
@@ -40,8 +40,7 @@ class ItemsController < ApplicationController
   end
 
   def update
-    item = Item.find(params[:id])
-    if item.update(item_params)
+    if @item.update(item_params)
       # フラッシュメッセージで更新成功を表示
       redirect_to edit_item_path, notice: '出品情報の更新が完了しました'
     else
