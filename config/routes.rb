@@ -17,5 +17,5 @@ Rails.application.routes.draw do
 
   resources :users
   resources :images
-  resources :cards
+  resources :cards, only: [:new, :create, :index, :destroy, :show]
 end
