@@ -45,17 +45,9 @@ class ItemsController < ApplicationController
       redirect_to edit_item_path, notice: '出品情報の更新が完了しました'
     else
       flash.now[:alert] = "入力内容漏れがあります。下記を参照に修正してください。"
-      if params[:item][:images_attributes].blank?
-        @item.images.build
-        render action: :edit
-      else
-      @item.images = [@item.images.new]
       render action: :edit
-      end
     end
   end
-
-
 
   def destroy
   end
