@@ -1,0 +1,44 @@
+.content{
+  background-color: #f2f2f2;
+  height: 500px;
+  width: 700px;
+  margin-top: 50px;
+  &__cards {
+    height: 100px;
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    line-height: 100px;
+    border-bottom: 1px solid white;
+    &__list {
+      padding-top:30px;
+      &__pay {
+        font-size:20px;
+        padding-top:10px;
+       &__num {
+         font-size: 16px;
+       }
+      }
+      &__remove {
+        width: 450px;
+        text-align:center;
+        background-color: #3ccace;
+        margin-top:30px;
+        margin-left:150px;
+        height:50px;
+        color:black;
+        font-weight: bold;
+      }
+    }
+  }
+  &__newcard {
+    padding:30px 0px;
+    border-bottom: 1px solid white;
+  }
+}
+
+.link-newcard {
+  color: #0095ee;
+  text-decoration: none;
+  display: block;
+}
