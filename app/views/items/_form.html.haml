@@ -1,0 +1,112 @@
+-# 部分テンプレートのヘッダー
+= render partial: 'devise/registrations/furima.header'
+-# 商品画像をアップロードする実装
+.items
+  = form_with(model: @item, local: true) do |f|
+    .items__information
+      -# %h1 商品情報の入力
+      = render 'items/shared/error_messages', model: f.object
+      .items__image
+        .label 出品画像
+        %span.require 必須
+        .items__image__comment
+          最大5枚までアップロードできます
+        #image-box
+          #previews
+            - if @item.persisted?
+              - @item.images.each_with_index do |image, i|
+                .image-container
+                  = image_tag image.url.url, data: { index: i }
+                  .image-edit
+                    %span.js-remove 削除
+                    %span.js-edit{data: {index: i}} 編集
+
+            %label.image-label{for: "item_images_attributes_#{@item.images.length}_url"}
+              .items__image__upload__comment
+                %i.fas.fa-camera 
+                  %p クリックしてファイルをアップロード
+              = f.fields_for :images do |image|
+                .js-file_group{data: {index: image.index}}
+                  = image.file_field :url, class: "js-file"
+                - if @item.persisted?
+                  .js-file_group{data: {index: @item.images.count}}
+                    = file_field_tag :url, name: "item[images_attributes][#{@item.images.count}][url]", class: 'js-file', id: "item_images_attributes_#{@item.images.length}_url"
+                    - if image.object.persisted?
+                      = image.check_box :_destroy, class: 'hidden-destroy', data: {index: image.index}
+
+    -# 商品名や説明を入れる
+    .items__information
+      .items__name
+        .label 商品名
+        %span.require 必須
+        = f.text_field :name, {maxlength: "40",class: ".items__input",  size: "6", type: "text", placeholder: "40文字まで"}
+      .items__explnation
+        .label 商品の説明
+        %span.require 必須
+        %br
+        = f.text_area :explanation, {cols: "1000", rows: "7", placeholder: "商品の説明(必須1,000文字以内)\n(色、素材、重さ、定価、注意点など）"}
+    -# 商品の詳細を入れる
+    .items__edit 
+      .items__edit__title 商品の詳細
+      .items__category
+        .label カテゴリー
+        %span.require 必須
+        .items-select-wrapper
+          .items-select-wrapper__box
+            -# Category.rootsと記述する事でancestry: nilを書かないで親カテゴリーのみ取得できる
+            = f.collection_select :category_id, Category.roots, :id, :name,{ include_blank: "選択して下さい"}, required: true, class: 'items-select-wrapper__box--select', id: 'parent_category'
+      .items__brand
+        %br
+        .label ブランド
+        %span.any 任意
+        = f.text_field :brand, {maxlength: "40", size: "6", type: "text", placeholder: "仮) シャネル"}
+      .items__condition
+        %br
+        .label 商品の状態
+        %span.require 必須
+        %br
+        -# active_hashで作ったconditionモデルの値を表示させる
+        = f.collection_select :condition_id, Condition.all, :id, :condition, include_blank: "選択して下さい", class: 'select condition'
+    -# 配送に関係する内容 
+    .deliverys
+      .items__fee
+        .items__fee__title 配送について
+        .label 配送料の負担
+        %span.require 必須
+        = f.collection_select :fee_id, Fee.all, :id, :name, include_blank: "選択して下さい", class: 'select fee'
+      .items__consignor
+        .label 発送元の地域
+        %span.require 必須          
+        .select-wrap
+        %i.icon-arrow-button
+        -# active_hashのprefectureモデルの値を表示させる
+        -# DB確認したらprefecture_idカラムが無いので、アソシエーションの追加が必要だと思われる
+        = f.collection_select :prefecture_id, Prefecture.all, :id, :name, include_blank: "選択して下さい", class: 'select prefecture'
+      .items__delivery_day
+        .label 発送までの日数
+        %span.require 必須
+        .select-wrap
+        %i.icon-arow-button
+        = f.collection_select :delivery_day_id, DeliveryDay.all, :id, :name, include_blank: "選択して下さい",  class: 'select delivery_day'
+    -# 価格に関する入力
+    .price
+      価格 (¥1~9,999,999)
+      .items__price
+        .label 販売価格
+        %span.require 必須
+        %span.en¥
+        .items__price__input
+          = f.text_field :price, {maxlength: "7", size: "6", type: "tel", placeholder: "1", id: "items__price__input__form", class: "items__price__form"}
+  
+    -# 出品ボタン
+    .exhibition
+      = f.submit"出品する", class: "exhibition__btn__red "
+      .back 
+        =link_to "もどる", "#"
+    .attention
+      %p 禁止されている行為及び出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。また、出品を持ちまして加盟店規約に同意したことになります。
+  
+-# 部分テンプレートのフッター 
+= render partial: 'devise/registrations/furima.footer'
+
+

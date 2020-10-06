@@ -1,4 +1,6 @@
 class ItemsController < ApplicationController
+  before_action :set_item, only: [:edit, :show, :update]
+
   def index
     @parent = Category.where(ancestry: nil)
   end
@@ -6,16 +8,12 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
     @item.images.build
-    # 親カテゴリーのデータを取り出して名前の要素を配列に追加していく
-    # pluckメソッドで指定したカラムのレコードの配列を取得する
-    # unshiftメソッドで配列の先頭に要素を挿入（カテゴリー選択の初期値"選択して下さい"を挿入)
-    @parent_category =Category.where(ancestry: nil).pluck(:name)
   end
 
   # 親カテゴリーが選択された後の子カテゴリーのアクション
   def get_children_category
     # 選択された親カテゴリーに紐づく子カテゴリーの配列を取得
-    @children_category = Category.find_by(name: "#{params[:parent_name]}", ancestry: nil).children
+    @children_category = Category.find_by(id: "#{params[:parent_name]}", ancestry: nil).children
   end
 
   # 子カテゴリーが選択された後の孫カテゴリーのアクション
@@ -31,33 +29,33 @@ class ItemsController < ApplicationController
       redirect_to new_item_path, notice: '出品情報の登録が完了しました'
     else
       flash.now[:alert] = "入力内容漏れがあります。下記を参照に修正してください。"
-      @parent_category = Category.where(ancestry: nil).pluck(:name)
-
-      if params[:item][:images_attributes].blank?
-        @item.images.build
-        render action: :new
-      else
-      @item.images = [@item.images.new]
       render action: :new
-      end
-    end
-  end
-
-  def update
-    @item = find_items_by_id
-    if @item.update(item_params)
-      # フラッシュメッセージで更新成功を表示
-      redirect_to new_item_path, notice: '出品情報の更新が完了しました'
-    else
-      flash.now[:alert] = "入力内容漏れがあります。下記を参照に修正してください。"
-      @item.images.build
-      @parent_category = Category.where(ancestry: nil).pluck(:name)
-      render action: :edit
     end
   end
 
   def show
   end
+  
+  def edit
+  end
+
+  def update
+    if @item.update(item_params)
+      # フラッシュメッセージで更新成功を表示
+      redirect_to edit_item_path, notice: '出品情報の更新が完了しました'
+    else
+      flash.now[:alert] = "入力内容漏れがあります。下記を参照に修正してください。"
+      if params[:item][:images_attributes].blank?
+        @item.images.build
+        render action: :edit
+      else
+      @item.images = [@item.images.new]
+      render action: :edit
+      end
+    end
+  end
+
+
 
   def destroy
   end

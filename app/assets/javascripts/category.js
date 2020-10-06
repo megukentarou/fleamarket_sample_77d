@@ -9,8 +9,8 @@ $(document).on('turbolinks:load', function() {
     let childSelectHtml = '';
     childSelectHtml = `<div class='items-select-wrapper' id='children_wrapper'>
                         <div class='items-select-wrapper__box'>
-                          <select class="items-select-wrapper__box--select" id="children_category" name=" ">
-                            <option value="選択して下さい" data-category="---">選択して下さい</option>
+                          <select class="items-select-wrapper__box--select" id="children_category" required>
+                           <option value="">選択して下さい</option>
                             ${insertHTML}
                           </select>
                         </div>
@@ -21,8 +21,8 @@ $(document).on('turbolinks:load', function() {
   function appendGrandchildrenBox(insertHTML){
     let grandchildSelectHtml = `<div class='items-select-wrapper' id='grandchildren_wrapper'>
                                   <div class='items-select-wrapper__box'>
-                                    <select class='items-select-wrapper__box--select' id='category_id' name="item[category_id]">
-                                      <option data-category="---">選択して下さい</option>
+                                    <select class='items-select-wrapper__box--select' id='category_id' name="item[category_id]" required>
+                                      <option value="">選択して下さい</option>
                                       ${insertHTML}
                                     </select>
                                   </div>
@@ -31,8 +31,8 @@ $(document).on('turbolinks:load', function() {
   }
   // 親カテゴリー選択後のイベント（子カテゴリーのセレクトタグを出す為のAjax通信）
   $('#parent_category').on('change', function(){
-    let parentCategory = document.getElementById('parent_category').value; //選択された親カテゴリーの名前を取得
-    if (parentCategory != ""){ //親カテゴリーが初期値の"選択して下さい"でないことを確認
+    let parentCategory = $('#parent_category').val(); //選択された親カテゴリーの値を取得
+    if (parentCategory != ""){ //親カテゴリーが初期値でないことを確認
       $.ajax({
         url: '/items/get_children_category',
         type: 'GET',

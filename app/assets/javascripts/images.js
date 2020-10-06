@@ -56,7 +56,6 @@ $(document).on('turbolinks:load', ()=> {
   // 削除の編集（差し替え）イベント
   $('#previews').on('click', '.js-edit', function() {
     const editIndex = $(this).data('index');
-    console.log(editIndex);
     $(`#item_images_attributes_${editIndex}_url`).click();
   });
 
@@ -65,11 +64,9 @@ $(document).on('turbolinks:load', ()=> {
     const targetIndex = $(this).parent().prev().data('index')
     // 該当indexを振られているチェックボックスを取得する
     const hiddenCheck = $(`input[data-index="${targetIndex}"].hidden-destroy`);
-    console.log(targetIndex);
     // もしチェックボックスが存在すればチェックを入れる
     if (hiddenCheck) hiddenCheck.prop('checked', true);
     $(this).parent().parent().remove();
-    console.log(this);
     $(`#item_images_attributes_${targetIndex}_url`).parent().remove();
     
     // 画像入力欄が0個にならないようにしておく
@@ -78,16 +75,9 @@ $(document).on('turbolinks:load', ()=> {
     $('.image-label').css({'display': 'flex'}); 
   });
 
-  // エラーハンドリングの実装
-  
-  // 商品名が空白の場合にエラーメッセージ出現
-  $('#item_name').on('blur', function() {
-    var itemname = $('#item_name').Value;
-    console.log(itemname);
-    if($('#item_name').Value == "") {
-      console.log("商品名を入力してください")
-    }
-  });
+  // 編集画面に遷移時に画像枚数が5枚だとinputフィールドを隠した状態で始まる
+  if($('.image-container').length == 5) {
+    $('.image-label').css({'display': 'none'});
+  }
 });
-
 
