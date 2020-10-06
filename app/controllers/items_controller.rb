@@ -57,8 +57,7 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @user = User.find(@item.user_id)
-    @category = Category.find(params[:id])
+    @item = Item.find(params[:id])
   end
 
   def destroy

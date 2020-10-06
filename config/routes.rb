@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root 'items#index'
+  resources :users
   devise_for :users, controllers: {
     registrations: 'users/registrations',
   } 
@@ -23,5 +24,4 @@ Rails.application.routes.draw do
     end
   end
   resources :images
-  resources :users, only: [:show]
 end
