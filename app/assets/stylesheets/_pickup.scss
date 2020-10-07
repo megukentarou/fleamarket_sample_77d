@@ -15,6 +15,7 @@
       color:black;
       &__product {
         background-color: white;
+        display:flex;
         &__body {
           font-weight: normal;
           &__name {
@@ -37,8 +38,14 @@
   }
 }
 
-.category-link {
+.listBtn{
   text-decoration: none;
+  color:black;
+  display: inline-block;
+  background-color: white;
+}
+
+.category-link {
   color:#3CCACE;
 }
 
