@@ -44,12 +44,20 @@ class ItemsController < ApplicationController
       # フラッシュメッセージで更新成功を表示
       redirect_to edit_item_path, notice: '出品情報の更新が完了しました'
     else
-      flash.now[:alert] = "入力内容漏れがあります。下記を参照に修正してください。"
+      flash.now[:alert] = "入力内容漏れがあります。下記を参照に修正してください"
       render action: :edit
     end
   end
 
   def destroy
+    item = Item.find(params[:id])
+    if item.destroy
+      # フラッシュメッセージで削除成功を表示
+      redirect_to users_path, notice: '出品情報を削除しました'
+    else
+      flash.now[:alert] = '出品情報を削除できませんでした'
+      render action: :show
+    end
   end
 
   private
