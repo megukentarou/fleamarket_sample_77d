@@ -16,26 +16,10 @@
         }
         .itembox__body {
           margin: 16px 0 0;
-          ul {
+          display: block;
+          &_sub {
             display: flex;
-            position: relative;
-            margin-bottom: 20px;
-            li {
-              display: flex;
-              flex-direction: column;
-              width: 560px;
-              align-items: center;
-              margin: 0 auto;
-              img {
-                object-fit: cover;
-                height: 346px;
-              }
-            }
-            .itembox__body_sub {
-              width: 300px;
-              height: 120px;
-              display: flex;
-            }
+            justify-content: center;
           }
         } 
         .itembox__price {
@@ -91,28 +75,26 @@
         .optionalArea {
           display: flex;
           justify-content: space-between;
-
-          ul {
-            margin: 10px 0 0;
-            display: flex;
-
-            li.optionalBtnlikeBtn {
-              margin-right: auto;
-              padding: 10px 16px;
+          .optionalBtnlikeBtn {
+            margin-right: auto;
+            padding: 10px 16px;
+            color: #fff;
+            background-color: #3ccace;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 20px;
+            i {
+              display: inline-block;
+              font-size: inherit;
+              text-rendering: auto;
+              -webkit-font-smoothing: antialiased;
+              text-decoration: none;
+            }
+            a {
               color: #fff;
-              background-color: #3ccace;
-              border-radius: 4px;
-              font-weight: 600;
-              font-size: 20px;
-              i {
-                display: inline-block;
-                font-size: inherit;
-                text-rendering: auto;
-                -webkit-font-smoothing: antialiased;
-                text-decoration: none;
-              }
             }
           }
+
           ul.optional {
             margin: 15px 0 0;
             display: flex;
