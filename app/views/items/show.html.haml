@@ -7,7 +7,7 @@
         %h2.itembox__name
           = @item.name
         .itembox__body
-          = image_tag @item.images.first.url.url, size:"290×290"
+          = image_tag @item.images.last.url.url, size:"290×290"
           -# 商品情報に紐付けされている画像データを取得している
           .itembox__body_sub
             - @item.images.each_with_index do |image, i|
