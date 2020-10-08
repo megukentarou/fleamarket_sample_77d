@@ -2,6 +2,7 @@ class ItemsController < ApplicationController
   before_action :set_item, only: [:edit, :show, :update]
 
   def index
+    @newItems = Item.includes(:images).order("created_at DESC").limit(5)
     @parent = Category.where(ancestry: nil)
   end
 
