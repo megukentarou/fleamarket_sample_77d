@@ -65,8 +65,8 @@
                 = @item.delivery_day.name
 
         .optionalArea
-          -# 出品者以外なら表示させる
-          - if user_signed_in?
+          -# ログイン中で出品者なら表示
+          - if user_signed_in? && current_user.id == @item.user.id
             .optionalBtnlikeBtn
               %span.purchaseBtn__text
                 = link_to edit_item_path(@item) do
@@ -77,19 +77,17 @@
                 = link_to item_path(@item.id), method: :delete do
                   = icon('fas', 'far fa-trash-alt')
                   削除する
-        
+          - elsif user_signed_in?
             .optionalBtnlikeBtn
               %span.purchaseBtn__text
-
-                = icon('fas', 'cart-arrow-down fa-2x')
-                購入する
-          - else
-
-                
-                
-          %ul.optional
-            %li.optionalBtn
-
+                = link_to buy_item_path(@item) do
+                  = icon('fas', 'cart-arrow-down fa-2x')
+                  購入する
+          - else 
+            .optionalBtnlikeBtn
+              %span.purchaseBtn__text
+                =link_to new_user_session_path do
+                  ログインして購入する
 =render 'downroad'  
 =render 'devise/registrations/furima.footer'
 
