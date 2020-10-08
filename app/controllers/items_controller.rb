@@ -1,5 +1,8 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:edit, :show, :update]
+  before_action :set_item, only: [:edit, :show, :update, :buy]
+  before_action :set_card
+
+  require "payjp"
 
   def index
     @newItems = Item.includes(:images).order("created_at DESC").limit(5)
@@ -62,6 +65,12 @@ class ItemsController < ApplicationController
   end
 
   def buy
+    @user = current_user
+    if @card.present?
+      Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+      customer = Payjp::Customer.retrieve(@card.customer_id)
+      @card_information = customer.cards.retrieve(@card.card_id)
+    end
   end
 
   private
@@ -72,10 +81,14 @@ class ItemsController < ApplicationController
       :category_id, :condition_id,
       :fee_id, :prefecture_id,
       :delivery_day_id, :brand,
-      images_attributes: [:url, :_destroy, :id]).merge(user_id: current_user.id)
+      images_attributes: [:url, :_destroy, :id]).merge(user_id)
   end
 
   def set_item
     @item = Item.find(params[:id])
+  end
+
+  def set_card
+    @card = Card.where(user_id: current_user.id).first if Card.where(user_id: current_user.id).present?
   end
 end

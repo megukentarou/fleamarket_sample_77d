@@ -10,7 +10,6 @@
   align-items: center;
   border-radius: 4px;
   margin-bottom: 24px;
-  cursor: pointer;
   background-color:$bgColor;
   color:$color;
 }
@@ -40,9 +39,6 @@
     @include wrapper-style;
     @include border-base-line;
     display: flex;
-    &__image {
-      
-    }
     &__edit { 
       line-height: 1.4rem;
       margin-left: 14px;
@@ -50,6 +46,7 @@
       font-size: 14px;
       .item__name {
         margin-bottom: 14px;
+        font-size: 30px;
         p {
           text-align: left;
         }
@@ -57,10 +54,11 @@
       .edit__price {
         display: inline-block;
         height: 15px;
+        font-size: 20px;
         width: 100%;
         text-align: right;
         .price {
-          font-size: 12px;
+          font-size: 16px;
         }
         .price2 {
           font-size: 15px;
@@ -76,7 +74,7 @@
     justify-content: space-between;
     p {
       color: #333;
-      font-size: 18px;
+      font-size: 20px;
       font-weight: bold;
     }
     span {
@@ -94,6 +92,7 @@
     .buy__manner {
       text-align: left;
       margin-bottom: 14px;
+      font-size: 20px;
     }
     a {
       color: #0095ee;
@@ -105,7 +104,6 @@
     @include wrapper-style;
     @include border-base-line;
     text-align: left;
-    font-size: 14px;
     font-weight: bold;
     .buy__manner {
       text-align: left;
@@ -130,5 +128,23 @@
       @include submit-style;
     } 
   }
-      
+}
+
+.purchase__btn {
+  margin-top:10px;
+  display: block;
+  line-height: 48px;      
+  font-size: 16px;
+  font-weight: bold;
+  align-items: center;
+  border-radius: 4px;
+  margin-bottom: 24px;
+  cursor: pointer;
+  text-decoration: none;
+  background-color: #3ccace;
+  color: white;
+}
+
+.buy-user-info-text {
+  font-size:14px;
 }

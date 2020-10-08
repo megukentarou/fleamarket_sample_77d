@@ -6,29 +6,63 @@
       %h2 購入内容の確認
     .buy__wrapper__information
       .buy__wrapper__information__image
-        = image_tag "dentaku.png", size: "80x80", alt: "test"
+        = image_tag @item.images.first.url.url, size: "80x80"
       .buy__wrapper__information__edit
         .item__name
-          %p 使い込まれた電卓
+          = @item.name
         .edit__price
           %span.price 送料込み(税込)
-          %span.price2 ¥1,000
+          %span.price2 
+          = @item.price
+          円
     .buy__wrapper__price
       %p 支払い総額
-      %span ¥1,000
+      %span 
+        = @item.price
+        円
+    .buy__wrapper__shipping
+      .buy__manner 配送先
+      %p.buy-user-info-text
+        郵便番号
+        %br
+        〒
+        =@user.residency.zip_code
+        %br
+        都道府県、市町村、番地
+        %br
+        =@user.residency.prefecture.name
+        =@user.residency.city
+        =@user.residency.address
+        =@user.residency.building
+        %br
+        氏名
+        %br
+        =@user.residency.family_name
+        =@user.residency.first_name
+      .register
     .buy__wrapper__payment
       .buy__manner  支払い方法
       .register
-      -# TODO：クレジット情報を登録するリンクを実装する
-      =link_to "+ 登録して下さい"
-    .buy__wrapper__shipping
-      .buy__manner 配送先
-      .register
-      -# TODO：配送先を登録するリンクを実装する
-      =link_to "+ 登録して下さい"
-    .buy__wrapper__purchase
-      %p 配送先と支払い方法の入力を完了して下さい
-      .purchase__btn__gray 購入する
+        - if @user.card.present?
+          %p.buy-panel__item-detail-inner__pay-detail
+            クレジットカード情報
+            %br
+            クレジットカード番号(下4桁のみ表示)
+            %br
+            = "**** **** **** " + @card_information.last4
+            %br
+            カード有効期限(月/年)
+            %br
+            - exp_month = @card_information.exp_month.to_s
+            - exp_year = @card_information.exp_year.to_s.slice(2,3)
+            = exp_month + " / " + exp_year
+            %br
+            .purchase__btn 購入する
+        - else
+          =link_to "新規カードを登録する" ,new_card_path
+          .buy__wrapper__purchase
+            %p 支払い情報の登録後購入できます。
+            .purchase__btn__gray 購入する
 
 -# 部分テンプレートのフッター 
 = render partial: 'devise/registrations/furima.footer'
