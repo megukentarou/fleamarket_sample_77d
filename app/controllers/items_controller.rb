@@ -82,8 +82,11 @@ class ItemsController < ApplicationController
     :customer => @card.customer_id,
     :currency => 'jpy',
     )
-    Soldout.create(item_id: @item.id, user_id: current_user.id)
-    redirect_to root_path
+    if Soldout.create(item_id: @item.id, user_id: current_user.id)
+      redirect_to root_path, notice: '商品の購入が完了しました'
+    else
+      flash.now[:alert] = '商品が購入できませんでした。'
+    end
   end
 
   private
