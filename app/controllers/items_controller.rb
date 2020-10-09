@@ -78,9 +78,9 @@ class ItemsController < ApplicationController
     Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
     customer = Payjp::Customer.retrieve(@card.customer_id)
     Payjp::Charge.create(
-    :amount => @item.price,
-    :customer => @card.customer_id,
-    :currency => 'jpy',
+    amount: @item.price,
+    customer: @card.customer_id,
+    currency: 'jpy',
     )
     if Soldout.create(item_id: @item.id, user_id: current_user.id)
       redirect_to root_path, notice: '商品の購入が完了しました'
