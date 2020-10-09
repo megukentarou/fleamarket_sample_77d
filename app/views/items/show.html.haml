@@ -7,7 +7,7 @@
         %h2.itembox__name
           = @item.name
         .itembox__body
-          = image_tag @item.images.first.url.url, size:"290×290"
+          = image_tag @item.images.last.url.url, size:"290×290"
           -# 商品情報に紐付けされている画像データを取得している
           .itembox__body_sub
             - @item.images.each_with_index do |image, i|
@@ -66,7 +66,7 @@
 
         .optionalArea
           -# 出品者以外なら表示させる
-          - if user_signed_in?
+          - if user_signed_in? && current_user.id == @item.user.id
             .optionalBtnlikeBtn
               %span.purchaseBtn__text
                 = link_to edit_item_path(@item) do
@@ -77,13 +77,12 @@
                 = link_to item_path(@item.id), method: :delete do
                   = icon('fas', 'far fa-trash-alt')
                   削除する
-        
+          - else
             .optionalBtnlikeBtn
               %span.purchaseBtn__text
 
                 = icon('fas', 'cart-arrow-down fa-2x')
                 購入する
-          - else
 
                 
                 
