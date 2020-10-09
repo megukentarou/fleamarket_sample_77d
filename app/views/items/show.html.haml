@@ -78,11 +78,16 @@
                   = icon('fas', 'far fa-trash-alt')
                   削除する
           - elsif user_signed_in?
-            .optionalBtnlikeBtn
-              %span.purchaseBtn__text
-                = link_to buy_item_path(@item) do
-                  = icon('fas', 'cart-arrow-down fa-2x')
-                  購入する
+            - if @item.soldout
+              .optionalBtnlikeBtn
+                %span.purchaseBtn__text
+                  売り切れ
+            - else
+              .optionalBtnlikeBtn
+                %span.purchaseBtn__text
+                  = link_to buy_item_path(@item) do
+                    = icon('fas', 'cart-arrow-down fa-2x')
+                    購入する
           - else 
             .optionalBtnlikeBtn
               %span.purchaseBtn__text
