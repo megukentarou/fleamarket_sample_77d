@@ -19,7 +19,11 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :users
+  resources :users do
+    collection do
+      get 'soldout'
+    end
+  end
   resources :images
   resources :cards, only: [:new, :create, :index, :destroy, :show]
 end

@@ -9,6 +9,9 @@
       .user-info__overview__review 
         出品数
         = current_user.items.count
+        (売却済み
+        = current_user.soldouts.count
+        )
     .user-info__notice
       %ul.messages
         お知らせ
@@ -21,18 +24,24 @@
           .messagelist
             =link_to "一覧を見る", "#",class:"link-messagelist"
     .user-info__transaction
-      %p 取引中の商品
+      %p あなたが出品した商品
       %ul.transaction__list 
         - current_user.items.each do |item|
           %li.transaction__now
             = image_tag item.images.first.url.url, size: '120×120'
             %p 商品名
             = item.name
-            %p 販売価格(税込み)
-            = item.price 
-            円
-            %br/
-            %a.btn.btn-primary{href: item_path(item.id)} 詳細画面へ
-            %br/
-            %a.btn.btn-primary{href: edit_item_path(item.id)} 編集画面へ
+            - if item.soldout
+              .sold--out
+                売却済み
+              %br/
+              %a.btn.btn-primary{href: item_path(item.id)} 詳細画面へ
+            - else
+              %p 販売価格(税込み)
+              = item.price 
+              円
+              %br/
+              %a.btn.btn-primary{href: item_path(item.id)} 詳細画面へ
+              %br/
+              %a.btn.btn-primary{href: edit_item_path(item.id)} 編集画面へ
 =render 'items/footer'
