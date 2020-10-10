@@ -6,8 +6,12 @@
       支払い方法
     .paymethod__credit
       クレジットカード
-    .paymethod__register
-      =link_to "新規カードを登録する" ,new_card_path,class: "link-register"
+    - if @card.present?
+      .paymethod__register
+        すでにカード登録済みです。
+    -else
+      .paymethod__register
+        =link_to "新規カードを登録する" ,new_card_path,class: "link-register"
     .paymethod__confirmation
       .paymethod__confirmation__change
         =link_to "登録情報の確認および変更" , card_path(current_user),class: "link-change"
