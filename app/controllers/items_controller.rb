@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:edit, :show, :update, :buy]
-  before_action :set_card
+  before_action :set_item, only: [:edit, :show, :update, :buy, :pay]
+  before_action :set_card, only: [:buy, :pay]
 
   require "payjp"
 
@@ -70,6 +70,22 @@ class ItemsController < ApplicationController
       Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
       customer = Payjp::Customer.retrieve(@card.customer_id)
       @card_information = customer.cards.retrieve(@card.card_id)
+    end
+  end
+
+  def pay
+    @card = set_card
+    Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
+    customer = Payjp::Customer.retrieve(@card.customer_id)
+    Payjp::Charge.create(
+    amount: @item.price,
+    customer: @card.customer_id,
+    currency: 'jpy',
+    )
+    if Soldout.create(item_id: @item.id, user_id: current_user.id)
+      redirect_to root_path, notice: '商品の購入が完了しました'
+    else
+      flash.now[:alert] = '商品が購入できませんでした。'
     end
   end
 

@@ -24,7 +24,7 @@ class CardsController < ApplicationController
       )
       @card = Card.new(user: current_user, customer_id: customer.id, card_id: customer.default_card)
       if @card.save
-        redirect_to card_path(current_user)
+        redirect_to card_path(current_user),notice: 'クレジットカード情報を登録しました。'
       else
         redirect_to action: :new
       end
@@ -43,7 +43,7 @@ class CardsController < ApplicationController
     customer = Payjp::Customer.retrieve(@card.customer_id)
     customer.delete
     if @card.destroy
-      redirect_to action: :index, notice: "削除しました"
+      redirect_to action: index, notice: "削除しました"
     else
       redirect_to action: :index, alert: "削除できませんでした"
     end
