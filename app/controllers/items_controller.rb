@@ -30,7 +30,7 @@ class ItemsController < ApplicationController
     @item = Item.new(item_params)
     if @item.save
       # フラッシュメッセージで登録成功の表示
-      redirect_to new_item_path, notice: '出品情報の登録が完了しました'
+      redirect_to root_path, notice: '出品情報の登録が完了しました'
     else
       flash.now[:alert] = "入力内容漏れがあります。下記を参照に修正してください。"
       render action: :new
@@ -47,7 +47,7 @@ class ItemsController < ApplicationController
   def update
     if @item.update(item_params)
       # フラッシュメッセージで更新成功を表示
-      redirect_to edit_item_path, notice: '出品情報の更新が完了しました'
+      redirect_to root_path, notice: '出品情報の更新が完了しました'
     else
       flash.now[:alert] = "入力内容漏れがあります。下記を参照に修正してください"
       render action: :edit
@@ -58,7 +58,7 @@ class ItemsController < ApplicationController
     item = Item.find(params[:id])
     if item.destroy
       # フラッシュメッセージで削除成功を表示
-      redirect_to users_path, notice: '出品情報を削除しました'
+      redirect_to root_path, notice: '出品情報を削除しました'
     else
       flash.now[:alert] = '出品情報を削除できませんでした'
       render action: :show
