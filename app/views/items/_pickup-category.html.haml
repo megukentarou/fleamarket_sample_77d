@@ -12,9 +12,13 @@
                 =image_tag item.images.first.url.url, alt: "image_url", size:"220x150", class: "product-img"
             .pickup__content__list__product__body
               .pickup__content__list__product__body__name
-                = item.name
-              .pickup__content__list__product__body__money
-                = item.price 
-                円
-              .pickup__content__list__product__body__tax
-                (税込)
+                =item.name
+                - if item.soldout.present?
+                  .pickup__content__list__product__body__buy
+                    売り切れ
+                - else
+                  .pickup__content__list__product__body__money
+                    = item.price 
+                    円
+                  .pickup__content__list__product__body__tax
+                    (税込)
