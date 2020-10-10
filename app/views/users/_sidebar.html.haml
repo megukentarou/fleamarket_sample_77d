@@ -4,35 +4,35 @@
       %li
         =link_to "マイページ", users_path(current_user), class:"link-text"
       %li
-        =link_to "お知らせ", "#" , class:"link-text",  style: 'background-color: darkgray;'
+        =link_to "お知らせ", "#" , class:"link-text", style: 'background-color: darkgray;'
       %li
         =link_to "出品する", new_item_path(current_user), class:"link-text"
       %li
-        =link_to "出品中", "#" , class:"link-text"
+        =link_to "出品中", "#" , class:"link-text", style: 'background-color: darkgray;'
       %li
         =link_to "取引中", "#" , class:"link-text", style: 'background-color: darkgray;'
       %li
-        =link_to "売却済み", "#" , class:"link-text"
+        =link_to "売却済み", "#", class:"link-text", style: 'background-color: darkgray;'
       %li
-        =link_to "取引中", "#" , class:"link-text",  style: 'background-color: darkgray;'
+        =link_to "取引中", "#" , class:"link-text", style: 'background-color: darkgray;'
       %li
-        =link_to "過去の取引", "#" , class:"link-text"
+        =link_to "過去の取引", "#" , class:"link-text", style: 'background-color: darkgray;'
       %li
-        =link_to "ガイド", "#" , class:"link-text",  style: 'background-color: darkgray;'
+        =link_to "ガイド", "#" , class:"link-text", style: 'background-color: darkgray;'
       %li
-        =link_to "お問い合わせ", "#" , class:"link-text",  style: 'background-color: darkgray;'
+        =link_to "お問い合わせ", "#" , class:"link-text", style: 'background-color: darkgray;'
   .sidebar__lower
     %ul.user-settings
       設定
       %li
-        =link_to "プロフィール", "#" ,class: "link-text"
+        =link_to "プロフィール", "#" ,class: "link-text",  style: 'background-color: darkgray;'
       %li
-        =link_to "発送元・お届け住所変更", "#" ,class: "link-text"
+        =link_to "発送元・お届け住所変更", "#",class: "link-text", style: 'background-color: darkgray;'
       %li
         =link_to "支払い方法", cards_path(current_user),class: "link-text"
       %li
-        =link_to "メール/パスワード変更", "#" ,class: "link-text"
+        =link_to "メール/パスワード変更", edit_user_password_path(current_user) ,class: "link-text"
       %li
-        =link_to "本人情報", "#" ,class: "link-text"
+        =link_to "本人情報", "#" ,class: "link-text", style: 'background-color: darkgray;'
       %li
         =link_to "ログアウト", edit_user_path(current_user),class: "link-text"
