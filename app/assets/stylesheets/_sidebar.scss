@@ -12,6 +12,9 @@
         font-size: 14px;
         list-style: none;
         border: 1px solid white;
+        .dark {
+          background: darkgray;
+        }
       }
       li:hover {
         background-color: white;
