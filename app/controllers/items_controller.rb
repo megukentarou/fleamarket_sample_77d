@@ -41,6 +41,7 @@ class ItemsController < ApplicationController
   end
   
   def edit
+    @item.images.build
   end
 
   def update

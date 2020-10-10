@@ -67,7 +67,7 @@ $(document).on('turbolinks:load', ()=> {
     // もしチェックボックスが存在すればチェックを入れる
     if (hiddenCheck) hiddenCheck.prop('checked', true);
     $(this).parent().parent().remove();
-    $(`#item_images_attributes_${targetIndex}_url`).parent().remove();
+    $(`#item_images_attributes_${targetIndex}_url`).remove()
     
     // 画像入力欄が0個にならないようにしておく
     if ($('.js-file_group').Count == 0) $('.items__image__upload').append(buildFileField(fileIndex[0]));
