@@ -20,6 +20,7 @@
               = exp_month + " / " + exp_year
             %input{type: "hidden", name: "card_id", value: ""}
             = f.submit "削除する", {class: "content__cards__list__remove"}
-    .content__newcard
-      =link_to "新規カードを登録する" ,new_card_path,class: "link-newcard"
+    - else
+      .content__newcard
+        =link_to "新規カードを登録する" ,new_card_path,class: "link-newcard"
 =render 'items/footer'
