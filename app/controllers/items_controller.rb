@@ -67,7 +67,7 @@ class ItemsController < ApplicationController
   def buy
     @user = current_user
     if @card.present?
-      Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+      Payjp.api_key = ENV['PAYJP_SECRET_KEY']
       customer = Payjp::Customer.retrieve(@card.customer_id)
       @card_information = customer.cards.retrieve(@card.card_id)
     end
@@ -75,7 +75,7 @@ class ItemsController < ApplicationController
 
   def pay
     @card = set_card
-    Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
+    Payjp.api_key = ENV['PAYJP_SECRET_KEY']
     customer = Payjp::Customer.retrieve(@card.customer_id)
     Payjp::Charge.create(
     amount: @item.price,
@@ -97,7 +97,7 @@ class ItemsController < ApplicationController
       :category_id, :condition_id,
       :fee_id, :prefecture_id,
       :delivery_day_id, :brand,
-      images_attributes: [:url, :_destroy, :id]).merge(user_id)
+      images_attributes: [:url, :_destroy, :id]).merge(user_id: current_user.id)
   end
 
   def set_item
