@@ -9,7 +9,7 @@
           =link_to item_path(item.id), class: "listBtn" do
             .pickup__content__list__product__head
               .pickup__content__list__product__head__image
-                =image_tag item.images.first.url.url, alt: "image_url", size:"220x150", class: "product-img"
+                =image_tag item.images.last.url.url, alt: "image_url", size:"220x150", class: "product-img"
             .pickup__content__list__product__body
               .pickup__content__list__product__body__name
                 =item.name
