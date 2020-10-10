@@ -67,7 +67,7 @@ class ItemsController < ApplicationController
   def buy
     @user = current_user
     if @card.present?
-      Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+      Payjp.api_key = Rails.application.credentials[:payjp][:secret_key]
       customer = Payjp::Customer.retrieve(@card.customer_id)
       @card_information = customer.cards.retrieve(@card.card_id)
     end
@@ -75,7 +75,7 @@ class ItemsController < ApplicationController
 
   def pay
     @card = set_card
-    Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
+    Payjp.api_key = Rails.application.credentials[:payjp][:secret_key]
     customer = Payjp::Customer.retrieve(@card.customer_id)
     Payjp::Charge.create(
     amount: @item.price,

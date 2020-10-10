@@ -1,7 +1,7 @@
 document.addEventListener(
   'turbolinks:load', e => {
     if ($("#card_form") != null) {
-      Payjp.setPublicKey("pk_test_5c336f11e15630f0b243cfd3");
+      Payjp.setPublicKey("pk_test_09599d008aedae4e1b0ada0e");
       const submitBtn = $("#token_submit")
       submitBtn.on("click", (e) => {
         e.preventDefault();
