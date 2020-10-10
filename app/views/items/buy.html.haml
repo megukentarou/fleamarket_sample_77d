@@ -45,8 +45,6 @@
       .register
         - if @user.card.present?
           %p.buy-panel__item-detail-inner__pay-detail
-            クレジットカード情報
-            %br
             クレジットカード番号(下4桁のみ表示)
             %br
             = "**** **** **** " + @card_information.last4
@@ -61,10 +59,10 @@
               = form_tag(action: :pay, method: :post, item_id: @item) do
                 %button.purchase__btn 購入を確定する
         - else
-          =link_to "新規カードを登録する" ,new_card_path
           .buy__wrapper__purchase
             %p 支払い情報の登録後購入できます。
-            .purchase__btn__gray 購入する
+            =link_to "新規カードを登録する" ,new_card_path
+            .purchase__btn__gray 購入を確定する
 
 -# 部分テンプレートのフッター 
 = render partial: 'devise/registrations/furima.footer'
