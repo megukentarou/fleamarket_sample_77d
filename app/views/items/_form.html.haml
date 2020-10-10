@@ -15,11 +15,12 @@
           #previews
             - if @item.persisted?
               - @item.images.each_with_index do |image, i|
-                .image-container
-                  = image_tag image.url.url, data: { index: i }
-                  .image-edit
-                    %span.js-remove 削除
-                    %span.js-edit{data: {index: i}} 編集
+                - if image.persisted?
+                  .image-container
+                    = image_tag image.url.url, data: { index: i }
+                    .image-edit
+                      %span.js-remove 削除
+                      %span.js-edit{data: {index: i}} 編集
 
             %label.image-label{for: "item_images_attributes_#{@item.images.length-1}_url"}
               .items__image__upload__comment
@@ -28,11 +29,8 @@
               = f.fields_for :images do |image|
                 .js-file_group{data: {index: image.index}}
                   = image.file_field :url, class: "js-file"
-                - if @item.persisted?
-                  .js-file_group{data: {index: @item.images.count}}
-                    = file_field_tag :url, name: "item[images_attributes][#{@item.images.count}][url]", class: 'js-file', id: "item_images_attributes_#{@item.images.length-1}_url"
-                    - if image.object.persisted?
-                      = image.check_box :_destroy, class: 'hidden-destroy', data: {index: image.index}
+                  - if image.object.persisted?
+                    = image.check_box :_destroy, class: 'hidden-destroy', data: {index: image.index}
 
     -# 商品名や説明を入れる
     .items__information
