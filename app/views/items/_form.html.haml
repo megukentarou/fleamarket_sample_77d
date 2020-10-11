@@ -54,8 +54,8 @@
             -# Category.rootsと記述する事でancestry: nilを書かないで親カテゴリーのみ取得できる
             = f.collection_select :category_id, Category.roots, :id, :name,{ include_blank: "選択して下さい", selected: @item.category&.root_id}, required: true, class: 'items-select-wrapper__box--select', id: 'parent_category'
             - if @item.persisted?
-              = f.collection_select :category_id, @item.category.parent.siblings, :id, :name,{ include_blank: "選択して下さい", selected: @item.category.parent_id}, required: true, class: 'items-select-wrapper__box--select', id: 'children_category'
-              = f.collection_select :category_id, @item.category.siblings, :id, :name,{ include_blank: "選択して下さい"}, required: true, class: 'items-select-wrapper__box--select', id: 'children_category'
+              = f.collection_select :category_id, @item.category.parent.siblings, :id, :name,{ include_blank: "選択して下さい", selected: @item.category.parent_id}, required: true, class: 'items-select-wrapper__box--select', id: 'children_wrapper'
+              = f.collection_select :category_id, @item.category.siblings, :id, :name,{ include_blank: "選択して下さい"}, required: true, class: 'items-select-wrapper__box--select', id: 'grandchildren_wrapper'
       .items__brand
         %br
         .label ブランド

@@ -32,6 +32,7 @@ $(document).on('turbolinks:load', function() {
   // 親カテゴリー選択後のイベント（子カテゴリーのセレクトタグを出す為のAjax通信）
   $('#parent_category').on('change', function(){
     let parentCategory = $('#parent_category').val(); //選択された親カテゴリーの値を取得
+    console.log("親カテゴリーのIDは" + parentCategory);
     if (parentCategory != ""){ //親カテゴリーが初期値でないことを確認
       $.ajax({
         url: '/items/get_children_category',
@@ -57,9 +58,10 @@ $(document).on('turbolinks:load', function() {
     }
   });
   // 子カテゴリー選択後のイベント
-  $('.items__category').on("change", '#children_category', function(){
-    let childId = $('#children_category option:selected').data('category'); //選択された子カテゴリーのid取得
-    if (childId != "---"){//子カテゴリーが初期値で無い事を確認
+  $('.items__category').on("change", '#children_wrapper', function(){
+    let childId = $('#children_wrapper option:selected').val(); //選択された子カテゴリーのid取得
+    console.log("子カテゴリーのIDは" + childId);
+    if (childId != ""){//子カテゴリーが初期値で無い事を確認
       $.ajax({
         url: '/items/get_grandchildren_category',
         type: 'GET',
