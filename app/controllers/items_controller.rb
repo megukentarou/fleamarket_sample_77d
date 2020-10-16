@@ -1,7 +1,9 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:edit, :show, :update, :buy, :pay]
+  before_action :move_to_login, except: [:index, :show]
+  before_action :set_item, only: [:edit, :show, :update, :buy, :pay, :destroy]
   before_action :set_card, only: [:buy, :pay]
-
+  before_action :not_buy, only: [:buy, :pay]
+  before_action :not_edit, only: [:edit, :update, :destroy]
   require "payjp"
 
   def index
@@ -101,11 +103,23 @@ class ItemsController < ApplicationController
       images_attributes: [:url, :_destroy, :id]).merge(user_id: current_user.id)
   end
 
+  def move_to_login
+    redirect_to new_user_session_path unless user_signed_in?
+  end
+  
   def set_item
     @item = Item.find(params[:id])
   end
 
   def set_card
     @card = Card.where(user_id: current_user.id).first if Card.where(user_id: current_user.id).present?
+  end
+
+  def not_buy
+    redirect_to action: :show if (user_signed_in? && current_user.id == @item.user.id) || @item.soldout
+  end
+
+  def not_edit
+    redirect_to action: :show unless user_signed_in? && current_user.id == @item.user.id
   end
 end
