@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
   before_action :move_to_login, except: [:index, :show]
   before_action :set_item, only: [:edit, :show, :update, :buy, :pay, :destroy]
   before_action :set_card, only: [:buy, :pay]
-  before_action :not_mybuy, only: [:buy, :pay]
+  before_action :not_buy, only: [:buy, :pay]
   before_action :not_edit, only: [:edit, :update, :destroy]
   require "payjp"
 
@@ -115,9 +115,8 @@ class ItemsController < ApplicationController
     @card = Card.where(user_id: current_user.id).first if Card.where(user_id: current_user.id).present?
   end
 
-  def not_mybuy
-    redirect_to action: :show if user_signed_in? && current_user.id == @item.user.id
-    redirect_to action: :show if @item.soldout
+  def not_buy
+    redirect_to action: :show if (user_signed_in? && current_user.id == @item.user.id) || @item.soldout
   end
 
   def not_edit
