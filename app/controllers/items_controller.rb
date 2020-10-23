@@ -52,6 +52,7 @@ class ItemsController < ApplicationController
       redirect_to root_path, notice: '出品情報の更新が完了しました'
     else
       flash.now[:alert] = "入力内容漏れがあります。下記を参照に修正してください"
+      @item.images.build
       render action: :edit
     end
   end
