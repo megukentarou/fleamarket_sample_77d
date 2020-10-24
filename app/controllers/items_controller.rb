@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :move_to_login, except: [:index, :show]
-  before_action :set_item, only: [:edit, :show, :update, :buy, :pay, :destroy]
+  before_action :set_item, only: [:edit, :show, :update, :buy, :pay, :destroy,]
   before_action :set_card, only: [:buy, :pay]
   before_action :not_buy, only: [:buy, :pay]
   before_action :not_edit, only: [:edit, :update, :destroy]
@@ -35,6 +35,7 @@ class ItemsController < ApplicationController
       redirect_to root_path, notice: '出品情報の登録が完了しました'
     else
       flash.now[:alert] = "入力内容漏れがあります。下記を参照に修正してください。"
+      @item.images.build
       render action: :new
     end
   end
